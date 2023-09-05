@@ -13,7 +13,9 @@ class ApiInterceptor extends Interceptor {
   Map<String, dynamic> _defaultHeader() {
     String? authorizationToken = sharedPreferences.getString('jwt-token') ?? "";
     Map<String, String> headers = {};
-    headers['Authorization'] = "Bearer $authorizationToken";
+    if (authorizationToken.isNotEmpty) {
+      headers['Authorization'] = "Bearer $authorizationToken";
+    }
     return headers;
   }
 

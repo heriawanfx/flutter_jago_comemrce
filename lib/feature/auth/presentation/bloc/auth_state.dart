@@ -2,8 +2,8 @@ part of 'auth_bloc.dart';
 
 @freezed
 class AuthState with _$AuthState {
-  const factory AuthState.initial() = _Initial;
-  const factory AuthState.loading() = _Loading;
-  const factory AuthState.loaded(AuthResponseModel model) = _Loaded;
-  const factory AuthState.error(String message) = _Error;
+  const factory AuthState.initial() = _StateInitial;
+  const factory AuthState.loading() = _StateLoading;
+  const factory AuthState.loaded(AuthResponseModel model) = _StateLoaded;
+  const factory AuthState.error(String message) = _StateError;
 }

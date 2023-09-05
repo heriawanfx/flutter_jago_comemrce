@@ -14,14 +14,14 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
 
-  AuthBloc(this.authRepository) : super(const _Initial()) {
+  AuthBloc({required this.authRepository}) : super(const _StateInitial()) {
     on<_Login>((event, emit) async {
-      emit(const _Loading());
+      emit(const _StateLoading());
 
       final result = await authRepository.login(event.model);
       result.fold(
-        (e) => emit(_Error(e.toString())),
-        (data) => emit(_Loaded(data)),
+        (e) => emit(_StateError(e.toString())),
+        (data) => emit(_StateLoaded(data)),
       );
     });
   }

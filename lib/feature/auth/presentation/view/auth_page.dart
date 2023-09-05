@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jago_commerce/assets_gen/assets.gen.dart';
 import 'package:flutter_jago_commerce/common/utils/dimensions.dart';
+import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/login_form.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/register_form.dart';
 import 'package:go_router/go_router.dart';
@@ -12,10 +14,47 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: _backgroundStack(context, _content(context)),
-      ),
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          loading: () {
+            showAdaptiveDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) {
+                return const AlertDialog.adaptive(
+                  backgroundColor: Colors.white,
+                  title: Row(
+                    children: [
+                      CircularProgressIndicator.adaptive(),
+                      SizedBox(width: 20),
+                      Text('Loading...'),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
+          error: (message) {
+            //Dismiss Progress Dialog
+            context.pop();
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(message),
+                backgroundColor: Colors.red,
+              ),
+            );
+          },
+        );
+      },
+      builder: (context, state) {
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: _backgroundStack(context, _content(context)),
+          ),
+        );
+      },
     );
   }
 

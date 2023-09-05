@@ -10,20 +10,20 @@ class AuthRemoteDatasource {
   AuthRemoteDatasource({required this.dio});
 
   Future<AuthResponseModel?> login(LoginRequestModel model) async {
-    final response = await dio.postEncoded('api/login', data: model.toJson());
+    final response = await dio.postEncoded('/api/login', data: model.toJson());
     final data = response.data;
     return data;
   }
 
   Future<AuthResponseModel?> register(RegisterRequestModel model) async {
     final response =
-        await dio.postEncoded('api/register', data: model.toJson());
+        await dio.postEncoded('/api/register', data: model.toJson());
     final data = response.data;
     return data;
   }
 
   Future<String?> logout() async {
-    final response = await dio.postEncoded('api/logout');
+    final response = await dio.postEncoded('/api/logout');
     final data = response.data;
     return data;
   }

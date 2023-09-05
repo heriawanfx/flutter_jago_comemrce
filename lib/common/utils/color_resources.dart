@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class ColorResources {
-  const ColorResources._();
-
   static Color getColombiaBlue(BuildContext context) {
     return const Color(0xFF92C6FF);
   }

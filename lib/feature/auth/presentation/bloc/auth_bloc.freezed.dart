@@ -627,26 +627,26 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(_StateInitial value) initial,
+    required TResult Function(_StateLoading value) loading,
+    required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_StateInitial value)? initial,
+    TResult? Function(_StateLoading value)? loading,
+    TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(_StateInitial value)? initial,
+    TResult Function(_StateLoading value)? loading,
+    TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -670,24 +670,25 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$_StateInitialCopyWith<$Res> {
+  factory _$$_StateInitialCopyWith(
+          _$_StateInitial value, $Res Function(_$_StateInitial) then) =
+      __$$_StateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$_StateInitialCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_StateInitial>
+    implements _$$_StateInitialCopyWith<$Res> {
+  __$$_StateInitialCopyWithImpl(
+      _$_StateInitial _value, $Res Function(_$_StateInitial) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_StateInitial implements _StateInitial {
+  const _$_StateInitial();
 
   @override
   String toString() {
@@ -697,7 +698,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$_StateInitial);
   }
 
   @override
@@ -743,10 +744,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(_StateInitial value) initial,
+    required TResult Function(_StateLoading value) loading,
+    required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateError value) error,
   }) {
     return initial(this);
   }
@@ -754,10 +755,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_StateInitial value)? initial,
+    TResult? Function(_StateLoading value)? loading,
+    TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -765,10 +766,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(_StateInitial value)? initial,
+    TResult Function(_StateLoading value)? loading,
+    TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -778,29 +779,30 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements AuthState {
-  const factory _Initial() = _$_Initial;
+abstract class _StateInitial implements AuthState {
+  const factory _StateInitial() = _$_StateInitial;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$_StateLoadingCopyWith<$Res> {
+  factory _$$_StateLoadingCopyWith(
+          _$_StateLoading value, $Res Function(_$_StateLoading) then) =
+      __$$_StateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$_StateLoadingCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_StateLoading>
+    implements _$$_StateLoadingCopyWith<$Res> {
+  __$$_StateLoadingCopyWithImpl(
+      _$_StateLoading _value, $Res Function(_$_StateLoading) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$_StateLoading implements _StateLoading {
+  const _$_StateLoading();
 
   @override
   String toString() {
@@ -810,7 +812,7 @@ class _$_Loading implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$_StateLoading);
   }
 
   @override
@@ -856,10 +858,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(_StateInitial value) initial,
+    required TResult Function(_StateLoading value) loading,
+    required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateError value) error,
   }) {
     return loading(this);
   }
@@ -867,10 +869,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_StateInitial value)? initial,
+    TResult? Function(_StateLoading value)? loading,
+    TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -878,10 +880,10 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(_StateInitial value)? initial,
+    TResult Function(_StateLoading value)? loading,
+    TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -891,23 +893,25 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements AuthState {
-  const factory _Loading() = _$_Loading;
+abstract class _StateLoading implements AuthState {
+  const factory _StateLoading() = _$_StateLoading;
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
+abstract class _$$_StateLoadedCopyWith<$Res> {
+  factory _$$_StateLoadedCopyWith(
+          _$_StateLoaded value, $Res Function(_$_StateLoaded) then) =
+      __$$_StateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({AuthResponseModel model});
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+class __$$_StateLoadedCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_StateLoaded>
+    implements _$$_StateLoadedCopyWith<$Res> {
+  __$$_StateLoadedCopyWithImpl(
+      _$_StateLoaded _value, $Res Function(_$_StateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -915,7 +919,7 @@ class __$$_LoadedCopyWithImpl<$Res>
   $Res call({
     Object? model = null,
   }) {
-    return _then(_$_Loaded(
+    return _then(_$_StateLoaded(
       null == model
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
@@ -926,8 +930,8 @@ class __$$_LoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.model);
+class _$_StateLoaded implements _StateLoaded {
+  const _$_StateLoaded(this.model);
 
   @override
   final AuthResponseModel model;
@@ -941,7 +945,7 @@ class _$_Loaded implements _Loaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loaded &&
+            other is _$_StateLoaded &&
             (identical(other.model, model) || other.model == model));
   }
 
@@ -951,8 +955,8 @@ class _$_Loaded implements _Loaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
+  _$$_StateLoadedCopyWith<_$_StateLoaded> get copyWith =>
+      __$$_StateLoadedCopyWithImpl<_$_StateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -994,10 +998,10 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(_StateInitial value) initial,
+    required TResult Function(_StateLoading value) loading,
+    required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateError value) error,
   }) {
     return loaded(this);
   }
@@ -1005,10 +1009,10 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_StateInitial value)? initial,
+    TResult? Function(_StateLoading value)? loading,
+    TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -1016,10 +1020,10 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(_StateInitial value)? initial,
+    TResult Function(_StateLoading value)? loading,
+    TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -1029,28 +1033,30 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements AuthState {
-  const factory _Loaded(final AuthResponseModel model) = _$_Loaded;
+abstract class _StateLoaded implements AuthState {
+  const factory _StateLoaded(final AuthResponseModel model) = _$_StateLoaded;
 
   AuthResponseModel get model;
   @JsonKey(ignore: true)
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
+  _$$_StateLoadedCopyWith<_$_StateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$_StateErrorCopyWith<$Res> {
+  factory _$$_StateErrorCopyWith(
+          _$_StateError value, $Res Function(_$_StateError) then) =
+      __$$_StateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$_StateErrorCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_StateError>
+    implements _$$_StateErrorCopyWith<$Res> {
+  __$$_StateErrorCopyWithImpl(
+      _$_StateError _value, $Res Function(_$_StateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1058,7 +1064,7 @@ class __$$_ErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_Error(
+    return _then(_$_StateError(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1069,8 +1075,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error(this.message);
+class _$_StateError implements _StateError {
+  const _$_StateError(this.message);
 
   @override
   final String message;
@@ -1084,7 +1090,7 @@ class _$_Error implements _Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$_StateError &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -1094,8 +1100,8 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$_StateErrorCopyWith<_$_StateError> get copyWith =>
+      __$$_StateErrorCopyWithImpl<_$_StateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1137,10 +1143,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(_StateInitial value) initial,
+    required TResult Function(_StateLoading value) loading,
+    required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateError value) error,
   }) {
     return error(this);
   }
@@ -1148,10 +1154,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_StateInitial value)? initial,
+    TResult? Function(_StateLoading value)? loading,
+    TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateError value)? error,
   }) {
     return error?.call(this);
   }
@@ -1159,10 +1165,10 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(_StateInitial value)? initial,
+    TResult Function(_StateLoading value)? loading,
+    TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1172,11 +1178,11 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements AuthState {
-  const factory _Error(final String message) = _$_Error;
+abstract class _StateError implements AuthState {
+  const factory _StateError(final String message) = _$_StateError;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$_StateErrorCopyWith<_$_StateError> get copyWith =>
       throw _privateConstructorUsedError;
 }
