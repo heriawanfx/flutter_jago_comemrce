@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_jago_commerce/common/utils/color_resources.dart';
 import 'package:flutter_jago_commerce/common/utils/custom_themes.dart';
 import 'package:flutter_jago_commerce/common/utils/dimensions.dart';
 import 'package:flutter_jago_commerce/common/widgets/custom_button.dart';
 import 'package:flutter_jago_commerce/common/widgets/custom_password_textfield.dart';
 import 'package:flutter_jago_commerce/common/widgets/custom_textfield.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/request/login_request_model.dart';
+import 'package:flutter_jago_commerce/core/data/request/login_request_model.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,9 +17,9 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  TextEditingController? _emailController;
-  TextEditingController? _passwordController;
-  GlobalKey<FormState>? _formKeyLogin;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  GlobalKey<FormState> _formKeyLogin = GlobalKey();
 
   final FocusNode _emailNode = FocusNode();
   final FocusNode _passNode = FocusNode();
@@ -35,8 +34,8 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void dispose() {
-    _emailController!.dispose();
-    _passwordController!.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -50,87 +49,59 @@ class _LoginFormState extends State<LoginForm> {
         });
       },
       builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: Dimensions.marginSizeLarge),
-          child: Form(
-            key: _formKeyLogin,
-            child: ListView(
-              padding: const EdgeInsets.symmetric(
-                  vertical: Dimensions.paddingSizeSmall),
-              children: [
-                Container(
-                    margin: const EdgeInsets.only(
-                        bottom: Dimensions.marginSizeSmall),
-                    child: CustomTextField(
-                      hintText: 'Email',
-                      focusNode: _emailNode,
-                      nextNode: _passNode,
-                      textInputType: TextInputType.emailAddress,
-                      controller: _emailController,
-                    )),
-                Container(
-                    margin: const EdgeInsets.only(
-                        bottom: Dimensions.marginSizeDefault),
-                    child: CustomPasswordTextField(
-                      hintTxt: 'Password',
-                      textInputAction: TextInputAction.done,
-                      focusNode: _passNode,
-                      controller: _passwordController,
-                    )),
-                Container(
-                  margin:
-                      const EdgeInsets.only(right: Dimensions.marginSizeSmall),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        return Form(
+          key: _formKeyLogin,
+          child: ListView(
+            children: [
+              const SizedBox(height: Dimensions.paddingSizeDefault),
+              CustomTextField(
+                hintText: 'Email',
+                focusNode: _emailNode,
+                nextNode: _passNode,
+                textInputType: TextInputType.emailAddress,
+                controller: _emailController,
+              ),
+              const SizedBox(height: Dimensions.paddingSizeSmall),
+              CustomPasswordTextField(
+                hintTxt: 'Password',
+                textInputAction: TextInputAction.done,
+                focusNode: _passNode,
+                controller: _passwordController,
+              ),
+              const SizedBox(height: Dimensions.paddingSizeDefault),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Checkbox.adaptive(
-                            value: false,
-                            onChanged: (isChecked) {},
-                          ),
-                          const Text('Remember', style: titilliumRegular),
-                        ],
+                      Checkbox.adaptive(
+                        value: false,
+                        onChanged: (isChecked) {},
                       ),
-                      TextButton(
-                        onPressed: () => {},
-                        child: Text(
-                          'Forgot Password',
-                          style: titilliumRegular.copyWith(
-                            color: ColorResources.getLightSkyBlue(context),
-                          ),
-                        ),
-                      ),
+                      const Text('Remember', style: titilliumRegular),
                     ],
                   ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                      left: 20, right: 20, bottom: 20, top: 30),
-                  child:
-                      CustomButton(onTap: _actionLogin, buttonText: 'Sign In'),
-                ),
-                const SizedBox(width: Dimensions.paddingSizeDefault),
-                const SizedBox(width: Dimensions.paddingSizeDefault),
-                Center(
-                  child: Text(
-                    'OR',
-                    style: titilliumRegular.copyWith(
-                        fontSize: Dimensions.fontSizeDefault),
+                  TextButton(
+                    onPressed: () => {},
+                    child: const Text('Forgot Password'),
                   ),
-                ),
-                TextButton(
-                  onPressed: () => context.go('/home'),
-                  child: Text(
-                    'Continue as Guest',
-                    style: titleHeader.copyWith(
-                      color: ColorResources.getPrimary(context),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+                ],
+              ),
+              const SizedBox(height: Dimensions.paddingSizeDefault),
+              CustomButton(
+                onTap: _actionLogin,
+                buttonText: 'Sign In',
+              ),
+              const SizedBox(height: Dimensions.paddingSizeDefault),
+              const Center(
+                child: Text('OR'),
+              ),
+              const SizedBox(height: Dimensions.paddingSizeExtraExtraSmall),
+              TextButton(
+                onPressed: () => context.go('/home'),
+                child: const Text('Continue as Guest'),
+              ),
+            ],
           ),
         );
       },
@@ -138,11 +109,11 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _actionLogin() async {
-    if (_formKeyLogin!.currentState!.validate()) {
-      _formKeyLogin!.currentState!.save();
+    if (_formKeyLogin.currentState!.validate()) {
+      _formKeyLogin.currentState!.save();
 
-      String email = _emailController!.text.trim();
-      String password = _passwordController!.text.trim();
+      String email = _emailController.text.trim();
+      String password = _passwordController.text.trim();
 
       if (email.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

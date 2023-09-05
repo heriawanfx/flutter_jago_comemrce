@@ -35,15 +35,16 @@ class CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(2),
       width: double.infinity,
       decoration: BoxDecoration(
         color: Theme.of(context).highlightColor,
         borderRadius: BorderRadius.circular(6),
         boxShadow: [
           BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: Colors.grey.withOpacity(0.1),
               spreadRadius: 1,
-              blurRadius: 7,
+              blurRadius: 3,
               offset: const Offset(0, 1)) // changes position of shadow
         ],
       ),

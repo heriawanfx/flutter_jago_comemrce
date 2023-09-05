@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_jago_commerce/feature/auth/data/response/auth_response_model.dart';
+import 'package:flutter_jago_commerce/core/data/response/auth_response_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthLocalDataSource {

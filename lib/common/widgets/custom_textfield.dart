@@ -50,6 +50,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(context) {
     return Container(
+      margin: const EdgeInsets.all(2),
       width: double.infinity,
       decoration: BoxDecoration(
         border: isBorder

@@ -23,12 +23,16 @@ class AuthPage extends StatelessWidget {
               context: context,
               builder: (context) {
                 return const AlertDialog.adaptive(
-                  backgroundColor: Colors.white,
                   title: Row(
                     children: [
                       CircularProgressIndicator.adaptive(),
                       SizedBox(width: 20),
-                      Text('Loading...'),
+                      Text(
+                        'Loading...',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
                     ],
                   ),
                 );
@@ -37,14 +41,13 @@ class AuthPage extends StatelessWidget {
           },
           error: (message) {
             //Dismiss Progress Dialog
-            context.pop();
+            Navigator.of(context).pop();
 
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(message),
-                backgroundColor: Colors.red,
-              ),
-            );
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(content: Text(message), backgroundColor: Colors.red),
+              );
           },
         );
       },
@@ -90,21 +93,23 @@ class AuthPage extends StatelessWidget {
       child: Column(
         children: [
           const TabBar(
-            tabs: [
-              Tab(text: 'Login'),
-              Tab(text: 'Register'),
-            ],
+            tabs: [Tab(text: 'Login'), Tab(text: 'Register')],
             tabAlignment: TabAlignment.start,
             isScrollable: true,
           ),
           Builder(builder: (context) {
             return SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: const TabBarView(
-                children: [
-                  LoginForm(),
-                  RegisterForm(),
-                ],
+              child: const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Dimensions.paddingSizeDefault,
+                ),
+                child: TabBarView(
+                  children: [
+                    LoginForm(),
+                    RegisterForm(),
+                  ],
+                ),
               ),
             );
           })

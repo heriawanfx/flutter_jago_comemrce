@@ -2,10 +2,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:flutter_jago_commerce/feature/auth/data/request/login_request_model.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/request/register_request_model.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/response/auth_response_model.dart';
-import 'package:flutter_jago_commerce/feature/auth/domain/auth_repository.dart';
+import 'package:flutter_jago_commerce/core/data/request/login_request_model.dart';
+import 'package:flutter_jago_commerce/core/data/request/register_request_model.dart';
+import 'package:flutter_jago_commerce/core/data/response/auth_response_model.dart';
+import 'package:flutter_jago_commerce/core/domain/auth_repository.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';

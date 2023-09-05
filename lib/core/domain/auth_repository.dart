@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/auth_local_datasource.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/auth_remote_datasource.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/request/login_request_model.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/response/auth_response_model.dart';
+import 'package:flutter_jago_commerce/core/data/auth_local_datasource.dart';
+import 'package:flutter_jago_commerce/core/data/auth_remote_datasource.dart';
+import 'package:flutter_jago_commerce/core/data/request/login_request_model.dart';
+import 'package:flutter_jago_commerce/core/data/response/auth_response_model.dart';
 
 class AuthRepository {
   final AuthLocalDataSource authLocalDataSource;

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_jago_commerce/core/data/remote/dio_handler.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/request/login_request_model.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/request/register_request_model.dart';
-import 'package:flutter_jago_commerce/feature/auth/data/response/auth_response_model.dart';
+import 'package:flutter_jago_commerce/core/data/request/login_request_model.dart';
+import 'package:flutter_jago_commerce/core/data/request/register_request_model.dart';
+import 'package:flutter_jago_commerce/core/data/response/auth_response_model.dart';
 
 class AuthRemoteDatasource {
   final Dio dio;
