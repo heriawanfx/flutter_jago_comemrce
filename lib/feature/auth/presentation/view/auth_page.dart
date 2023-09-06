@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jago_commerce/assets_gen/assets.gen.dart';
 import 'package:flutter_jago_commerce/common/utils/dimensions.dart';
+import 'package:flutter_jago_commerce/common/widgets/progress_dialog.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/login_form.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/register_form.dart';
@@ -21,22 +22,7 @@ class AuthPage extends StatelessWidget {
             showAdaptiveDialog(
               barrierDismissible: false,
               context: context,
-              builder: (context) {
-                return const AlertDialog.adaptive(
-                  title: Row(
-                    children: [
-                      CircularProgressIndicator.adaptive(),
-                      SizedBox(width: 20),
-                      Text(
-                        'Loading...',
-                        style: TextStyle(
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
+              builder: (context) => const ProgressDialog(),
             );
           },
           error: (message) {

@@ -2,6 +2,6 @@ include: package:flutter_lints/flutter.yaml
 
 analyzer:
   language:
-    strict-casts: false
+    strict-casts: true
     strict-inference: false
     strict-raw-types: false

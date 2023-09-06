@@ -19,6 +19,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() getAuth,
     required TResult Function(LoginRequestModel model) login,
     required TResult Function(RegisterRequestModel model) register,
     required TResult Function() logout,
@@ -27,6 +28,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? getAuth,
     TResult? Function(LoginRequestModel model)? login,
     TResult? Function(RegisterRequestModel model)? register,
     TResult? Function()? logout,
@@ -35,6 +37,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? getAuth,
     TResult Function(LoginRequestModel model)? login,
     TResult Function(RegisterRequestModel model)? register,
     TResult Function()? logout,
@@ -44,6 +47,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetAuth value) getAuth,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -52,6 +56,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetAuth value)? getAuth,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -60,6 +65,7 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetAuth value)? getAuth,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -123,6 +129,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() getAuth,
     required TResult Function(LoginRequestModel model) login,
     required TResult Function(RegisterRequestModel model) register,
     required TResult Function() logout,
@@ -134,6 +141,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? getAuth,
     TResult? Function(LoginRequestModel model)? login,
     TResult? Function(RegisterRequestModel model)? register,
     TResult? Function()? logout,
@@ -145,6 +153,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? getAuth,
     TResult Function(LoginRequestModel model)? login,
     TResult Function(RegisterRequestModel model)? register,
     TResult Function()? logout,
@@ -160,6 +169,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetAuth value) getAuth,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -171,6 +181,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetAuth value)? getAuth,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -182,6 +193,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetAuth value)? getAuth,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -196,6 +208,125 @@ class _$_Started implements _Started {
 
 abstract class _Started implements AuthEvent {
   const factory _Started() = _$_Started;
+}
+
+/// @nodoc
+abstract class _$$_GetAuthCopyWith<$Res> {
+  factory _$$_GetAuthCopyWith(
+          _$_GetAuth value, $Res Function(_$_GetAuth) then) =
+      __$$_GetAuthCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_GetAuthCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_GetAuth>
+    implements _$$_GetAuthCopyWith<$Res> {
+  __$$_GetAuthCopyWithImpl(_$_GetAuth _value, $Res Function(_$_GetAuth) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_GetAuth implements _GetAuth {
+  const _$_GetAuth();
+
+  @override
+  String toString() {
+    return 'AuthEvent.getAuth()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_GetAuth);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getAuth,
+    required TResult Function(LoginRequestModel model) login,
+    required TResult Function(RegisterRequestModel model) register,
+    required TResult Function() logout,
+  }) {
+    return getAuth();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getAuth,
+    TResult? Function(LoginRequestModel model)? login,
+    TResult? Function(RegisterRequestModel model)? register,
+    TResult? Function()? logout,
+  }) {
+    return getAuth?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getAuth,
+    TResult Function(LoginRequestModel model)? login,
+    TResult Function(RegisterRequestModel model)? register,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (getAuth != null) {
+      return getAuth();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_GetAuth value) getAuth,
+    required TResult Function(_Login value) login,
+    required TResult Function(_Register value) register,
+    required TResult Function(_Logout value) logout,
+  }) {
+    return getAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_GetAuth value)? getAuth,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_Register value)? register,
+    TResult? Function(_Logout value)? logout,
+  }) {
+    return getAuth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_GetAuth value)? getAuth,
+    TResult Function(_Login value)? login,
+    TResult Function(_Register value)? register,
+    TResult Function(_Logout value)? logout,
+    required TResult orElse(),
+  }) {
+    if (getAuth != null) {
+      return getAuth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAuth implements AuthEvent {
+  const factory _GetAuth() = _$_GetAuth;
 }
 
 /// @nodoc
@@ -261,6 +392,7 @@ class _$_Login implements _Login {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() getAuth,
     required TResult Function(LoginRequestModel model) login,
     required TResult Function(RegisterRequestModel model) register,
     required TResult Function() logout,
@@ -272,6 +404,7 @@ class _$_Login implements _Login {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? getAuth,
     TResult? Function(LoginRequestModel model)? login,
     TResult? Function(RegisterRequestModel model)? register,
     TResult? Function()? logout,
@@ -283,6 +416,7 @@ class _$_Login implements _Login {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? getAuth,
     TResult Function(LoginRequestModel model)? login,
     TResult Function(RegisterRequestModel model)? register,
     TResult Function()? logout,
@@ -298,6 +432,7 @@ class _$_Login implements _Login {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetAuth value) getAuth,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -309,6 +444,7 @@ class _$_Login implements _Login {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetAuth value)? getAuth,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -320,6 +456,7 @@ class _$_Login implements _Login {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetAuth value)? getAuth,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -406,6 +543,7 @@ class _$_Register implements _Register {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() getAuth,
     required TResult Function(LoginRequestModel model) login,
     required TResult Function(RegisterRequestModel model) register,
     required TResult Function() logout,
@@ -417,6 +555,7 @@ class _$_Register implements _Register {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? getAuth,
     TResult? Function(LoginRequestModel model)? login,
     TResult? Function(RegisterRequestModel model)? register,
     TResult? Function()? logout,
@@ -428,6 +567,7 @@ class _$_Register implements _Register {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? getAuth,
     TResult Function(LoginRequestModel model)? login,
     TResult Function(RegisterRequestModel model)? register,
     TResult Function()? logout,
@@ -443,6 +583,7 @@ class _$_Register implements _Register {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetAuth value) getAuth,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -454,6 +595,7 @@ class _$_Register implements _Register {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetAuth value)? getAuth,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -465,6 +607,7 @@ class _$_Register implements _Register {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetAuth value)? getAuth,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,
@@ -523,6 +666,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() getAuth,
     required TResult Function(LoginRequestModel model) login,
     required TResult Function(RegisterRequestModel model) register,
     required TResult Function() logout,
@@ -534,6 +678,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? getAuth,
     TResult? Function(LoginRequestModel model)? login,
     TResult? Function(RegisterRequestModel model)? register,
     TResult? Function()? logout,
@@ -545,6 +690,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? getAuth,
     TResult Function(LoginRequestModel model)? login,
     TResult Function(RegisterRequestModel model)? register,
     TResult Function()? logout,
@@ -560,6 +706,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_GetAuth value) getAuth,
     required TResult Function(_Login value) login,
     required TResult Function(_Register value) register,
     required TResult Function(_Logout value) logout,
@@ -571,6 +718,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_GetAuth value)? getAuth,
     TResult? Function(_Login value)? login,
     TResult? Function(_Register value)? register,
     TResult? Function(_Logout value)? logout,
@@ -582,6 +730,7 @@ class _$_Logout implements _Logout {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_GetAuth value)? getAuth,
     TResult Function(_Login value)? login,
     TResult Function(_Register value)? register,
     TResult Function(_Logout value)? logout,

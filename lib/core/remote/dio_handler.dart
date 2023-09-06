@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_jago_commerce/common/constants/constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,7 +16,15 @@ class DioHandler {
   Dio get dio => _getDio();
 
   Dio _getDio() {
-    BaseOptions options = BaseOptions(baseUrl: Constant.baseUrl);
+    BaseOptions options = BaseOptions(
+      baseUrl: Constant.baseUrl,
+      validateStatus: (status) {
+        if (status == null) {
+          return false;
+        }
+        return status >= 200 && status < 300 || status == 422;
+      },
+    );
     final dio = Dio(options);
     dio.interceptors.add(ApiInterceptor(sharedPreferences: sharedPreferences));
 
@@ -37,7 +47,10 @@ extension DioExtension on Dio {
         queryParameters: queryParameters,
         options: isEncoded
             ? Options(contentType: Headers.formUrlEncodedContentType)
-            : null,
+            : Options(headers: {
+                HttpHeaders.acceptHeader: 'application/json',
+                HttpHeaders.contentTypeHeader: 'application/json',
+              }),
         cancelToken: cancelToken,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress);

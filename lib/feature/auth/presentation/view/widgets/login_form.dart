@@ -5,7 +5,7 @@ import 'package:flutter_jago_commerce/common/utils/dimensions.dart';
 import 'package:flutter_jago_commerce/common/widgets/custom_button.dart';
 import 'package:flutter_jago_commerce/common/widgets/custom_password_textfield.dart';
 import 'package:flutter_jago_commerce/common/widgets/custom_textfield.dart';
-import 'package:flutter_jago_commerce/core/data/request/login_request_model.dart';
+import 'package:flutter_jago_commerce/core/auth/data/request/login_request_model.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -44,8 +44,7 @@ class _LoginFormState extends State<LoginForm> {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         state.whenOrNull(loaded: (model) {
-          context.goNamed('/home');
-          //go to HomePage
+          context.go('/dashboard');
         });
       },
       builder: (context, state) {
@@ -98,7 +97,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               const SizedBox(height: Dimensions.paddingSizeExtraExtraSmall),
               TextButton(
-                onPressed: () => context.go('/home'),
+                onPressed: () => context.go('/dashboard'),
                 child: const Text('Continue as Guest'),
               ),
             ],

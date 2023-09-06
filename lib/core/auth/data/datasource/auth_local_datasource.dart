@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_jago_commerce/core/data/response/auth_response_model.dart';
+import 'package:flutter_jago_commerce/core/auth/data/response/auth_response_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthLocalDataSource {
@@ -18,8 +18,7 @@ class AuthLocalDataSource {
   Future<AuthResponseModel?> getAuthData() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     final authJson = pref.getString('auth') ?? '';
-    final authMap = jsonDecode(authJson);
-    final authModel = AuthResponseModel.fromJson(authMap);
+    final authModel = AuthResponseModel.fromJson(authJson);
     return authModel;
   }
 
