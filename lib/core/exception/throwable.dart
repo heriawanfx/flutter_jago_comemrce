@@ -18,8 +18,8 @@ class Throwable implements Exception {
     );
   }
 
-  String toJson() => json.encode(toMap());
+  String toJson() => jsonEncode(toMap());
 
   factory Throwable.fromJson(String source) =>
-      Throwable.fromMap(json.decode(source) as Map<String, dynamic>);
+      Throwable.fromMap(jsonDecode(source) as Map<String, dynamic>);
 }

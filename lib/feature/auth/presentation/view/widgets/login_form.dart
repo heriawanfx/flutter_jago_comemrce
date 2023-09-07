@@ -17,8 +17,10 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _emailController =
+      TextEditingController(text: 'member@member.com');
+  TextEditingController _passwordController =
+      TextEditingController(text: 'member');
   GlobalKey<FormState> _formKeyLogin = GlobalKey();
 
   final FocusNode _emailNode = FocusNode();
@@ -43,7 +45,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        state.whenOrNull(loaded: (model) {
+        state.whenOrNull(loaded: () {
           context.go('/dashboard');
         });
       },

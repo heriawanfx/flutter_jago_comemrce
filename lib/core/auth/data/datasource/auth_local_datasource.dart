@@ -9,22 +9,20 @@ class AuthLocalDataSource {
   AuthLocalDataSource({required this.preferences});
 
   Future<bool> saveAuthData(AuthResponseModel model) async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
     final authJson = jsonEncode(model.toJson());
-    final result = await pref.setString('auth', authJson);
+    final result = await preferences.setString('auth', authJson);
     return result;
   }
 
-  Future<AuthResponseModel?> getAuthData() async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    final authJson = pref.getString('auth') ?? '';
-    final authModel = AuthResponseModel.fromJson(authJson);
-    return authModel;
+  Future<String> getAuthData() async {
+    final authJson = preferences.getString('auth') ?? '';
+    return authJson;
+    //final authModel = AuthResponseModel.fromJson(authJson);
+    //return authModel;
   }
 
   Future<bool> removeAuthData() async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    final result = await pref.remove('auth');
+    final result = await preferences.remove('auth');
     return result;
   }
 }

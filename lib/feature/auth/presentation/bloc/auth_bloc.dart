@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:flutter_jago_commerce/core/auth/data/request/login_request_model.dart';
 import 'package:flutter_jago_commerce/core/auth/data/request/register_request_model.dart';
-import 'package:flutter_jago_commerce/core/auth/data/response/auth_response_model.dart';
 import 'package:flutter_jago_commerce/core/auth/domain/auth_repository.dart';
 
 part 'auth_bloc.freezed.dart';
@@ -18,11 +17,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_GetAuth>((event, emit) async {
       emit(const _StateLoading());
 
-      final model = await authRepository.getAuthData();
-
-      if (model != null) {
-        emit(_StateLoaded(model));
-      }
+      final value = await authRepository.getAuthData();
+      emit(_StateLoggedIn(value));
     });
 
     on<_Login>((event, emit) async {
@@ -30,9 +26,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       final result = await authRepository.login(event.model);
       result.fold(
-        (e) => emit(_StateError(e)),
-        (data) => emit(_StateLoaded(data)),
+        (message) => emit(_StateError(message)),
+        (model) => emit(const _StateLoaded()),
       );
     });
+
+    on<_Logout>(
+      (event, emit) async {
+        emit(const _StateLoading());
+
+        await authRepository.logout();
+
+        final value = await authRepository.getAuthData();
+
+        if (value.isEmpty) {
+          emit(const _StateLoggedOut());
+        } else {
+          emit(const _StateError('Failed to Logout'));
+        }
+      },
+    );
   }
 }

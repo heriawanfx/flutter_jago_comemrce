@@ -9,24 +9,25 @@ class AuthResponseModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jwtToken': jwtToken,
+      'jwt-token': jwtToken,
       'user': user?.toMap(),
     };
   }
 
   factory AuthResponseModel.fromMap(Map<String, dynamic> map) {
     return AuthResponseModel(
-      jwtToken: map['jwtToken'] != null ? map['jwtToken'] as String : null,
+      jwtToken: map['jwt-token'] != null ? map['jwt-token'] as String : null,
       user: map['user'] != null
           ? UserResponseModel.fromMap(map['user'] as Map<String, dynamic>)
           : null,
     );
   }
 
-  String toJson() => json.encode(toMap());
+  String toJson() => jsonEncode(toMap());
 
   factory AuthResponseModel.fromJson(String source) =>
-      AuthResponseModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      AuthResponseModel.fromMap(
+          jsonDecode(source)(source) as Map<String, dynamic>);
 }
 
 class UserResponseModel {
@@ -52,8 +53,8 @@ class UserResponseModel {
     );
   }
 
-  String toJson() => json.encode(toMap());
+  String toJson() => jsonEncode(toMap());
 
   factory UserResponseModel.fromJson(String source) =>
-      UserResponseModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      UserResponseModel.fromMap(jsonDecode(source) as Map<String, dynamic>);
 }

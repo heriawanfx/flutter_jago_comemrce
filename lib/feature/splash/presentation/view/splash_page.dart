@@ -14,15 +14,22 @@ class SplashPage extends StatelessWidget {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         state.maybeWhen(
-          orElse: () {
-            Future.delayed(const Duration(seconds: 3), () {
-              return context.go('/login');
-            });
+          orElse: () {},
+          error: (message) {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(content: Text(message), backgroundColor: Colors.red),
+              );
           },
-          loaded: (model) {
-            Future.delayed(const Duration(seconds: 3), () {
-              return context.go('/dashboard');
-            });
+          loggedIn: (value) {
+            if (value.isEmpty) {
+              Future.delayed(const Duration(seconds: 3), () {
+                context.go('/login');
+              });
+            } else {
+              context.go('/dashboard');
+            }
           },
         );
       },

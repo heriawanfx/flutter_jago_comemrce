@@ -27,7 +27,14 @@ class AuthRepository {
     });
   }
 
-  Future<AuthResponseModel?> getAuthData() async {
-    return await authLocalDataSource.getAuthData();
+  Future<String> getAuthData() async {
+    final model = await authLocalDataSource.getAuthData();
+
+    authLocalDataSource.removeAuthData();
+    return model;
+  }
+
+  Future logout() async {
+    await authLocalDataSource.removeAuthData();
   }
 }
