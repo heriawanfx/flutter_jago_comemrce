@@ -5,6 +5,7 @@ import 'package:flutter_jago_commerce/common/utils/dimensions.dart';
 import 'package:flutter_jago_commerce/common/widgets/custom_button.dart';
 import 'package:flutter_jago_commerce/common/widgets/custom_password_textfield.dart';
 import 'package:flutter_jago_commerce/common/widgets/custom_textfield.dart';
+import 'package:flutter_jago_commerce/common/widgets/progress_dialog.dart';
 import 'package:flutter_jago_commerce/core/auth/data/request/login_request_model.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -17,22 +18,13 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  TextEditingController _emailController =
-      TextEditingController(text: 'member@member.com');
-  TextEditingController _passwordController =
-      TextEditingController(text: 'member');
-  GlobalKey<FormState> _formKeyLogin = GlobalKey();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final FocusNode _emailNode = FocusNode();
   final FocusNode _passNode = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-    _formKeyLogin = GlobalKey<FormState>();
-    _emailController = TextEditingController();
-    _passwordController = TextEditingController();
-  }
 
   @override
   void dispose() {
@@ -45,13 +37,36 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        state.whenOrNull(loaded: () {
-          context.go('/dashboard');
-        });
+        state.maybeWhen(
+          orElse: () {},
+          loading: () {
+            showAdaptiveDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) => const ProgressDialog(),
+            );
+          },
+          loggedIn: (value) {
+            //Dismiss Progress Dialog
+            Navigator.of(context).pop();
+
+            context.go('/dashboard');
+          },
+          error: (message) {
+            //Dismiss Progress Dialog
+            Navigator.of(context).pop();
+
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(content: Text(message), backgroundColor: Colors.red),
+              );
+          },
+        );
       },
       builder: (context, state) {
         return Form(
-          key: _formKeyLogin,
+          key: _formKey,
           child: ListView(
             children: [
               const SizedBox(height: Dimensions.paddingSizeDefault),
@@ -90,7 +105,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               const SizedBox(height: Dimensions.paddingSizeDefault),
               CustomButton(
-                onTap: _actionLogin,
+                onTap: () => _actionLogin(context),
                 buttonText: 'Sign In',
               ),
               const SizedBox(height: Dimensions.paddingSizeDefault),
@@ -109,30 +124,18 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  void _actionLogin() async {
-    if (_formKeyLogin.currentState!.validate()) {
-      _formKeyLogin.currentState!.save();
+  void _actionLogin(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
 
       String email = _emailController.text.trim();
       String password = _passwordController.text.trim();
 
-      if (email.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Email'),
-          backgroundColor: Colors.red,
-        ));
-      } else if (password.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text('Password'),
-          backgroundColor: Colors.red,
-        ));
-      } else {
-        final model = LoginRequestModel(
-          email: email,
-          password: password,
-        );
-        context.read<AuthBloc>().add(AuthEvent.login(model));
-      }
+      final model = LoginRequestModel(
+        email: email,
+        password: password,
+      );
+      context.read<AuthBloc>().add(AuthEvent.login(model));
     }
   }
 }

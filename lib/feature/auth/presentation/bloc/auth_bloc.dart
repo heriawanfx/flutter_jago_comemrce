@@ -14,9 +14,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
 
   AuthBloc({required this.authRepository}) : super(const _StateInitial()) {
-    on<_GetAuth>((event, emit) async {
-      emit(const _StateLoading());
-
+    on<_LoadAuthSession>((event, emit) async {
       final value = await authRepository.getAuthData();
       emit(_StateLoggedIn(value));
     });
@@ -27,13 +25,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final result = await authRepository.login(event.model);
       result.fold(
         (message) => emit(_StateError(message)),
-        (model) => emit(const _StateLoaded()),
+        (model) => emit(_StateLoggedIn(model.jwtToken ?? '')),
+      );
+    });
+
+    on<_Register>((event, emit) async {
+      emit(const _StateLoading());
+
+      final result = await authRepository.register(event.model);
+      result.fold(
+        (message) => emit(_StateError(message)),
+        (model) => emit(_StateLoggedIn(model.jwtToken ?? '')),
       );
     });
 
     on<_Logout>(
       (event, emit) async {
-        emit(const _StateLoading());
+        //emit(const _StateLoading());
 
         await authRepository.logout();
 

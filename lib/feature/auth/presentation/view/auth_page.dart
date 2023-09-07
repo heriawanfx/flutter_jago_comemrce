@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_jago_commerce/assets_gen/assets.gen.dart';
 import 'package:flutter_jago_commerce/common/utils/dimensions.dart';
-import 'package:flutter_jago_commerce/common/widgets/progress_dialog.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/login_form.dart';
 import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/register_form.dart';
 import 'package:go_router/go_router.dart';
@@ -15,35 +12,10 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthBloc, AuthState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          loading: () {
-            showAdaptiveDialog(
-              barrierDismissible: false,
-              context: context,
-              builder: (context) => const ProgressDialog(),
-            );
-          },
-          error: (message) {
-            //Dismiss Progress Dialog
-            Navigator.of(context).pop();
-
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                SnackBar(content: Text(message), backgroundColor: Colors.red),
-              );
-          },
-        );
-      },
-      builder: (context, state) {
-        return Scaffold(
-          body: SingleChildScrollView(
-            child: _backgroundStack(context, _content(context)),
-          ),
-        );
-      },
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: _backgroundStack(context, _content(context)),
+      ),
     );
   }
 
@@ -86,8 +58,8 @@ class AuthPage extends StatelessWidget {
           Builder(builder: (context) {
             return SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: const Padding(
-                padding: EdgeInsets.symmetric(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
                   horizontal: Dimensions.paddingSizeDefault,
                 ),
                 child: TabBarView(

@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (context) {
             return AuthBloc(authRepository: getInstance())
-              ..add(const AuthEvent.getAuth());
+              ..add(const AuthEvent.loadAuthSession());
           },
         )
       ],

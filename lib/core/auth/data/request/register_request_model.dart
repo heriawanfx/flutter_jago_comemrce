@@ -2,30 +2,23 @@
 import 'dart:convert';
 
 class RegisterRequestModel {
-  String? email;
-  String? password;
-  String? name;
+  String name;
+  String email;
+  String password;
 
-  RegisterRequestModel({this.email, this.password, this.name});
+  RegisterRequestModel({
+    required this.name,
+    required this.email,
+    required this.password,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'name': name,
       'email': email,
       'password': password,
-      'name': name,
     };
   }
 
-  factory RegisterRequestModel.fromMap(Map<String, dynamic> map) {
-    return RegisterRequestModel(
-      email: map['email'] != null ? map['email'] as String : null,
-      password: map['password'] != null ? map['password'] as String : null,
-      name: map['name'] != null ? map['name'] as String : null,
-    );
-  }
-
   String toJson() => jsonEncode(toMap());
-
-  factory RegisterRequestModel.fromJson(String source) =>
-      RegisterRequestModel.fromMap(jsonDecode(source) as Map<String, dynamic>);
 }
