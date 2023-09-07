@@ -14,7 +14,7 @@ ThemeData myThemeData = ThemeData(
     tertiaryContainer: Color(0xFFADC9F3),
     onTertiaryContainer: Color(0xFF33AF74),
     primaryContainer: Color(0xFF9AECC6),
-    secondaryContainer: Color(0xFFF2F2F2),
+    secondaryContainer: Color.fromARGB(255, 202, 209, 250),
   ),
   pageTransitionsTheme: const PageTransitionsTheme(builders: {
     TargetPlatform.android: ZoomPageTransitionsBuilder(),

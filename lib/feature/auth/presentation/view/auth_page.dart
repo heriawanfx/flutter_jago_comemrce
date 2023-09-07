@@ -58,8 +58,8 @@ class AuthPage extends StatelessWidget {
           Builder(builder: (context) {
             return SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
+              child: const Padding(
+                padding: EdgeInsets.symmetric(
                   horizontal: Dimensions.paddingSizeDefault,
                 ),
                 child: TabBarView(

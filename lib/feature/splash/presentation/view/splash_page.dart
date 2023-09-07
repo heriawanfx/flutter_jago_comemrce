@@ -23,12 +23,12 @@ class SplashPage extends StatelessWidget {
               );
           },
           loggedIn: (value) {
-            if (value.isEmpty) {
+            if (value != null) {
+              context.go('/dashboard');
+            } else {
               Future.delayed(const Duration(seconds: 3), () {
                 context.go('/login');
               });
-            } else {
-              context.go('/dashboard');
             }
           },
         );

@@ -14,9 +14,17 @@ class AuthLocalDataSource {
     return result;
   }
 
-  Future<String> getAuthData() async {
-    final authJson = preferences.getString('auth') ?? '';
-    return authJson;
+  Future<AuthResponseModel?> getAuthData() async {
+    final authJson = preferences.getString('auth');
+
+    if (authJson != null) {
+      //Json from Preference must be double decoded
+      final formattedJson = jsonDecode(authJson);
+      final model = AuthResponseModel.fromJson(formattedJson);
+      return model;
+    } else {
+      return null;
+    }
     //final authModel = AuthResponseModel.fromJson(authJson);
     //return authModel;
   }

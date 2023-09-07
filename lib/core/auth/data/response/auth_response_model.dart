@@ -26,8 +26,7 @@ class AuthResponseModel {
   String toJson() => jsonEncode(toMap());
 
   factory AuthResponseModel.fromJson(String source) =>
-      AuthResponseModel.fromMap(
-          jsonDecode(source)(source) as Map<String, dynamic>);
+      AuthResponseModel.fromMap(jsonDecode(source) as Map<String, dynamic>);
 }
 
 class UserResponseModel {

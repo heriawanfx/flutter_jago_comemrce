@@ -755,7 +755,7 @@ mixin _$AuthState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(String value) loggedIn,
+    required TResult Function(AuthResponseModel? model) loggedIn,
     required TResult Function() loggedOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -764,7 +764,7 @@ mixin _$AuthState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(String value)? loggedIn,
+    TResult? Function(AuthResponseModel? model)? loggedIn,
     TResult? Function()? loggedOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -773,7 +773,7 @@ mixin _$AuthState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(String value)? loggedIn,
+    TResult Function(AuthResponseModel? model)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) =>
@@ -866,7 +866,7 @@ class _$_StateInitial implements _StateInitial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(String value) loggedIn,
+    required TResult Function(AuthResponseModel? model) loggedIn,
     required TResult Function() loggedOut,
   }) {
     return initial();
@@ -878,7 +878,7 @@ class _$_StateInitial implements _StateInitial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(String value)? loggedIn,
+    TResult? Function(AuthResponseModel? model)? loggedIn,
     TResult? Function()? loggedOut,
   }) {
     return initial?.call();
@@ -890,7 +890,7 @@ class _$_StateInitial implements _StateInitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(String value)? loggedIn,
+    TResult Function(AuthResponseModel? model)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
@@ -986,7 +986,7 @@ class _$_StateLoading implements _StateLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(String value) loggedIn,
+    required TResult Function(AuthResponseModel? model) loggedIn,
     required TResult Function() loggedOut,
   }) {
     return loading();
@@ -998,7 +998,7 @@ class _$_StateLoading implements _StateLoading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(String value)? loggedIn,
+    TResult? Function(AuthResponseModel? model)? loggedIn,
     TResult? Function()? loggedOut,
   }) {
     return loading?.call();
@@ -1010,7 +1010,7 @@ class _$_StateLoading implements _StateLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(String value)? loggedIn,
+    TResult Function(AuthResponseModel? model)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
@@ -1132,7 +1132,7 @@ class _$_StateError implements _StateError {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(String value) loggedIn,
+    required TResult Function(AuthResponseModel? model) loggedIn,
     required TResult Function() loggedOut,
   }) {
     return error(message);
@@ -1144,7 +1144,7 @@ class _$_StateError implements _StateError {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(String value)? loggedIn,
+    TResult? Function(AuthResponseModel? model)? loggedIn,
     TResult? Function()? loggedOut,
   }) {
     return error?.call(message);
@@ -1156,7 +1156,7 @@ class _$_StateError implements _StateError {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(String value)? loggedIn,
+    TResult Function(AuthResponseModel? model)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
@@ -1222,7 +1222,7 @@ abstract class _$$_StateLoggedInCopyWith<$Res> {
           _$_StateLoggedIn value, $Res Function(_$_StateLoggedIn) then) =
       __$$_StateLoggedInCopyWithImpl<$Res>;
   @useResult
-  $Res call({String value});
+  $Res call({AuthResponseModel? model});
 }
 
 /// @nodoc
@@ -1236,13 +1236,13 @@ class __$$_StateLoggedInCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? model = freezed,
   }) {
     return _then(_$_StateLoggedIn(
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
+      freezed == model
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as AuthResponseModel?,
     ));
   }
 }
@@ -1250,14 +1250,14 @@ class __$$_StateLoggedInCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StateLoggedIn implements _StateLoggedIn {
-  const _$_StateLoggedIn(this.value);
+  const _$_StateLoggedIn(this.model);
 
   @override
-  final String value;
+  final AuthResponseModel? model;
 
   @override
   String toString() {
-    return 'AuthState.loggedIn(value: $value)';
+    return 'AuthState.loggedIn(model: $model)';
   }
 
   @override
@@ -1265,11 +1265,11 @@ class _$_StateLoggedIn implements _StateLoggedIn {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StateLoggedIn &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.model, model) || other.model == model));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode => Object.hash(runtimeType, model);
 
   @JsonKey(ignore: true)
   @override
@@ -1283,10 +1283,10 @@ class _$_StateLoggedIn implements _StateLoggedIn {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(String value) loggedIn,
+    required TResult Function(AuthResponseModel? model) loggedIn,
     required TResult Function() loggedOut,
   }) {
-    return loggedIn(value);
+    return loggedIn(model);
   }
 
   @override
@@ -1295,10 +1295,10 @@ class _$_StateLoggedIn implements _StateLoggedIn {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(String value)? loggedIn,
+    TResult? Function(AuthResponseModel? model)? loggedIn,
     TResult? Function()? loggedOut,
   }) {
-    return loggedIn?.call(value);
+    return loggedIn?.call(model);
   }
 
   @override
@@ -1307,12 +1307,12 @@ class _$_StateLoggedIn implements _StateLoggedIn {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(String value)? loggedIn,
+    TResult Function(AuthResponseModel? model)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
     if (loggedIn != null) {
-      return loggedIn(value);
+      return loggedIn(model);
     }
     return orElse();
   }
@@ -1359,9 +1359,10 @@ class _$_StateLoggedIn implements _StateLoggedIn {
 }
 
 abstract class _StateLoggedIn implements AuthState {
-  const factory _StateLoggedIn(final String value) = _$_StateLoggedIn;
+  const factory _StateLoggedIn(final AuthResponseModel? model) =
+      _$_StateLoggedIn;
 
-  String get value;
+  AuthResponseModel? get model;
   @JsonKey(ignore: true)
   _$$_StateLoggedInCopyWith<_$_StateLoggedIn> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1408,7 +1409,7 @@ class _$_StateLoggedOut implements _StateLoggedOut {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function(String value) loggedIn,
+    required TResult Function(AuthResponseModel? model) loggedIn,
     required TResult Function() loggedOut,
   }) {
     return loggedOut();
@@ -1420,7 +1421,7 @@ class _$_StateLoggedOut implements _StateLoggedOut {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function(String value)? loggedIn,
+    TResult? Function(AuthResponseModel? model)? loggedIn,
     TResult? Function()? loggedOut,
   }) {
     return loggedOut?.call();
@@ -1432,7 +1433,7 @@ class _$_StateLoggedOut implements _StateLoggedOut {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function(String value)? loggedIn,
+    TResult Function(AuthResponseModel? model)? loggedIn,
     TResult Function()? loggedOut,
     required TResult orElse(),
   }) {
