@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'user_response_model.dart';
+import 'user_model.dart';
 
 class AuthResponseModel {
   String? jwtToken;
-  UserResponseModel? user;
+  UserModel? user;
 
   AuthResponseModel({this.jwtToken, this.user});
 
@@ -20,7 +20,7 @@ class AuthResponseModel {
     return AuthResponseModel(
       jwtToken: map['jwt-token'] != null ? map['jwt-token'] as String : null,
       user: map['user'] != null
-          ? UserResponseModel.fromMap(map['user'] as Map<String, dynamic>)
+          ? UserModel.fromMap(map['user'] as Map<String, dynamic>)
           : null,
     );
   }

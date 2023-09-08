@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_jago_commerce/common/utils/light_themes.dart';
-import 'package:flutter_jago_commerce/di/injector.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
-import 'package:flutter_jago_commerce/router/app_router.dart';
+import 'common/utils/light_themes.dart';
+import 'di/injector.dart';
+import 'feature/auth/presentation/bloc/auth_bloc.dart';
+import 'router/app_router.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

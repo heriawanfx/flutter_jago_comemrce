@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_jago_commerce/core/auth/data/datasource/auth_local_datasource.dart';
+import '../auth/data/datasources/auth_local_datasource.dart';
 
 class ApiInterceptor extends Interceptor {
   final AuthLocalDataSource authLocalDataSource;

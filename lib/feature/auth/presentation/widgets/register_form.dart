@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_jago_commerce/common/utils/dimensions.dart';
-import 'package:flutter_jago_commerce/common/widgets/custom_button.dart';
-import 'package:flutter_jago_commerce/common/widgets/custom_password_textfield.dart';
-import 'package:flutter_jago_commerce/common/widgets/custom_textfield.dart';
-import 'package:flutter_jago_commerce/common/widgets/progress_dialog.dart';
-import 'package:flutter_jago_commerce/core/auth/data/request/register_request_model.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
+import '../../../../common/utils/dimensions.dart';
+import '../../../../common/widgets/custom_button.dart';
+import '../../../../common/widgets/custom_password_textfield.dart';
+import '../../../../common/widgets/custom_textfield.dart';
+import '../../../../common/widgets/progress_dialog.dart';
+import '../../../../core/auth/data/models/requests/register_request_model.dart';
+import '../bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class RegisterForm extends StatefulWidget {

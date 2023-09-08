@@ -2,12 +2,12 @@
 
 import 'dart:convert';
 
-class UserResponseModel {
+class UserModel {
   int? id;
   String? name;
   String? role;
 
-  UserResponseModel({this.id, this.name, this.role});
+  UserModel({this.id, this.name, this.role});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,8 +17,8 @@ class UserResponseModel {
     };
   }
 
-  factory UserResponseModel.fromMap(Map<String, dynamic> map) {
-    return UserResponseModel(
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
       id: map['id'] != null ? map['id'] as int : null,
       name: map['name'] != null ? map['name'] as String : null,
       role: map['role'] != null ? map['role'] as String : null,
@@ -27,6 +27,6 @@ class UserResponseModel {
 
   String toJson() => jsonEncode(toMap());
 
-  factory UserResponseModel.fromJson(String source) =>
-      UserResponseModel.fromMap(jsonDecode(source) as Map<String, dynamic>);
+  factory UserModel.fromJson(String source) =>
+      UserModel.fromMap(jsonDecode(source) as Map<String, dynamic>);
 }

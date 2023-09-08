@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jago_commerce/assets_gen/assets.gen.dart';
+import '../../assets_gen/assets.gen.dart';
 
 import '../utils/custom_themes.dart';
 import '../utils/dimensions.dart';

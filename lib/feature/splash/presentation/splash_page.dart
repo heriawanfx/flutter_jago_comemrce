@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_jago_commerce/assets_gen/assets.gen.dart';
-import 'package:flutter_jago_commerce/common/utils/color_resources.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
-import 'package:flutter_jago_commerce/feature/splash/presentation/view/widgets/splash_painter.dart';
+import '../../../assets_gen/assets.gen.dart';
+import '../../../common/utils/color_resources.dart';
+import '../../auth/presentation/bloc/auth_bloc.dart';
+import 'widgets/splash_painter.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashPage extends StatelessWidget {

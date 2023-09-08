@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_jago_commerce/common/constants/constant.dart';
+import '../../common/constants/constant.dart';
 
 import 'api_interceptor.dart';
 

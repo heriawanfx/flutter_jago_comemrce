@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jago_commerce/assets_gen/assets.gen.dart';
-import 'package:flutter_jago_commerce/common/utils/color_resources.dart';
+import '../../assets_gen/assets.gen.dart';
+import '../utils/color_resources.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 

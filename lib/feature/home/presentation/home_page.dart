@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_jago_commerce/common/utils/custom_themes.dart';
-import 'package:flutter_jago_commerce/common/utils/dimensions.dart';
-import 'package:flutter_jago_commerce/common/widgets/progress_dialog.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/bloc/auth_bloc.dart';
+import '../../../common/utils/custom_themes.dart';
+import '../../../common/utils/dimensions.dart';
+import '../../../common/widgets/progress_dialog.dart';
+import '../../auth/presentation/bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {

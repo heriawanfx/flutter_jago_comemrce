@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/view/auth_page.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/login_form.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/register_form.dart';
-import 'package:flutter_jago_commerce/feature/home/view/home_page.dart';
-import 'package:flutter_jago_commerce/feature/home/view/widgets/dashboard_page.dart';
-import 'package:flutter_jago_commerce/feature/home/view/widgets/more_page.dart';
-import 'package:flutter_jago_commerce/feature/home/view/widgets/order_page.dart';
-import 'package:flutter_jago_commerce/feature/splash/presentation/view/splash_page.dart';
+import '../feature/auth/presentation/auth_page.dart';
+import '../feature/auth/presentation/widgets/login_form.dart';
+import '../feature/auth/presentation/widgets/register_form.dart';
+import '../feature/home/presentation/home_page.dart';
+import '../feature/home/presentation/widgets/dashboard_page.dart';
+import '../feature/home/presentation/widgets/more_page.dart';
+import '../feature/home/presentation/widgets/order_page.dart';
+import '../feature/splash/presentation/splash_page.dart';
 import 'package:go_router/go_router.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =

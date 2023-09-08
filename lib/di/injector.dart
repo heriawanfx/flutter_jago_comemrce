@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_jago_commerce/core/remote/api_interceptor.dart';
-import 'package:flutter_jago_commerce/core/remote/dio_handler.dart';
-import 'package:flutter_jago_commerce/core/auth/data/datasource/auth_local_datasource.dart';
-import 'package:flutter_jago_commerce/core/auth/data/datasource/auth_remote_datasource.dart';
-import 'package:flutter_jago_commerce/core/auth/domain/auth_repository.dart';
+import '../core/remote/api_interceptor.dart';
+import '../core/remote/dio_handler.dart';
+import '../core/auth/data/datasources/auth_local_datasource.dart';
+import '../core/auth/data/datasources/auth_remote_datasource.dart';
+import '../core/auth/domain/repositories/auth_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jago_commerce/common/utils/color_resources.dart';
+import '../../../../common/utils/color_resources.dart';
 
 class SplashPainter extends CustomPainter {
   @override

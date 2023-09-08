@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jago_commerce/assets_gen/assets.gen.dart';
-import 'package:flutter_jago_commerce/common/utils/dimensions.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/login_form.dart';
-import 'package:flutter_jago_commerce/feature/auth/presentation/view/widgets/register_form.dart';
+import '../../../assets_gen/assets.gen.dart';
+import '../../../common/utils/dimensions.dart';
+import 'widgets/login_form.dart';
+import 'widgets/register_form.dart';
 import 'package:go_router/go_router.dart';
 
 class AuthPage extends StatelessWidget {

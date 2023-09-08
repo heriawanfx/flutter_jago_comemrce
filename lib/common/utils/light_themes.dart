@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jago_commerce/assets_gen/fonts.gen.dart';
+import '../../assets_gen/fonts.gen.dart';
 
 ThemeData myThemeData = ThemeData(
   fontFamily: MyFontFamily.ubuntu,
