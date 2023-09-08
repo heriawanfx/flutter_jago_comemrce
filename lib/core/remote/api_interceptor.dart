@@ -3,26 +3,31 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_jago_commerce/core/auth/data/datasource/auth_local_datasource.dart';
 
 class ApiInterceptor extends Interceptor {
-  final SharedPreferences sharedPreferences;
+  final AuthLocalDataSource authLocalDataSource;
 
-  ApiInterceptor({required this.sharedPreferences});
+  ApiInterceptor({required this.authLocalDataSource});
 
-  Map<String, dynamic> _defaultHeader() {
-    String? authorizationToken = sharedPreferences.getString('jwt-token') ?? "";
+  Future<Map<String, dynamic>> _defaultHeader() async {
     Map<String, String> headers = {};
-    if (authorizationToken.isNotEmpty) {
-      headers['Authorization'] = "Bearer $authorizationToken";
+
+    final value = await authLocalDataSource.getAuthData();
+
+    String? jwtToken = value?.jwtToken;
+    if (jwtToken != null) {
+      headers['Authorization'] = "Bearer $jwtToken";
     }
+
     return headers;
   }
 
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     try {
-      options.headers.addAll(_defaultHeader());
+      options.headers.addAll(await _defaultHeader());
 
       final requestBody =
           const JsonEncoder.withIndent('  ').convert(options.data);

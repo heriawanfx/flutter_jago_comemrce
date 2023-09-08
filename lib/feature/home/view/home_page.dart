@@ -39,8 +39,8 @@ class HomePage extends StatelessWidget {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
-                const SnackBar(
-                  content: Text('Failed to Logout'),
+                SnackBar(
+                  content: Text(message),
                   backgroundColor: Colors.red,
                 ),
               );

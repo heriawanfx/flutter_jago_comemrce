@@ -59,7 +59,10 @@ class _LoginFormState extends State<LoginForm> {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
-                SnackBar(content: Text(message), backgroundColor: Colors.red),
+                SnackBar(
+                  content: Text(message),
+                  backgroundColor: Colors.red,
+                ),
               );
           },
         );

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_jago_commerce/core/remote/api_interceptor.dart';
 import 'package:flutter_jago_commerce/core/remote/dio_handler.dart';
 import 'package:flutter_jago_commerce/core/auth/data/datasource/auth_local_datasource.dart';
 import 'package:flutter_jago_commerce/core/auth/data/datasource/auth_remote_datasource.dart';
@@ -20,16 +21,23 @@ class Injector {
     getInstance.registerLazySingleton<SharedPreferences>(() {
       return sharedPreferences;
     });
-    getInstance.registerLazySingleton<DioHandler>(() {
-      return DioHandler(sharedPreferences: getInstance());
-    });
-    getInstance.registerLazySingleton<Dio>(() {
-      return getInstance<DioHandler>().dio;
-    });
 
     getInstance.registerLazySingleton<AuthLocalDataSource>(() {
       return AuthLocalDataSource(preferences: getInstance());
     });
+
+    getInstance.registerLazySingleton<ApiInterceptor>(() {
+      return ApiInterceptor(authLocalDataSource: getInstance());
+    });
+
+    getInstance.registerLazySingleton<DioHandler>(() {
+      return DioHandler(apiInterceptor: getInstance());
+    });
+
+    getInstance.registerLazySingleton<Dio>(() {
+      return getInstance<DioHandler>().dio;
+    });
+
     getInstance.registerLazySingleton<AuthRemoteDatasource>(() {
       return AuthRemoteDatasource(dio: getInstance());
     });

@@ -10,27 +10,25 @@ class AuthLocalDataSource {
 
   Future<bool> saveAuthData(AuthResponseModel model) async {
     final authJson = jsonEncode(model.toJson());
-    final result = await preferences.setString('auth', authJson);
+    final result = await preferences.setString('KEY_AUTH', authJson);
     return result;
   }
 
   Future<AuthResponseModel?> getAuthData() async {
-    final authJson = preferences.getString('auth');
+    final authJson = preferences.getString('KEY_AUTH');
 
     if (authJson != null) {
-      //Json from Preference must be double decoded
-      final formattedJson = jsonDecode(authJson);
+      //Model Json from Preference must be double decoded
+      final formattedJson = jsonDecode(authJson) as String;
       final model = AuthResponseModel.fromJson(formattedJson);
       return model;
     } else {
       return null;
     }
-    //final authModel = AuthResponseModel.fromJson(authJson);
-    //return authModel;
   }
 
   Future<bool> removeAuthData() async {
-    final result = await preferences.remove('auth');
+    final result = await preferences.remove('KEY_AUTH');
     return result;
   }
 }

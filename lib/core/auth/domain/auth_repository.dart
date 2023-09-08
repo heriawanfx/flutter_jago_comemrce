@@ -4,7 +4,7 @@ import 'package:flutter_jago_commerce/core/auth/data/datasource/auth_remote_data
 import 'package:flutter_jago_commerce/core/auth/data/request/login_request_model.dart';
 import 'package:flutter_jago_commerce/core/auth/data/request/register_request_model.dart';
 import 'package:flutter_jago_commerce/core/auth/data/response/auth_response_model.dart';
-import 'package:flutter_jago_commerce/core/exception/throwable.dart';
+import 'package:flutter_jago_commerce/core/exception/api_exception.dart';
 
 class AuthRepository {
   final AuthLocalDataSource authLocalDataSource;
@@ -24,7 +24,7 @@ class AuthRepository {
         authLocalDataSource.saveAuthData(model);
         return Right(model);
       }
-      throw Throwable('Error Occured');
+      throw ApiException('Error Occured');
     });
   }
 
@@ -37,18 +37,23 @@ class AuthRepository {
         authLocalDataSource.saveAuthData(model);
         return Right(model);
       }
-      throw Throwable('Error Occured');
+      throw ApiException('Error Occured');
     });
   }
 
   Future<AuthResponseModel?> getAuthData() async {
-    final model = await authLocalDataSource.getAuthData();
-
-    authLocalDataSource.removeAuthData();
-    return model;
+    return await authLocalDataSource.getAuthData();
   }
 
-  Future logout() async {
-    await authLocalDataSource.removeAuthData();
+  Future<Either<String, bool>> logout() async {
+    final response = await authRemoteDatasource.logout();
+
+    return response.fold((e) => Left(e.message), (success) async {
+      if (success) {
+        final isLogout = await authLocalDataSource.removeAuthData();
+        return Right(isLogout);
+      }
+      return const Right(false);
+    });
   }
 }

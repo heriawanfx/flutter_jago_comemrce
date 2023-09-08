@@ -44,15 +44,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (event, emit) async {
         emit(const _StateLoading());
 
-        await authRepository.logout();
+        final result = await authRepository.logout();
 
-        final value = await authRepository.getAuthData();
-
-        if (value != null) {
-          emit(const _StateError('Failed to Logout'));
-        } else {
-          emit(const _StateLoggedOut());
-        }
+        result.fold(
+          (message) => emit(_StateError(message)),
+          (r) => emit(const _StateLoggedOut()),
+        );
       },
     );
   }

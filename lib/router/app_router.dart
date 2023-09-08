@@ -30,11 +30,11 @@ final GoRouter appRouter = GoRouter(
       routes: [
         GoRoute(
           path: '/login',
-          builder: (context, state) => LoginForm(),
+          builder: (context, state) => const LoginForm(),
         ),
         GoRoute(
           path: '/register',
-          builder: (context, state) => RegisterForm(),
+          builder: (context, state) => const RegisterForm(),
         ),
       ],
     ),

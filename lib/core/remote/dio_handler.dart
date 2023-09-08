@@ -2,15 +2,14 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_jago_commerce/common/constants/constant.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api_interceptor.dart';
 
 class DioHandler {
-  late SharedPreferences sharedPreferences;
+  final ApiInterceptor apiInterceptor;
 
   DioHandler({
-    required this.sharedPreferences,
+    required this.apiInterceptor,
   });
 
   Dio get dio => _getDio();
@@ -18,15 +17,11 @@ class DioHandler {
   Dio _getDio() {
     BaseOptions options = BaseOptions(
       baseUrl: Constant.baseUrl,
-      validateStatus: (status) {
-        if (status == null) {
-          return false;
-        }
-        return status >= 200 && status < 300 || status == 422;
-      },
+      followRedirects: false,
+      validateStatus: (status) => true,
     );
     final dio = Dio(options);
-    dio.interceptors.add(ApiInterceptor(sharedPreferences: sharedPreferences));
+    dio.interceptors.add(apiInterceptor);
 
     return dio;
   }
@@ -42,15 +37,19 @@ extension DioExtension on Dio {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) {
-    return post(path,
+    return post<T>(path,
         data: data,
         queryParameters: queryParameters,
         options: isEncoded
-            ? Options(contentType: Headers.formUrlEncodedContentType)
-            : Options(headers: {
-                HttpHeaders.acceptHeader: 'application/json',
-                HttpHeaders.contentTypeHeader: 'application/json',
-              }),
+            ? Options(
+                contentType: Headers.formUrlEncodedContentType,
+              )
+            : Options(
+                headers: {
+                  HttpHeaders.acceptHeader: Headers.jsonContentType,
+                  HttpHeaders.contentTypeHeader: Headers.jsonContentType,
+                },
+              ),
         cancelToken: cancelToken,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress);

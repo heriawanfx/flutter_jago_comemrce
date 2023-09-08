@@ -1,10 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Throwable implements Exception {
+class ApiException implements Exception {
   final String message;
 
-  Throwable(this.message);
+  ApiException(this.message);
+
+  bool get isError => message.isNotEmpty == true;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -12,14 +14,14 @@ class Throwable implements Exception {
     };
   }
 
-  factory Throwable.fromMap(Map<String, dynamic> map) {
-    return Throwable(
+  factory ApiException.fromMap(Map<String, dynamic> map) {
+    return ApiException(
       map['message'] != null ? map['message'] as String : '',
     );
   }
 
   String toJson() => jsonEncode(toMap());
 
-  factory Throwable.fromJson(String source) =>
-      Throwable.fromMap(jsonDecode(source) as Map<String, dynamic>);
+  factory ApiException.fromJson(String source) =>
+      ApiException.fromMap(jsonDecode(source) as Map<String, dynamic>);
 }
