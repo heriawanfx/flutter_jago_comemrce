@@ -22,6 +22,6 @@ class CategoryRepository {
     if (response.isError) {
       return Left(response.errorMessage);
     }
-    return Right(response.data);
+    return Right(response.getData);
   }
 }
