@@ -8,22 +8,20 @@ class CategoryRepository {
   CategoryRepository({required this.categoryRemoteDatasource});
 
   Future<Either<String, List<CategoryModel>>> getCategories() async {
-    final either = await categoryRemoteDatasource.getCategories();
+    final response = await categoryRemoteDatasource.getCategories();
 
-    return either.fold((e) {
-      return Left(e.message);
-    }, (model) {
-      return Right(model.data);
-    });
+    if (response.isError) {
+      return Left(response.errorMessage);
+    }
+    return Right(response.getDataList);
   }
 
   Future<Either<String, CategoryModel?>> getCategory(int id) async {
-    final either = await categoryRemoteDatasource.getCategory(id);
+    final response = await categoryRemoteDatasource.getCategory(id);
 
-    return either.fold((e) {
-      return Left(e.message);
-    }, (model) {
-      return Right(model);
-    });
+    if (response.isError) {
+      return Left(response.errorMessage);
+    }
+    return Right(response.data);
   }
 }

@@ -7,13 +7,15 @@ import '../core/auth/domain/repositories/auth_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../feature/category/data/datasources/category_remote_datasource.dart';
+import '../feature/category/domain/repositories/category_repository.dart';
+
 final getInstance = GetIt.instance;
 
 class Injector {
   Future<void> initialize() async {
     await _initCore();
-    _initRepository();
-    _initCommon();
+    _initFeatureCategory();
   }
 
   Future<void> _initCore() async {
@@ -41,15 +43,24 @@ class Injector {
     getInstance.registerLazySingleton<AuthRemoteDatasource>(() {
       return AuthRemoteDatasource(dio: getInstance());
     });
-  }
 
-  void _initCommon() {}
-
-  void _initRepository() {
     getInstance.registerLazySingleton<AuthRepository>(() {
       return AuthRepository(
         authLocalDataSource: getInstance(),
         authRemoteDatasource: getInstance(),
+        categoryRemoteDatasource: getInstance(),
+      );
+    });
+  }
+
+  void _initFeatureCategory() {
+    getInstance.registerLazySingleton<CategoryRemoteDatasource>(() {
+      return CategoryRemoteDatasource(dio: getInstance());
+    });
+
+    getInstance.registerLazySingleton<CategoryRepository>(() {
+      return CategoryRepository(
+        categoryRemoteDatasource: getInstance(),
       );
     });
   }

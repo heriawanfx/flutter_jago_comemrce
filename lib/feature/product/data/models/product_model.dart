@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import '../../../../core/auth/data/models/user_model.dart';
+import '../../../category/data/models/category_model.dart';
 
 class ProductModel {
   final int id;
@@ -10,7 +11,7 @@ class ProductModel {
   final String descripton;
   final String price;
   final String image_product;
-  final Category category;
+  final CategoryModel category;
   final UserModel user;
   ProductModel({
     required this.id,
@@ -21,26 +22,6 @@ class ProductModel {
     required this.category,
     required this.user,
   });
-
-  ProductModel copyWith({
-    int? id,
-    String? name,
-    String? descripton,
-    String? price,
-    String? image_product,
-    Category? category,
-    UserModel? user,
-  }) {
-    return ProductModel(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      descripton: descripton ?? this.descripton,
-      price: price ?? this.price,
-      image_product: image_product ?? this.image_product,
-      category: category ?? this.category,
-      user: user ?? this.user,
-    );
-  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,7 +42,7 @@ class ProductModel {
       descripton: map['descripton'] as String,
       price: map['price'] as String,
       image_product: map['image_product'] as String,
-      category: Category.fromMap(map['category'] as Map<String, dynamic>),
+      category: CategoryModel.fromMap(map['category'] as Map<String, dynamic>),
       user: UserModel.fromMap(map['user'] as Map<String, dynamic>),
     );
   }

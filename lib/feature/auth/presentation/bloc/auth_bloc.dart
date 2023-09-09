@@ -48,7 +48,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         result.fold(
           (message) => emit(_StateError(message)),
-          (r) => emit(const _StateLoggedOut()),
+          (success) => success
+              ? emit(const _StateLoggedOut())
+              : emit(const _StateInitial()),
         );
       },
     );

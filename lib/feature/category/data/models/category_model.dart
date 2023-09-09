@@ -20,24 +20,6 @@ class CategoryModel {
     required this.products,
   });
 
-  CategoryModel copyWith({
-    int? id,
-    String? name,
-    String? description,
-    String? created_at,
-    String? updated_at,
-    List<ProductModel>? products,
-  }) {
-    return CategoryModel(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      description: description ?? this.description,
-      created_at: created_at ?? this.created_at,
-      updated_at: updated_at ?? this.updated_at,
-      products: products ?? this.products,
-    );
-  }
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
@@ -51,16 +33,18 @@ class CategoryModel {
 
   factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
-      id: map['id'].toInt() as int,
+      id: map['id'] as int,
       name: map['name'] as String,
       description: map['description'] as String,
       created_at: map['created_at'] as String,
       updated_at: map['updated_at'] as String,
-      products: List<ProductModel>.from(
-        (map['products'] as List<int>).map<ProductModel>(
-          (x) => ProductModel.fromMap(x as Map<String, dynamic>),
-        ),
-      ),
+      products: map['products'] != null
+          ? List<ProductModel>.from(
+              (map['products'] as List<int>).map<ProductModel>(
+                (x) => ProductModel.fromMap(x as Map<String, dynamic>),
+              ),
+            )
+          : [],
     );
   }
 
