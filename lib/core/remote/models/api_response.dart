@@ -17,17 +17,11 @@ class ApiResponse<T> {
   bool get isError => message?.isNotEmpty == true;
   String get errorMessage => message ?? 'Error Occured';
   List<T> get getDataList {
-    if (data is List?) {
-      return (data ?? []) as List<T>;
-    }
-    return [];
+    return List<T>.from((data ?? []) as List);
   }
 
   T? get getData {
-    if (data is T?) {
-      return data as T?;
-    }
-    return null;
+    return data as T?;
   }
 
   Map<String, dynamic> toMap() {
@@ -47,15 +41,17 @@ class ApiResponse<T> {
       success: map['success'] as bool?,
       message: map['message'] as String?,
       data: map['data'] != null
-          ? map['data'] is List<dynamic>
-              ? List<T>.from(
-                  (map["data"] as List<dynamic>).map(
+          ? map['data'] is List
+              ? List.from(
+                  (map["data"] as List).map(
                     (data) => modelMapper(data as Map<String, dynamic>),
                   ),
                 )
               : modelMapper(map["data"] as Map<String, dynamic>) as T?
           : null,
-      meta: map['meta'] as PaginationMeta?,
+      meta: map['meta'] != null
+          ? PaginationMeta.fromMap(map['meta'] as Map<String, dynamic>)
+          : null,
     );
   }
 }
