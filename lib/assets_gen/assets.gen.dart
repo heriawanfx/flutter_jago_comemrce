@@ -28,6 +28,9 @@ class $AssetsImagesGen {
   AssetGenImage get cwbSplash =>
       const AssetGenImage('assets/images/cwb_splash.png');
 
+  /// File path: assets/images/delete.png
+  AssetGenImage get delete => const AssetGenImage('assets/images/delete.png');
+
   /// File path: assets/images/filter.png
   AssetGenImage get filter => const AssetGenImage('assets/images/filter.png');
 
@@ -59,12 +62,17 @@ class $AssetsImagesGen {
   AssetGenImage get toolbarBackground =>
       const AssetGenImage('assets/images/toolbar_background.jpg');
 
+  /// File path: assets/images/wishlist.png
+  AssetGenImage get wishlist =>
+      const AssetGenImage('assets/images/wishlist.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
         background,
         cartArrowDown,
         cwbLogo,
         cwbSplash,
+        delete,
         filter,
         flashDeal,
         home,
@@ -73,7 +81,8 @@ class $AssetsImagesGen {
         notification,
         order,
         placeholder1x1,
-        toolbarBackground
+        toolbarBackground,
+        wishlist
       ];
 }
 
