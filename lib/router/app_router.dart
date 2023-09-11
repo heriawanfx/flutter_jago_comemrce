@@ -8,7 +8,10 @@ import '../features/dashboard/presentation/dashboard_page.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/dashboard/presentation/pages/more_page.dart';
 import '../features/dashboard/presentation/pages/order_page.dart';
+import '../features/product/data/models/product_model.dart';
 import '../features/product/presentation/bloc/product_bloc.dart';
+import '../features/product/presentation/product_detail.dart';
+import '../features/product/product_list_page.dart';
 import '../features/splash/presentation/splash_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -68,6 +71,36 @@ final GoRouter appRouter = GoRouter(
           builder: (context, state) => const MorePage(),
         ),
       ],
+    ),
+    GoRoute(
+      path: '/products',
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>;
+        final categoryId = extra['category_id'] as int;
+        final categoryName = extra['category_name'] as String?;
+
+        //Fetch Product By Category
+        context
+            .read<ProductBloc>()
+            .add(ProductEvent.getProducts(category_id: categoryId));
+
+        return ProductListPage(
+          category_id: categoryId,
+          category_name: categoryName,
+        );
+      },
+    ),
+    GoRoute(
+      path: '/product/:id',
+      name: 'product',
+      builder: (context, state) {
+        final id = int.parse(state.pathParameters['id'] ?? '0');
+
+        //Fetch Product id
+        context.read<ProductBloc>().add(ProductEvent.getProduct(id));
+
+        return ProductDetail(id: id);
+      },
     ),
   ],
 );

@@ -193,7 +193,9 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                 const Text('Total Price', style: robotoBold),
                 const SizedBox(width: Dimensions.paddingSizeSmall),
                 Text(
-                  (widget.product.price * quantity).formatPrice(),
+                  (widget.product.priceDouble * quantity)
+                      .toString()
+                      .formatPrice(),
                   style: titilliumBold.copyWith(
                       color: ColorResources.getPrimary(context),
                       fontSize: Dimensions.fontSizeLarge),
@@ -207,10 +209,7 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                         buttonText: 'Add to Cart',
                         onTap: () {
                           context.read<CartBloc>().add(
-                                CartEvent.addToCart(
-                                  widget.product,
-                                  quantity,
-                                ),
+                                CartEvent.addToCart(widget.product, quantity),
                               );
                           Navigator.pop(context);
                         }),

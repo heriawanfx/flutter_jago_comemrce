@@ -1,9 +1,9 @@
 import 'package:money_formatter/money_formatter.dart';
 
-extension PriceExtension on double {
+extension PriceExtension on String {
   String formatPrice() {
     MoneyFormatter fmf = MoneyFormatter(
-        amount: this,
+        amount: double.parse(this),
         settings: MoneyFormatterSettings(
           symbol: 'IDR',
           thousandSeparator: '.',

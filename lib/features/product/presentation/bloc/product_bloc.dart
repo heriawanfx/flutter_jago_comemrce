@@ -25,5 +25,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         (data) => emit(_StateLoaded(data)),
       );
     });
+
+    on<_GetProduct>((event, emit) async {
+      emit(const _StateLoading());
+
+      final result = await productRepository.getProduct(event.id);
+      result.fold(
+        (message) => emit(_StateError(message)),
+        (data) => emit(_StateLoadedDetail(data)),
+      );
+    });
   }
 }

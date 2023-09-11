@@ -22,7 +22,7 @@ class ProductRepository {
     return Right(response.getDataList);
   }
 
-  Future<Either<String, ProductModel?>> getProduct(int id) async {
+  Future<Either<String, ProductModel>> getProduct(int id) async {
     final response = await productRemoteDatasource.getProduct(id);
 
     if (response.isError) {

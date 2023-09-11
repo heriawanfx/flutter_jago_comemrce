@@ -20,8 +20,8 @@ class ApiResponse<T> {
     return List<T>.from((data ?? []) as List);
   }
 
-  T? get getData {
-    return data as T?;
+  T get getData {
+    return data as T;
   }
 
   Map<String, dynamic> toMap() {
@@ -41,7 +41,7 @@ class ApiResponse<T> {
       success: map['success'] as bool?,
       message: map['message'] as String?,
       data: map['data'] != null
-          ? map['data'] is List
+          ? map['data'] is List<dynamic>
               ? List.from(
                   (map["data"] as List).map(
                     (data) => modelMapper(data as Map<String, dynamic>),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../assets_gen/assets.gen.dart';
 import '../../../../common/utils/color_resources.dart';
@@ -38,12 +39,15 @@ class _BottomCartViewState extends State<BottomCartView> {
       decoration: BoxDecoration(
         color: Theme.of(context).highlightColor,
         borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+          topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
+        ),
         boxShadow: [
           BoxShadow(
-              color: Theme.of(context).hintColor,
-              blurRadius: .5,
-              spreadRadius: .1)
+            color: Theme.of(context).hintColor,
+            blurRadius: .5,
+            spreadRadius: .1,
+          )
         ],
       ),
       child: Row(children: [
@@ -54,8 +58,7 @@ class _BottomCartViewState extends State<BottomCartView> {
               child: Stack(children: [
                 GestureDetector(
                     onTap: () {
-                      // Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (context) => const CartPage()));
+                      context.go('/cart');
                     },
                     child: Image.asset(MyAssets.images.cartArrowDown.path,
                         color: ColorResources.getPrimary(context))),
@@ -81,8 +84,9 @@ class _BottomCartViewState extends State<BottomCartView> {
                             return Text(
                               '$totalQty',
                               style: titilliumSemiBold.copyWith(
-                                  fontSize: Dimensions.fontSizeExtraSmall,
-                                  color: Theme.of(context).highlightColor),
+                                fontSize: Dimensions.fontSizeExtraSmall,
+                                color: Theme.of(context).highlightColor,
+                              ),
                             );
                           },
                         );

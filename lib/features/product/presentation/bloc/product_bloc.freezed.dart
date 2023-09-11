@@ -476,6 +476,7 @@ mixin _$ProductState {
     required TResult Function() initial,
     required TResult Function() lading,
     required TResult Function(List<ProductModel> data) loaded,
+    required TResult Function(ProductModel data) loadedDetail,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -484,6 +485,7 @@ mixin _$ProductState {
     TResult? Function()? initial,
     TResult? Function()? lading,
     TResult? Function(List<ProductModel> data)? loaded,
+    TResult? Function(ProductModel data)? loadedDetail,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -492,6 +494,7 @@ mixin _$ProductState {
     TResult Function()? initial,
     TResult Function()? lading,
     TResult Function(List<ProductModel> data)? loaded,
+    TResult Function(ProductModel data)? loadedDetail,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -501,6 +504,7 @@ mixin _$ProductState {
     required TResult Function(_StateInitial value) initial,
     required TResult Function(_StateLoading value) lading,
     required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateLoadedDetail value) loadedDetail,
     required TResult Function(_StateError value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -509,6 +513,7 @@ mixin _$ProductState {
     TResult? Function(_StateInitial value)? initial,
     TResult? Function(_StateLoading value)? lading,
     TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateLoadedDetail value)? loadedDetail,
     TResult? Function(_StateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -517,6 +522,7 @@ mixin _$ProductState {
     TResult Function(_StateInitial value)? initial,
     TResult Function(_StateLoading value)? lading,
     TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateLoadedDetail value)? loadedDetail,
     TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) =>
@@ -582,6 +588,7 @@ class _$_StateInitial implements _StateInitial {
     required TResult Function() initial,
     required TResult Function() lading,
     required TResult Function(List<ProductModel> data) loaded,
+    required TResult Function(ProductModel data) loadedDetail,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -593,6 +600,7 @@ class _$_StateInitial implements _StateInitial {
     TResult? Function()? initial,
     TResult? Function()? lading,
     TResult? Function(List<ProductModel> data)? loaded,
+    TResult? Function(ProductModel data)? loadedDetail,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -604,6 +612,7 @@ class _$_StateInitial implements _StateInitial {
     TResult Function()? initial,
     TResult Function()? lading,
     TResult Function(List<ProductModel> data)? loaded,
+    TResult Function(ProductModel data)? loadedDetail,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -619,6 +628,7 @@ class _$_StateInitial implements _StateInitial {
     required TResult Function(_StateInitial value) initial,
     required TResult Function(_StateLoading value) lading,
     required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateLoadedDetail value) loadedDetail,
     required TResult Function(_StateError value) error,
   }) {
     return initial(this);
@@ -630,6 +640,7 @@ class _$_StateInitial implements _StateInitial {
     TResult? Function(_StateInitial value)? initial,
     TResult? Function(_StateLoading value)? lading,
     TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateLoadedDetail value)? loadedDetail,
     TResult? Function(_StateError value)? error,
   }) {
     return initial?.call(this);
@@ -641,6 +652,7 @@ class _$_StateInitial implements _StateInitial {
     TResult Function(_StateInitial value)? initial,
     TResult Function(_StateLoading value)? lading,
     TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateLoadedDetail value)? loadedDetail,
     TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) {
@@ -696,6 +708,7 @@ class _$_StateLoading implements _StateLoading {
     required TResult Function() initial,
     required TResult Function() lading,
     required TResult Function(List<ProductModel> data) loaded,
+    required TResult Function(ProductModel data) loadedDetail,
     required TResult Function(String message) error,
   }) {
     return lading();
@@ -707,6 +720,7 @@ class _$_StateLoading implements _StateLoading {
     TResult? Function()? initial,
     TResult? Function()? lading,
     TResult? Function(List<ProductModel> data)? loaded,
+    TResult? Function(ProductModel data)? loadedDetail,
     TResult? Function(String message)? error,
   }) {
     return lading?.call();
@@ -718,6 +732,7 @@ class _$_StateLoading implements _StateLoading {
     TResult Function()? initial,
     TResult Function()? lading,
     TResult Function(List<ProductModel> data)? loaded,
+    TResult Function(ProductModel data)? loadedDetail,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -733,6 +748,7 @@ class _$_StateLoading implements _StateLoading {
     required TResult Function(_StateInitial value) initial,
     required TResult Function(_StateLoading value) lading,
     required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateLoadedDetail value) loadedDetail,
     required TResult Function(_StateError value) error,
   }) {
     return lading(this);
@@ -744,6 +760,7 @@ class _$_StateLoading implements _StateLoading {
     TResult? Function(_StateInitial value)? initial,
     TResult? Function(_StateLoading value)? lading,
     TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateLoadedDetail value)? loadedDetail,
     TResult? Function(_StateError value)? error,
   }) {
     return lading?.call(this);
@@ -755,6 +772,7 @@ class _$_StateLoading implements _StateLoading {
     TResult Function(_StateInitial value)? initial,
     TResult Function(_StateLoading value)? lading,
     TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateLoadedDetail value)? loadedDetail,
     TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) {
@@ -842,6 +860,7 @@ class _$_StateLoaded implements _StateLoaded {
     required TResult Function() initial,
     required TResult Function() lading,
     required TResult Function(List<ProductModel> data) loaded,
+    required TResult Function(ProductModel data) loadedDetail,
     required TResult Function(String message) error,
   }) {
     return loaded(data);
@@ -853,6 +872,7 @@ class _$_StateLoaded implements _StateLoaded {
     TResult? Function()? initial,
     TResult? Function()? lading,
     TResult? Function(List<ProductModel> data)? loaded,
+    TResult? Function(ProductModel data)? loadedDetail,
     TResult? Function(String message)? error,
   }) {
     return loaded?.call(data);
@@ -864,6 +884,7 @@ class _$_StateLoaded implements _StateLoaded {
     TResult Function()? initial,
     TResult Function()? lading,
     TResult Function(List<ProductModel> data)? loaded,
+    TResult Function(ProductModel data)? loadedDetail,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -879,6 +900,7 @@ class _$_StateLoaded implements _StateLoaded {
     required TResult Function(_StateInitial value) initial,
     required TResult Function(_StateLoading value) lading,
     required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateLoadedDetail value) loadedDetail,
     required TResult Function(_StateError value) error,
   }) {
     return loaded(this);
@@ -890,6 +912,7 @@ class _$_StateLoaded implements _StateLoaded {
     TResult? Function(_StateInitial value)? initial,
     TResult? Function(_StateLoading value)? lading,
     TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateLoadedDetail value)? loadedDetail,
     TResult? Function(_StateError value)? error,
   }) {
     return loaded?.call(this);
@@ -901,6 +924,7 @@ class _$_StateLoaded implements _StateLoaded {
     TResult Function(_StateInitial value)? initial,
     TResult Function(_StateLoading value)? lading,
     TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateLoadedDetail value)? loadedDetail,
     TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) {
@@ -917,6 +941,159 @@ abstract class _StateLoaded implements ProductState {
   List<ProductModel> get data;
   @JsonKey(ignore: true)
   _$$_StateLoadedCopyWith<_$_StateLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_StateLoadedDetailCopyWith<$Res> {
+  factory _$$_StateLoadedDetailCopyWith(_$_StateLoadedDetail value,
+          $Res Function(_$_StateLoadedDetail) then) =
+      __$$_StateLoadedDetailCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ProductModel data});
+}
+
+/// @nodoc
+class __$$_StateLoadedDetailCopyWithImpl<$Res>
+    extends _$ProductStateCopyWithImpl<$Res, _$_StateLoadedDetail>
+    implements _$$_StateLoadedDetailCopyWith<$Res> {
+  __$$_StateLoadedDetailCopyWithImpl(
+      _$_StateLoadedDetail _value, $Res Function(_$_StateLoadedDetail) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$_StateLoadedDetail(
+      null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as ProductModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_StateLoadedDetail implements _StateLoadedDetail {
+  const _$_StateLoadedDetail(this.data);
+
+  @override
+  final ProductModel data;
+
+  @override
+  String toString() {
+    return 'ProductState.loadedDetail(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StateLoadedDetail &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StateLoadedDetailCopyWith<_$_StateLoadedDetail> get copyWith =>
+      __$$_StateLoadedDetailCopyWithImpl<_$_StateLoadedDetail>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() lading,
+    required TResult Function(List<ProductModel> data) loaded,
+    required TResult Function(ProductModel data) loadedDetail,
+    required TResult Function(String message) error,
+  }) {
+    return loadedDetail(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? lading,
+    TResult? Function(List<ProductModel> data)? loaded,
+    TResult? Function(ProductModel data)? loadedDetail,
+    TResult? Function(String message)? error,
+  }) {
+    return loadedDetail?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? lading,
+    TResult Function(List<ProductModel> data)? loaded,
+    TResult Function(ProductModel data)? loadedDetail,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (loadedDetail != null) {
+      return loadedDetail(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_StateInitial value) initial,
+    required TResult Function(_StateLoading value) lading,
+    required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateLoadedDetail value) loadedDetail,
+    required TResult Function(_StateError value) error,
+  }) {
+    return loadedDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_StateInitial value)? initial,
+    TResult? Function(_StateLoading value)? lading,
+    TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateLoadedDetail value)? loadedDetail,
+    TResult? Function(_StateError value)? error,
+  }) {
+    return loadedDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_StateInitial value)? initial,
+    TResult Function(_StateLoading value)? lading,
+    TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateLoadedDetail value)? loadedDetail,
+    TResult Function(_StateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (loadedDetail != null) {
+      return loadedDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StateLoadedDetail implements ProductState {
+  const factory _StateLoadedDetail(final ProductModel data) =
+      _$_StateLoadedDetail;
+
+  ProductModel get data;
+  @JsonKey(ignore: true)
+  _$$_StateLoadedDetailCopyWith<_$_StateLoadedDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -987,6 +1164,7 @@ class _$_StateError implements _StateError {
     required TResult Function() initial,
     required TResult Function() lading,
     required TResult Function(List<ProductModel> data) loaded,
+    required TResult Function(ProductModel data) loadedDetail,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -998,6 +1176,7 @@ class _$_StateError implements _StateError {
     TResult? Function()? initial,
     TResult? Function()? lading,
     TResult? Function(List<ProductModel> data)? loaded,
+    TResult? Function(ProductModel data)? loadedDetail,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -1009,6 +1188,7 @@ class _$_StateError implements _StateError {
     TResult Function()? initial,
     TResult Function()? lading,
     TResult Function(List<ProductModel> data)? loaded,
+    TResult Function(ProductModel data)? loadedDetail,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -1024,6 +1204,7 @@ class _$_StateError implements _StateError {
     required TResult Function(_StateInitial value) initial,
     required TResult Function(_StateLoading value) lading,
     required TResult Function(_StateLoaded value) loaded,
+    required TResult Function(_StateLoadedDetail value) loadedDetail,
     required TResult Function(_StateError value) error,
   }) {
     return error(this);
@@ -1035,6 +1216,7 @@ class _$_StateError implements _StateError {
     TResult? Function(_StateInitial value)? initial,
     TResult? Function(_StateLoading value)? lading,
     TResult? Function(_StateLoaded value)? loaded,
+    TResult? Function(_StateLoadedDetail value)? loadedDetail,
     TResult? Function(_StateError value)? error,
   }) {
     return error?.call(this);
@@ -1046,6 +1228,7 @@ class _$_StateError implements _StateError {
     TResult Function(_StateInitial value)? initial,
     TResult Function(_StateLoading value)? lading,
     TResult Function(_StateLoaded value)? loaded,
+    TResult Function(_StateLoadedDetail value)? loadedDetail,
     TResult Function(_StateError value)? error,
     required TResult orElse(),
   }) {

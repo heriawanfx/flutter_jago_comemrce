@@ -9,7 +9,7 @@ class ProductModel {
   final int id;
   final String name;
   final String? description;
-  final double price;
+  final String price;
   final String? image_url;
   final CategoryModel? category;
   final UserModel? user;
@@ -35,12 +35,14 @@ class ProductModel {
     };
   }
 
+  double get priceDouble => double.parse(price);
+
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
       id: map['id'] as int,
       name: map['name'] as String,
       description: map['description'] as String?,
-      price: map['price'] as double,
+      price: map['price'] as String,
       image_url: map['image_url'] as String?,
       category: map['category'] != null
           ? CategoryModel.fromMap(map['category'] as Map<String, dynamic>)
