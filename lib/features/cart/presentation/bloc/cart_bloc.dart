@@ -11,12 +11,35 @@ part 'cart_bloc.freezed.dart';
 class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(const _StateLoaded([])) {
     on<_AddToCart>((event, emit) {
-      final cartProduct = CartProduct(
-        product: event.product,
-        quantity: event.quantity,
-      );
-      //Push new added product
-      emit(_StateLoaded([...state.cartProducts, cartProduct]));
+      if (state is _StateLoaded) {
+        final currentState = state as _StateLoaded;
+
+        emit(const _StateLoading());
+
+        final existCartProducts = currentState.cartProducts;
+
+        //Find exist match products
+        final needUpdateProducts = existCartProducts.where((e) {
+          return e.product == event.product;
+        });
+        if (needUpdateProducts.isNotEmpty) {
+          for (var element in needUpdateProducts) {
+            //Increment match product
+            element.quantity += event.quantity;
+          }
+
+          final updatedCartProducts = currentState.cartProducts;
+          emit(_StateLoaded(updatedCartProducts));
+        } else {
+          final newCartProduct = CartProduct(
+            product: event.product,
+            quantity: event.quantity,
+          );
+
+          //Add new product
+          emit(_StateLoaded([...existCartProducts, newCartProduct]));
+        }
+      }
     });
   }
 }

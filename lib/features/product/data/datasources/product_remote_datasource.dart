@@ -9,7 +9,7 @@ class ProductRemoteDatasource {
 
   ProductRemoteDatasource({required this.dio});
 
-  Future<ApiResponse<ProductModel>> getProducts({int? category_id}) async {
+  Future<ApiResponse<ProductModel>> getProducts({String? category_id}) async {
     final response = await dio.get(
       '/api/products',
       queryParameters: {'category_id': category_id},
@@ -23,7 +23,7 @@ class ProductRemoteDatasource {
     );
   }
 
-  Future<ApiResponse<ProductModel>> getProduct(int id) async {
+  Future<ApiResponse<ProductModel>> getProduct(String id) async {
     final response = await dio.get('/api/products/$id');
 
     final responseMap = response.data as Map<String, dynamic>;

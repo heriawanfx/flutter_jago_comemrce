@@ -18,7 +18,7 @@ class CategoryRemoteDatasource {
     );
   }
 
-  Future<ApiResponse<CategoryModel>> getCategory(int id) async {
+  Future<ApiResponse<CategoryModel>> getCategory(String id) async {
     final response = await dio.get('/api/categories/$id');
 
     final responseMap = response.data as Map<String, dynamic>;

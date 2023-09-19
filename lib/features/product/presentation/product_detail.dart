@@ -10,12 +10,9 @@ import 'widgets/product_specification_view.dart';
 import 'widgets/product_title_view.dart';
 
 class ProductDetail extends StatefulWidget {
-  final int id;
+  final String id;
 
-  const ProductDetail({
-    Key? key,
-    required this.id,
-  }) : super(key: key);
+  const ProductDetail({Key? key, required this.id}) : super(key: key);
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -33,8 +30,9 @@ class _ProductDetailState extends State<ProductDetail> {
       child: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
           return state.maybeWhen(
-            orElse: () =>
-                const Center(child: CircularProgressIndicator.adaptive()),
+            orElse: () => const Center(
+              child: CircularProgressIndicator.adaptive(),
+            ),
             loadedDetail: (product) {
               return Scaffold(
                 appBar: AppBar(
@@ -109,9 +107,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         ],
                       )),
                 ),
-                bottomNavigationBar: BottomCartView(
-                  product: product,
-                ),
+                bottomNavigationBar: BottomCartView(product: product),
               );
             },
           );

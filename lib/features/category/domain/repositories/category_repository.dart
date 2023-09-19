@@ -16,7 +16,7 @@ class CategoryRepository {
     return Right(response.getDataList);
   }
 
-  Future<Either<String, CategoryModel?>> getCategory(int id) async {
+  Future<Either<String, CategoryModel?>> getCategory(String id) async {
     final response = await categoryRemoteDatasource.getCategory(id);
 
     if (response.isError) {

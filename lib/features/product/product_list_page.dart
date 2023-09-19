@@ -11,7 +11,7 @@ import 'presentation/bloc/product_bloc.dart';
 import 'presentation/widgets/product_item_widget.dart';
 
 class ProductListPage extends StatelessWidget {
-  final int category_id;
+  final String category_id;
   final String? category_name;
 
   const ProductListPage({

@@ -19,22 +19,22 @@ mixin _$ProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int? category_id) getProducts,
-    required TResult Function(int id) getProduct,
+    required TResult Function(String? category_id) getProducts,
+    required TResult Function(String id) getProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int? category_id)? getProducts,
-    TResult? Function(int id)? getProduct,
+    TResult? Function(String? category_id)? getProducts,
+    TResult? Function(String id)? getProduct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int? category_id)? getProducts,
-    TResult Function(int id)? getProduct,
+    TResult Function(String? category_id)? getProducts,
+    TResult Function(String id)? getProduct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,8 +118,8 @@ class _$_Started extends _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int? category_id) getProducts,
-    required TResult Function(int id) getProduct,
+    required TResult Function(String? category_id) getProducts,
+    required TResult Function(String id) getProduct,
   }) {
     return started();
   }
@@ -128,8 +128,8 @@ class _$_Started extends _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int? category_id)? getProducts,
-    TResult? Function(int id)? getProduct,
+    TResult? Function(String? category_id)? getProducts,
+    TResult? Function(String id)? getProduct,
   }) {
     return started?.call();
   }
@@ -138,8 +138,8 @@ class _$_Started extends _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int? category_id)? getProducts,
-    TResult Function(int id)? getProduct,
+    TResult Function(String? category_id)? getProducts,
+    TResult Function(String id)? getProduct,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -194,7 +194,7 @@ abstract class _$$_GetProductsCopyWith<$Res> {
           _$_GetProducts value, $Res Function(_$_GetProducts) then) =
       __$$_GetProductsCopyWithImpl<$Res>;
   @useResult
-  $Res call({int? category_id});
+  $Res call({String? category_id});
 }
 
 /// @nodoc
@@ -214,7 +214,7 @@ class __$$_GetProductsCopyWithImpl<$Res>
       category_id: freezed == category_id
           ? _value.category_id
           : category_id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
     ));
   }
 }
@@ -225,7 +225,7 @@ class _$_GetProducts extends _GetProducts {
   const _$_GetProducts({this.category_id}) : super._();
 
   @override
-  final int? category_id;
+  final String? category_id;
 
   @override
   String toString() {
@@ -254,8 +254,8 @@ class _$_GetProducts extends _GetProducts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int? category_id) getProducts,
-    required TResult Function(int id) getProduct,
+    required TResult Function(String? category_id) getProducts,
+    required TResult Function(String id) getProduct,
   }) {
     return getProducts(category_id);
   }
@@ -264,8 +264,8 @@ class _$_GetProducts extends _GetProducts {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int? category_id)? getProducts,
-    TResult? Function(int id)? getProduct,
+    TResult? Function(String? category_id)? getProducts,
+    TResult? Function(String id)? getProduct,
   }) {
     return getProducts?.call(category_id);
   }
@@ -274,8 +274,8 @@ class _$_GetProducts extends _GetProducts {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int? category_id)? getProducts,
-    TResult Function(int id)? getProduct,
+    TResult Function(String? category_id)? getProducts,
+    TResult Function(String id)? getProduct,
     required TResult orElse(),
   }) {
     if (getProducts != null) {
@@ -320,10 +320,10 @@ class _$_GetProducts extends _GetProducts {
 }
 
 abstract class _GetProducts extends ProductEvent {
-  const factory _GetProducts({final int? category_id}) = _$_GetProducts;
+  const factory _GetProducts({final String? category_id}) = _$_GetProducts;
   const _GetProducts._() : super._();
 
-  int? get category_id;
+  String? get category_id;
   @JsonKey(ignore: true)
   _$$_GetProductsCopyWith<_$_GetProducts> get copyWith =>
       throw _privateConstructorUsedError;
@@ -335,7 +335,7 @@ abstract class _$$_GetProductCopyWith<$Res> {
           _$_GetProduct value, $Res Function(_$_GetProduct) then) =
       __$$_GetProductCopyWithImpl<$Res>;
   @useResult
-  $Res call({int id});
+  $Res call({String id});
 }
 
 /// @nodoc
@@ -355,7 +355,7 @@ class __$$_GetProductCopyWithImpl<$Res>
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -366,7 +366,7 @@ class _$_GetProduct extends _GetProduct {
   const _$_GetProduct(this.id) : super._();
 
   @override
-  final int id;
+  final String id;
 
   @override
   String toString() {
@@ -394,8 +394,8 @@ class _$_GetProduct extends _GetProduct {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(int? category_id) getProducts,
-    required TResult Function(int id) getProduct,
+    required TResult Function(String? category_id) getProducts,
+    required TResult Function(String id) getProduct,
   }) {
     return getProduct(id);
   }
@@ -404,8 +404,8 @@ class _$_GetProduct extends _GetProduct {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(int? category_id)? getProducts,
-    TResult? Function(int id)? getProduct,
+    TResult? Function(String? category_id)? getProducts,
+    TResult? Function(String id)? getProduct,
   }) {
     return getProduct?.call(id);
   }
@@ -414,8 +414,8 @@ class _$_GetProduct extends _GetProduct {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(int? category_id)? getProducts,
-    TResult Function(int id)? getProduct,
+    TResult Function(String? category_id)? getProducts,
+    TResult Function(String id)? getProduct,
     required TResult orElse(),
   }) {
     if (getProduct != null) {
@@ -460,10 +460,10 @@ class _$_GetProduct extends _GetProduct {
 }
 
 abstract class _GetProduct extends ProductEvent {
-  const factory _GetProduct(final int id) = _$_GetProduct;
+  const factory _GetProduct(final String id) = _$_GetProduct;
   const _GetProduct._() : super._();
 
-  int get id;
+  String get id;
   @JsonKey(ignore: true)
   _$$_GetProductCopyWith<_$_GetProduct> get copyWith =>
       throw _privateConstructorUsedError;

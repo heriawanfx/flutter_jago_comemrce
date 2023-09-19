@@ -6,6 +6,7 @@ import '../../../../common/widgets/custom_password_textfield.dart';
 import '../../../../common/widgets/custom_textfield.dart';
 import '../../../../common/widgets/progress_dialog.dart';
 import '../../../../core/auth/data/models/requests/register_request_model.dart';
+import '../../../../router/app_router.dart';
 import '../bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -53,7 +54,7 @@ class _RegisterFormState extends State<RegisterForm> {
             //Dismiss Progress Dialog
             Navigator.of(context).pop();
 
-            context.go('/home');
+            context.go(AppRouter.home);
           },
           error: (message) {
             //Dismiss Progress Dialog

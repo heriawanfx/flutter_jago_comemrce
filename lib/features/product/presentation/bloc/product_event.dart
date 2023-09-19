@@ -8,6 +8,6 @@ class ProductEvent with _$ProductEvent {
   const ProductEvent._();
 
   const factory ProductEvent.started() = _Started;
-  const factory ProductEvent.getProducts({int? category_id}) = _GetProducts;
-  const factory ProductEvent.getProduct(int id) = _GetProduct;
+  const factory ProductEvent.getProducts({String? category_id}) = _GetProducts;
+  const factory ProductEvent.getProduct(String id) = _GetProduct;
 }

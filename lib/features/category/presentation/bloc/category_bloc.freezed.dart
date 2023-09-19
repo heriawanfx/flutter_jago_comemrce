@@ -20,21 +20,21 @@ mixin _$CategoryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getCategories,
-    required TResult Function(int id) getCategory,
+    required TResult Function(String id) getCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getCategories,
-    TResult? Function(int id)? getCategory,
+    TResult? Function(String id)? getCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getCategories,
-    TResult Function(int id)? getCategory,
+    TResult Function(String id)? getCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +119,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getCategories,
-    required TResult Function(int id) getCategory,
+    required TResult Function(String id) getCategory,
   }) {
     return started();
   }
@@ -129,7 +129,7 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getCategories,
-    TResult? Function(int id)? getCategory,
+    TResult? Function(String id)? getCategory,
   }) {
     return started?.call();
   }
@@ -139,7 +139,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getCategories,
-    TResult Function(int id)? getCategory,
+    TResult Function(String id)? getCategory,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -227,7 +227,7 @@ class _$_GetCategories implements _GetCategories {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getCategories,
-    required TResult Function(int id) getCategory,
+    required TResult Function(String id) getCategory,
   }) {
     return getCategories();
   }
@@ -237,7 +237,7 @@ class _$_GetCategories implements _GetCategories {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getCategories,
-    TResult? Function(int id)? getCategory,
+    TResult? Function(String id)? getCategory,
   }) {
     return getCategories?.call();
   }
@@ -247,7 +247,7 @@ class _$_GetCategories implements _GetCategories {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getCategories,
-    TResult Function(int id)? getCategory,
+    TResult Function(String id)? getCategory,
     required TResult orElse(),
   }) {
     if (getCategories != null) {
@@ -301,7 +301,7 @@ abstract class _$$_GetCategoryCopyWith<$Res> {
           _$_GetCategory value, $Res Function(_$_GetCategory) then) =
       __$$_GetCategoryCopyWithImpl<$Res>;
   @useResult
-  $Res call({int id});
+  $Res call({String id});
 }
 
 /// @nodoc
@@ -321,7 +321,7 @@ class __$$_GetCategoryCopyWithImpl<$Res>
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -332,7 +332,7 @@ class _$_GetCategory implements _GetCategory {
   const _$_GetCategory(this.id);
 
   @override
-  final int id;
+  final String id;
 
   @override
   String toString() {
@@ -361,7 +361,7 @@ class _$_GetCategory implements _GetCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getCategories,
-    required TResult Function(int id) getCategory,
+    required TResult Function(String id) getCategory,
   }) {
     return getCategory(id);
   }
@@ -371,7 +371,7 @@ class _$_GetCategory implements _GetCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getCategories,
-    TResult? Function(int id)? getCategory,
+    TResult? Function(String id)? getCategory,
   }) {
     return getCategory?.call(id);
   }
@@ -381,7 +381,7 @@ class _$_GetCategory implements _GetCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getCategories,
-    TResult Function(int id)? getCategory,
+    TResult Function(String id)? getCategory,
     required TResult orElse(),
   }) {
     if (getCategory != null) {
@@ -426,9 +426,9 @@ class _$_GetCategory implements _GetCategory {
 }
 
 abstract class _GetCategory implements CategoryEvent {
-  const factory _GetCategory(final int id) = _$_GetCategory;
+  const factory _GetCategory(final String id) = _$_GetCategory;
 
-  int get id;
+  String get id;
   @JsonKey(ignore: true)
   _$$_GetCategoryCopyWith<_$_GetCategory> get copyWith =>
       throw _privateConstructorUsedError;

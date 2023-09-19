@@ -1,14 +1,16 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../features/auth/presentation/auth_page.dart';
+import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/widgets/login_form.dart';
 import '../features/auth/presentation/widgets/register_form.dart';
+import '../features/cart/cart_page.dart';
 import '../features/category/presentation/bloc/category_bloc.dart';
 import '../features/dashboard/presentation/dashboard_page.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/dashboard/presentation/pages/more_page.dart';
 import '../features/dashboard/presentation/pages/order_page.dart';
-import '../features/product/data/models/product_model.dart';
 import '../features/product/presentation/bloc/product_bloc.dart';
 import '../features/product/presentation/product_detail.dart';
 import '../features/product/product_list_page.dart';
@@ -22,12 +24,30 @@ final GlobalKey<NavigatorState> _authNavigatorKey =
 final GlobalKey<NavigatorState> _dashboardNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'dashboard_navigator');
 
+class AppRouter {
+  const AppRouter._();
+
+  static const splash = '/splash';
+  static const login = '/login';
+  static const register = '/register';
+  static const root = '/';
+
+  static const home = '/home';
+  static const order = '/order';
+  static const more = '/more';
+
+  static const products = '/products';
+  static const cart = '/cart';
+  static const checkout = '/checkout';
+}
+
 final GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/splash',
+  initialLocation: AppRouter.splash,
+  debugLogDiagnostics: kDebugMode,
   routes: [
     GoRoute(
-      path: '/splash',
+      path: AppRouter.splash,
       builder: (context, state) => const SplashPage(),
     ),
     ShellRoute(
@@ -35,21 +55,32 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state, child) => AuthPage(child: child),
       routes: [
         GoRoute(
-          path: '/login',
+          path: AppRouter.login,
           builder: (context, state) => const LoginForm(),
         ),
         GoRoute(
-          path: '/register',
+          path: AppRouter.register,
           builder: (context, state) => const RegisterForm(),
         ),
       ],
+    ),
+    GoRoute(
+      path: AppRouter.root,
+      redirect: (context, state) {
+        context.read<AuthBloc>().state.maybeWhen(
+            orElse: () => AppRouter.splash,
+            loggedIn: (model) {
+              return model != null ? AppRouter.home : AppRouter.login;
+            });
+        return null;
+      },
     ),
     ShellRoute(
       navigatorKey: _dashboardNavigatorKey,
       builder: (context, state, child) => DashboardPage(child: child),
       routes: [
         GoRoute(
-          path: '/home',
+          path: AppRouter.home,
           builder: (context, state) {
             //Fetch Categories
             context
@@ -63,21 +94,22 @@ final GoRouter appRouter = GoRouter(
           },
         ),
         GoRoute(
-          path: '/order',
+          path: AppRouter.order,
           builder: (context, state) => const OrderPage(),
         ),
         GoRoute(
-          path: '/more',
+          path: AppRouter.more,
           builder: (context, state) => const MorePage(),
         ),
       ],
     ),
     GoRoute(
-      path: '/products',
+      path: AppRouter.products,
+      name: AppRouter.products,
       builder: (context, state) {
-        final extra = state.extra as Map<String, dynamic>;
-        final categoryId = extra['category_id'] as int;
-        final categoryName = extra['category_name'] as String?;
+        final queryMap = state.uri.queryParameters;
+        final categoryId = queryMap['category_id']!;
+        final categoryName = queryMap['category_name'];
 
         //Fetch Product By Category
         context
@@ -91,16 +123,23 @@ final GoRouter appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/product/:id',
-      name: 'product',
+      path: '${AppRouter.products}/:id',
       builder: (context, state) {
-        final id = int.parse(state.pathParameters['id'] ?? '0');
+        final id = state.pathParameters['id']!;
 
         //Fetch Product id
         context.read<ProductBloc>().add(ProductEvent.getProduct(id));
 
         return ProductDetail(id: id);
       },
+    ),
+    GoRoute(
+      path: AppRouter.cart,
+      builder: (context, state) => const CartPage(),
+    ),
+    GoRoute(
+      path: AppRouter.checkout,
+      builder: (context, state) => Container(),
     ),
   ],
 );

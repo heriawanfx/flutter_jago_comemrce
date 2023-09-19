@@ -7,6 +7,7 @@ import '../../../../common/utils/color_resources.dart';
 import '../../../../common/utils/custom_themes.dart';
 import '../../../../common/utils/dimensions.dart';
 import '../../../../common/utils/show_custom_snakbar.dart';
+import '../../../../router/app_router.dart';
 import '../../../cart/presentation/bloc/cart_bloc.dart';
 import '../../../product/data/models/product_model.dart';
 import 'cart_bottom_sheet.dart';
@@ -57,11 +58,12 @@ class _BottomCartViewState extends State<BottomCartView> {
               padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
               child: Stack(children: [
                 GestureDetector(
-                    onTap: () {
-                      context.go('/cart');
-                    },
-                    child: Image.asset(MyAssets.images.cartArrowDown.path,
-                        color: ColorResources.getPrimary(context))),
+                  onTap: () => context.go(AppRouter.cart),
+                  child: Image.asset(
+                    MyAssets.images.cartArrowDown.path,
+                    color: ColorResources.getPrimary(context),
+                  ),
+                ),
                 Positioned(
                   top: 0,
                   right: 15,
@@ -76,6 +78,9 @@ class _BottomCartViewState extends State<BottomCartView> {
                     child: BlocBuilder<CartBloc, CartState>(
                       builder: (context, state) {
                         return state.map(
+                          loading: (value) {
+                            return const CircularProgressIndicator.adaptive();
+                          },
                           loaded: (data) {
                             int totalQty = 0;
                             for (var element in data.cartProducts) {
@@ -103,17 +108,18 @@ class _BottomCartViewState extends State<BottomCartView> {
                 if (vacationIsOn || temporaryClose) {
                 } else {
                   showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor:
-                          Theme.of(context).primaryColor.withOpacity(0),
-                      builder: (con) => CartBottomSheet(
-                            product: widget.product,
-                            callback: () {
-                              showCustomSnackBar('Add to Cart', context,
-                                  isError: false);
-                            },
-                          ));
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (con) {
+                      return CartBottomSheet(
+                        product: widget.product,
+                        callback: () {
+                          showCustomSnackBar('Add to Cart', context,
+                              isError: false, isToaster: true);
+                        },
+                      );
+                    },
+                  );
                 }
               },
               child: Container(

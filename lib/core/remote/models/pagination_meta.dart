@@ -3,13 +3,13 @@
 import 'dart:convert';
 
 class PaginationMeta {
-  final int current_page;
-  final int from;
-  final int last_page;
-  final String path;
-  final int per_page;
-  final int to;
-  final int total;
+  final int? current_page;
+  final int? from;
+  final int? last_page;
+  final String? path;
+  final int? per_page;
+  final int? to;
+  final int? total;
   PaginationMeta({
     required this.current_page,
     required this.from,
@@ -34,13 +34,13 @@ class PaginationMeta {
 
   factory PaginationMeta.fromMap(Map<String, dynamic> map) {
     return PaginationMeta(
-      current_page: map['current_page'].toInt() as int,
-      from: map['from'].toInt() as int,
-      last_page: map['last_page'].toInt() as int,
-      path: map['path'] as String,
-      per_page: map['per_page'].toInt() as int,
-      to: map['to'].toInt() as int,
-      total: map['total'].toInt() as int,
+      current_page: map['current_page'] as int?,
+      from: map['from'] as int?,
+      last_page: map['last_page'] as int,
+      path: map['path'] as String?,
+      per_page: map['per_page'] as int?,
+      to: map['to'] as int?,
+      total: map['total'] as int?,
     );
   }
 

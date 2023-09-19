@@ -7,6 +7,7 @@ import '../../../../common/utils/custom_themes.dart';
 import '../../../../common/utils/dimensions.dart';
 import '../../../../common/utils/price_ext.dart';
 import '../../../../common/widgets/rating_bar.dart';
+import '../../../../router/app_router.dart';
 import '../../data/models/product_model.dart';
 
 class ProductItemWidget extends StatelessWidget {
@@ -21,10 +22,8 @@ class ProductItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.goNamed(
-          'product',
-          pathParameters: {'id': product.id.toString()},
-        );
+        var id = product.id.toString();
+        context.go('${AppRouter.products}/$id');
       },
       child: Container(
         height: Dimensions.cardHeight,

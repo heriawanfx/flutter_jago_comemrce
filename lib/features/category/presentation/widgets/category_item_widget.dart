@@ -5,6 +5,7 @@ import '../../../../assets_gen/assets.gen.dart';
 import '../../../../common/utils/color_resources.dart';
 import '../../../../common/utils/custom_themes.dart';
 import '../../../../common/utils/dimensions.dart';
+import '../../../../router/app_router.dart';
 import '../../../category/data/models/category_model.dart';
 
 class CategoryItemWiget extends StatelessWidget {
@@ -18,10 +19,10 @@ class CategoryItemWiget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.go(
-          '/products',
-          extra: {
-            'category_id': category.id,
+        context.goNamed(
+          AppRouter.products,
+          queryParameters: {
+            'category_id': category.id.toString(),
             'category_name': category.name,
           },
         );

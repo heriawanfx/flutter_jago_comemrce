@@ -7,6 +7,7 @@ import '../../../../common/widgets/custom_password_textfield.dart';
 import '../../../../common/widgets/custom_textfield.dart';
 import '../../../../common/widgets/progress_dialog.dart';
 import '../../../../core/auth/data/models/requests/login_request_model.dart';
+import '../../../../router/app_router.dart';
 import '../bloc/auth_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -50,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
             //Dismiss Progress Dialog
             Navigator.of(context).pop();
 
-            context.go('/home');
+            context.go(AppRouter.home);
           },
           error: (message) {
             //Dismiss Progress Dialog
@@ -117,7 +118,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               const SizedBox(height: Dimensions.paddingSizeExtraExtraSmall),
               TextButton(
-                onPressed: () => context.go('/home'),
+                onPressed: () => context.go(AppRouter.home),
                 child: const Text('Continue as Guest'),
               ),
             ],

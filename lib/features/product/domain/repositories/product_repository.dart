@@ -10,7 +10,7 @@ class ProductRepository {
   ProductRepository({required this.productRemoteDatasource});
 
   Future<Either<String, List<ProductModel>>> getProducts({
-    int? category_id,
+    String? category_id,
   }) async {
     final response = await productRemoteDatasource.getProducts(
       category_id: category_id,
@@ -22,7 +22,7 @@ class ProductRepository {
     return Right(response.getDataList);
   }
 
-  Future<Either<String, ProductModel>> getProduct(int id) async {
+  Future<Either<String, ProductModel>> getProduct(String id) async {
     final response = await productRemoteDatasource.getProduct(id);
 
     if (response.isError) {

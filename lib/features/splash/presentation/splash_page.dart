@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../assets_gen/assets.gen.dart';
 import '../../../common/utils/color_resources.dart';
+import '../../../router/app_router.dart';
 import '../../auth/presentation/bloc/auth_bloc.dart';
 import 'widgets/splash_painter.dart';
 import 'package:go_router/go_router.dart';
@@ -24,10 +25,10 @@ class SplashPage extends StatelessWidget {
           },
           loggedIn: (value) {
             if (value != null) {
-              context.go('/home');
+              context.go(AppRouter.home);
             } else {
               Future.delayed(const Duration(seconds: 3), () {
-                context.go('/login');
+                context.go(AppRouter.login);
               });
             }
           },

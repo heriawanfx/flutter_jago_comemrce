@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../assets_gen/assets.gen.dart';
 
 import '../utils/custom_themes.dart';
@@ -45,7 +46,9 @@ class CustomAppBar extends StatelessWidget {
                       size: 20, color: Colors.black),
                   onPressed: () => onBackPressed != null
                       ? onBackPressed!()
-                      : Navigator.of(context).pop(),
+                      : context.canPop()
+                          ? context.pop()
+                          : null,
                 )
               : const SizedBox.shrink(),
           const SizedBox(width: Dimensions.paddingSizeSmall),

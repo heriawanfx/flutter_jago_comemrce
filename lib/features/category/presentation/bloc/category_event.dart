@@ -4,5 +4,5 @@ part of 'category_bloc.dart';
 class CategoryEvent with _$CategoryEvent {
   const factory CategoryEvent.started() = _Started;
   const factory CategoryEvent.getCategories() = _GetCategories;
-  const factory CategoryEvent.getCategory(int id) = _GetCategory;
+  const factory CategoryEvent.getCategory(String id) = _GetCategory;
 }
