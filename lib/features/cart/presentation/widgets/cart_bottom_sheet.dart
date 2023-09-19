@@ -95,8 +95,7 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                               image: widget.product.image_url ?? '',
                               imageErrorBuilder: (c, o, s) {
                                 return Image.asset(
-                                  MyAssets.images.placeholder1x1.path,
-                                );
+                                    MyAssets.images.placeholder1x1.path);
                               },
                             ),
                           ),
@@ -144,42 +143,38 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                 ],
               ),
               const SizedBox(height: Dimensions.paddingSizeSmall),
-              const SizedBox(
-                height: Dimensions.paddingSizeSmall,
-              ),
+              const SizedBox(height: Dimensions.paddingSizeSmall),
               Row(children: [
                 const Text('Quantity', style: robotoBold),
-                const SizedBox(
-                  width: 8,
-                ),
+                const SizedBox(width: 8),
                 // QuantityButton(
                 //     isIncrement: false,
                 //     quantity: quantity1,
                 //     stock: 10,
                 //     minimumOrderQuantity: 1,
                 //     digitalProduct: true),
-                ElevatedButton(
+                IconButton.filledTonal(
                   onPressed: () {
                     setState(() {
-                      quantity -= 1;
+                      if (quantity >= 0) {
+                        quantity -= 1;
+                      }
                     });
                   },
-                  child: const Text('-'),
+                  icon: const Text('-'),
                 ),
-                const SizedBox(
-                  width: 8,
-                ),
+                const SizedBox(width: 8),
                 Text('$quantity', style: titilliumSemiBold),
                 const SizedBox(
                   width: 8,
                 ),
-                ElevatedButton(
+                IconButton.filledTonal(
                   onPressed: () {
                     setState(() {
                       quantity += 1;
                     });
                   },
-                  child: const Text('+'),
+                  icon: const Text('+'),
                 ),
                 // QuantityButton(
                 //     isIncrement: true,
@@ -197,8 +192,9 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                       .toString()
                       .formatPrice(),
                   style: titilliumBold.copyWith(
-                      color: ColorResources.getPrimary(context),
-                      fontSize: Dimensions.fontSizeLarge),
+                    color: ColorResources.getPrimary(context),
+                    fontSize: Dimensions.fontSizeLarge,
+                  ),
                 ),
               ]),
               const SizedBox(height: Dimensions.paddingSizeSmall),
@@ -209,8 +205,7 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                         buttonText: 'Add to Cart',
                         onTap: () {
                           context.read<CartBloc>().add(
-                                CartEvent.addToCart(widget.product, quantity),
-                              );
+                              CartEvent.addToCart(widget.product, quantity));
                           Navigator.pop(context);
                         }),
                   ),
