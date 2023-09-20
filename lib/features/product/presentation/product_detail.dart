@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../common/utils/custom_themes.dart';
 import '../../../common/utils/dimensions.dart';
@@ -21,11 +22,9 @@ class ProductDetail extends StatefulWidget {
 class _ProductDetailState extends State<ProductDetail> {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      onPopInvoked: (canPop) async {
         Navigator.of(context).pop();
-
-        return true;
       },
       child: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
@@ -38,7 +37,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 appBar: AppBar(
                   title: Row(children: [
                     InkWell(
-                      onTap: () => Navigator.pop(context),
+                      onTap: () => context.pop(),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Icon(

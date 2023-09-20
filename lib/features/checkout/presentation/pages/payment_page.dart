@@ -16,7 +16,7 @@ class PaymentPage extends StatefulWidget {
 
 class _PaymentPageState extends State<PaymentPage> {
   late WebViewController _controller;
-  late double _progress;
+  double _progress = 0.0;
 
   @override
   void initState() {

@@ -84,14 +84,16 @@ class ProductItemWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(product.name,
-                          textAlign: TextAlign.center,
-                          style: robotoRegular.copyWith(
-                              fontSize: Dimensions.fontSizeSmall,
-                              fontWeight: FontWeight.w400),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis),
-                      const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+                      Text(
+                        product.name,
+                        textAlign: TextAlign.center,
+                        style: robotoRegular.copyWith(
+                          fontSize: Dimensions.fontSizeSmall,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -107,9 +109,6 @@ class ProductItemWidget extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-                      const SizedBox.shrink(),
-                      const SizedBox(height: 2),
                       Text(
                         product.price.formatPrice(),
                         style: titilliumSemiBold.copyWith(

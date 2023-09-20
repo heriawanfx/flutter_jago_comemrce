@@ -24,7 +24,7 @@ class _PaymentSuccessPageState extends State<PaymentSuccessPage> {
         title: 'Pembayaran Sukses',
         desc: 'Selamat Pembayaran Berhasil dilakukan',
         btnOkOnPress: () {
-          context.go(AppRouter.root);
+          context.go(AppRouter.home);
         },
       ).show();
     });

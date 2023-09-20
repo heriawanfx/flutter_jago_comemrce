@@ -24,7 +24,7 @@ class _PaymentFailedPageState extends State<PaymentFailedPage> {
         title: 'Payment Failed',
         desc: 'Maaf Pembayaran Anda gagal',
         btnOkOnPress: () {
-          context.go(AppRouter.root);
+          context.go(AppRouter.home);
         },
         btnOkColor: Colors.red,
         btnOkText: 'Close',
