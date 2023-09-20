@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import '../../../../features/category/data/datasources/category_remote_datasource.dart';
 import '../../data/datasources/auth_local_datasource.dart';
 import '../../data/datasources/auth_remote_datasource.dart';
 import '../../data/models/requests/login_request_model.dart';
@@ -9,35 +8,43 @@ import '../../data/models/auth_response_model.dart';
 class AuthRepository {
   final AuthLocalDataSource authLocalDataSource;
   final AuthRemoteDatasource authRemoteDatasource;
-  final CategoryRemoteDatasource categoryRemoteDatasource;
 
   AuthRepository({
     required this.authLocalDataSource,
     required this.authRemoteDatasource,
-    required this.categoryRemoteDatasource,
   });
 
   Future<Either<String, AuthResponseModel>> login(
-      LoginRequestModel model) async {
-    final either = await authRemoteDatasource.login(model);
+      LoginRequestModel requestModel) async {
+    final either = await authRemoteDatasource.login(requestModel);
 
     return either.fold((e) {
       return Left(e.message);
     }, (model) {
-      authLocalDataSource.saveAuthData(model);
-      return Right(model);
+      final completeModel = model.copyWith(
+          user: model.user?.copyWith(
+        email: requestModel.email,
+        password: requestModel.password,
+      ));
+      authLocalDataSource.saveAuthData(completeModel);
+      return Right(completeModel);
     });
   }
 
   Future<Either<String, AuthResponseModel>> register(
-      RegisterRequestModel model) async {
-    final either = await authRemoteDatasource.register(model);
+      RegisterRequestModel requestModel) async {
+    final either = await authRemoteDatasource.register(requestModel);
 
     return either.fold((e) {
       return Left(e.message);
     }, (model) {
-      authLocalDataSource.saveAuthData(model);
-      return Right(model);
+      final completeModel = model.copyWith(
+          user: model.user?.copyWith(
+        email: requestModel.email,
+        password: requestModel.password,
+      ));
+      authLocalDataSource.saveAuthData(completeModel);
+      return Right(completeModel);
     });
   }
 
@@ -57,5 +64,17 @@ class AuthRepository {
       }
       return const Right(false);
     });
+  }
+
+  Future<bool> reLogin() async {
+    final authData = await getAuthData();
+    final user = authData?.user;
+    if (user != null) {
+      final model = LoginRequestModel(
+          email: user.email ?? '', password: user.password ?? '');
+      final response = await login(model);
+      return response.isRight();
+    }
+    return false;
   }
 }

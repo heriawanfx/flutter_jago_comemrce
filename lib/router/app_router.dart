@@ -7,6 +7,11 @@ import '../features/auth/presentation/widgets/login_form.dart';
 import '../features/auth/presentation/widgets/register_form.dart';
 import '../features/cart/cart_page.dart';
 import '../features/category/presentation/bloc/category_bloc.dart';
+import '../features/checkout/presentation/checkout_page.dart';
+import '../features/checkout/presentation/pages/payment_failed_page.dart';
+import '../features/checkout/presentation/pages/payment_page.dart';
+import '../features/checkout/presentation/pages/payment_success_page.dart';
+import '../features/checkout/presentation/pages/payment_web.dart';
 import '../features/dashboard/presentation/dashboard_page.dart';
 import '../features/home/presentation/home_page.dart';
 import '../features/dashboard/presentation/pages/more_page.dart';
@@ -37,8 +42,12 @@ class AppRouter {
   static const more = '/more';
 
   static const products = '/products';
+
   static const cart = '/cart';
-  static const checkout = '/checkout';
+  static const checkout = 'checkout';
+  static const payment = 'payment';
+  static const paymentSuccess = 'payment/success';
+  static const paymentFailed = 'payment/failed';
 }
 
 final GoRouter appRouter = GoRouter(
@@ -136,10 +145,39 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: AppRouter.cart,
       builder: (context, state) => const CartPage(),
-    ),
-    GoRoute(
-      path: AppRouter.checkout,
-      builder: (context, state) => Container(),
+      routes: [
+        GoRoute(
+          name: AppRouter.checkout,
+          path: AppRouter.checkout,
+          builder: (context, state) => const CheckoutPage(),
+          routes: [
+            GoRoute(
+              name: AppRouter.payment,
+              path: AppRouter.payment,
+              builder: (context, state) {
+                // ignore: non_constant_identifier_names
+                final payment_url =
+                    state.uri.queryParameters['payment_url'] as String;
+
+                if (kIsWeb) {
+                  return PaymentWeb(payment_url: payment_url);
+                }
+                return PaymentPage(payment_url: payment_url);
+              },
+            ),
+            GoRoute(
+              name: AppRouter.paymentSuccess,
+              path: AppRouter.paymentSuccess,
+              builder: (context, state) => const PaymentSuccessPage(),
+            ),
+            GoRoute(
+              name: AppRouter.paymentFailed,
+              path: AppRouter.paymentFailed,
+              builder: (context, state) => const PaymentFailedPage(),
+            ),
+          ],
+        ),
+      ],
     ),
   ],
 );

@@ -3,19 +3,21 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import '../../di/injector.dart';
 import '../auth/data/datasources/auth_local_datasource.dart';
+import '../auth/domain/repositories/auth_repository.dart';
 
 class ApiInterceptor extends Interceptor {
   final AuthLocalDataSource authLocalDataSource;
 
   ApiInterceptor({required this.authLocalDataSource});
 
-  Future<Map<String, dynamic>> _defaultHeader() async {
+  Future<Map<String, dynamic>> _getTokenHeaderMap() async {
     Map<String, String> headers = {};
 
-    final value = await authLocalDataSource.getAuthData();
+    final authData = await authLocalDataSource.getAuthData();
 
-    String? jwtToken = value?.jwtToken;
+    String? jwtToken = authData?.jwtToken;
     if (jwtToken != null) {
       headers['Authorization'] = "Bearer $jwtToken";
     }
@@ -27,7 +29,10 @@ class ApiInterceptor extends Interceptor {
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     try {
-      options.headers.addAll(await _defaultHeader());
+      if (!options.uri.path.contains('login') ||
+          !options.uri.path.contains('register')) {
+        options.headers.addAll(await _getTokenHeaderMap());
+      }
 
       final requestBody =
           const JsonEncoder.withIndent('  ').convert(options.data);
@@ -61,7 +66,7 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onResponse(
-      Response<dynamic> response, ResponseInterceptorHandler handler) {
+      Response<dynamic> response, ResponseInterceptorHandler handler) async {
     final prettyString = jsonEncode(response.data);
     if (kDebugMode) {
       print(
@@ -69,6 +74,31 @@ class ApiInterceptor extends Interceptor {
         'Response : $prettyString\n',
       );
     }
+
+    //Unaunthenticated Handler
+    if ((response.statusCode ?? 0) >= 400 &&
+        (response.statusCode ?? 0) <= 403) {
+      Dio dio = getInstance();
+      AuthRepository authRepository = getInstance();
+
+      final isRelogin = await authRepository.reLogin();
+
+      RequestOptions requestOptions = response.requestOptions;
+
+      final opts = Options(method: requestOptions.method);
+      opts.headers?.addAll(await _getTokenHeaderMap());
+
+      final newResponse = await dio.request(
+        requestOptions.path,
+        options: opts,
+        cancelToken: requestOptions.cancelToken,
+        onReceiveProgress: requestOptions.onReceiveProgress,
+        data: requestOptions.data,
+        queryParameters: requestOptions.queryParameters,
+      );
+      handler.resolve(newResponse);
+    }
+
     return handler.next(response);
   }
 

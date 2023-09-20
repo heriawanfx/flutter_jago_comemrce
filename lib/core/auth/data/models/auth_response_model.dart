@@ -29,4 +29,14 @@ class AuthResponseModel {
 
   factory AuthResponseModel.fromJson(String source) =>
       AuthResponseModel.fromMap(jsonDecode(source) as Map<String, dynamic>);
+
+  AuthResponseModel copyWith({
+    String? jwtToken,
+    UserModel? user,
+  }) {
+    return AuthResponseModel(
+      jwtToken: jwtToken ?? this.jwtToken,
+      user: user ?? this.user,
+    );
+  }
 }

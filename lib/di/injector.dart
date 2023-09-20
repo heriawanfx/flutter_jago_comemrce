@@ -9,6 +9,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../features/category/data/datasources/category_remote_datasource.dart';
 import '../features/category/domain/repositories/category_repository.dart';
+import '../features/order/data/datasources/order_remote_datasource.dart';
+import '../features/order/domain/repositories/order_repository.dart';
 import '../features/product/data/datasources/product_remote_datasource.dart';
 import '../features/product/domain/repositories/product_repository.dart';
 
@@ -19,6 +21,7 @@ class Injector {
     await _initCore();
     _initFeatureCategory();
     _initFeatureProduct();
+    _initFeatureOrder();
   }
 
   Future<void> _initCore() async {
@@ -51,7 +54,6 @@ class Injector {
       return AuthRepository(
         authLocalDataSource: getInstance(),
         authRemoteDatasource: getInstance(),
-        categoryRemoteDatasource: getInstance(),
       );
     });
   }
@@ -76,6 +78,18 @@ class Injector {
     getInstance.registerLazySingleton<ProductRepository>(() {
       return ProductRepository(
         productRemoteDatasource: getInstance(),
+      );
+    });
+  }
+
+  void _initFeatureOrder() {
+    getInstance.registerLazySingleton<OrderRemoteDatasource>(() {
+      return OrderRemoteDatasource(dio: getInstance());
+    });
+
+    getInstance.registerLazySingleton<OrderRepository>(() {
+      return OrderRepository(
+        orderRemoteDatasource: getInstance(),
       );
     });
   }

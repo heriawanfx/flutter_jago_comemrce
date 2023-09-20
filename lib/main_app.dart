@@ -5,6 +5,7 @@ import 'di/injector.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'features/cart/presentation/bloc/cart_bloc.dart';
 import 'features/category/presentation/bloc/category_bloc.dart';
+import 'features/order/presentation/bloc/order_bloc.dart';
 import 'features/product/presentation/bloc/product_bloc.dart';
 import 'router/app_router.dart';
 
@@ -24,6 +25,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider<ProductBloc>(
           create: (context) => ProductBloc(productRepository: getInstance()),
+        ),
+        BlocProvider<OrderBloc>(
+          create: (context) => OrderBloc(orderRpository: getInstance()),
         ),
         BlocProvider<CartBloc>(
           create: (context) => CartBloc(),
