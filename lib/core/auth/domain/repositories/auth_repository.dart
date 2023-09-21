@@ -66,15 +66,13 @@ class AuthRepository {
     });
   }
 
-  Future<bool> reLogin() async {
+  Future<Either<String, AuthResponseModel>> reLogin() async {
     final authData = await getAuthData();
     final user = authData?.user;
-    if (user != null) {
-      final model = LoginRequestModel(
-          email: user.email ?? '', password: user.password ?? '');
-      final response = await login(model);
-      return response.isRight();
-    }
-    return false;
+    final model = LoginRequestModel(
+      email: user?.email ?? '',
+      password: user?.password ?? '',
+    );
+    return await login(model);
   }
 }

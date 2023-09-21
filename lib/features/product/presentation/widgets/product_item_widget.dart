@@ -39,93 +39,73 @@ class ProductItemWidget extends StatelessWidget {
             )
           ],
         ),
-        child: Stack(children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Product Image
-              Container(
-                height: 150,
-                decoration: BoxDecoration(
-                  color: ColorResources.getIconBg(context),
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10)),
+        child: Column(
+          children: [
+            // Product Image
+            Container(
+              decoration: BoxDecoration(
+                color: ColorResources.getIconBg(context),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
                 ),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                  ),
-                  child: FadeInImage.assetNetwork(
-                    placeholder: MyAssets.images.placeholder1x1.path,
+              ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
+                child: FadeInImage.assetNetwork(
+                  placeholder: MyAssets.images.placeholder1x1.path,
+                  fit: BoxFit.cover,
+                  height: MediaQuery.of(context).size.width / 2.45,
+                  image: 'https://picsum.photos/10${product.id}',
+                  imageErrorBuilder: (c, o, s) => Image.asset(
+                    MyAssets.images.placeholder1x1.path,
                     fit: BoxFit.cover,
                     height: MediaQuery.of(context).size.width / 2.45,
-                    image: product.image_url ?? '',
-                    imageErrorBuilder: (c, o, s) => Image.asset(
-                      MyAssets.images.placeholder1x1.path,
-                      fit: BoxFit.cover,
-                      height: MediaQuery.of(context).size.width / 2.45,
+                  ),
+                ),
+              ),
+            ),
+
+            // Product Details
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  product.name,
+                  textAlign: TextAlign.center,
+                  style: robotoRegular.copyWith(
+                    fontSize: Dimensions.fontSizeSmall,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RatingBar(rating: double.parse('10.0')),
+                    Text(
+                      '(20)',
+                      style: robotoRegular.copyWith(
+                        fontSize: Dimensions.fontSizeSmall,
+                      ),
                     ),
+                  ],
+                ),
+                Text(
+                  product.price.formatPrice(),
+                  style: titilliumSemiBold.copyWith(
+                    color: ColorResources.getPrimary(context),
                   ),
                 ),
-              ),
-
-              // Product Details
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: Dimensions.paddingSizeSmall,
-                  bottom: 5,
-                  left: 5,
-                  right: 5,
-                ),
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        product.name,
-                        textAlign: TextAlign.center,
-                        style: robotoRegular.copyWith(
-                          fontSize: Dimensions.fontSizeSmall,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          RatingBar(
-                            rating: double.parse('10.0'),
-                            size: 18,
-                          ),
-                          Text(
-                            '(20)',
-                            style: robotoRegular.copyWith(
-                              fontSize: Dimensions.fontSizeSmall,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        product.price.formatPrice(),
-                        style: titilliumSemiBold.copyWith(
-                          color: ColorResources.getPrimary(context),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-
-          // Off
-
-          const SizedBox.shrink(),
-        ]),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

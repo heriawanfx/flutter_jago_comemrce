@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../assets_gen/assets.gen.dart';
 import '../../../../common/utils/color_resources.dart';
@@ -7,6 +8,8 @@ import '../../../../common/utils/custom_themes.dart';
 import '../../../../common/utils/dimensions.dart';
 import '../../../../common/utils/price_ext.dart';
 import '../../../../common/widgets/custom_button.dart';
+import '../../../../common/widgets/progress_dialog.dart';
+import '../../../../router/app_router.dart';
 import '../../../cart/presentation/bloc/cart_bloc.dart';
 import '../../../product/data/models/product_model.dart';
 
@@ -33,200 +36,212 @@ class CartBottomSheetState extends State<CartBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-          decoration: BoxDecoration(
-            color: Theme.of(context).highlightColor,
-            borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(20),
-              topLeft: Radius.circular(20),
+    return BlocListener<CartBloc, CartState>(
+      listener: (context, state) {
+        state.maybeWhen(
+            orElse: () {},
+            loading: () {
+              showAdaptiveDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) => const ProgressDialog(),
+              );
+            },
+            loaded: (data) {
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+            buyNow: () {
+              Navigator.pop(context);
+              //context.pushNamed(AppRouter.checkout);
+            });
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+            decoration: BoxDecoration(
+              color: Theme.of(context).highlightColor,
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(20),
+                topLeft: Radius.circular(20),
+              ),
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Align(
-                  alignment: Alignment.centerRight,
-                  child: InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: Container(
-                      width: 25,
-                      height: 25,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).highlightColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Theme.of(context).hintColor,
-                              spreadRadius: 1,
-                              blurRadius: 5,
-                            )
-                          ]),
-                      child: const Icon(Icons.clear,
-                          size: Dimensions.iconSizeSmall),
-                    ),
-                  )),
-              Column(
-                children: [
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: ColorResources.getImageBg(context),
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(
-                              width: .5,
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(.20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Align(
+                    alignment: Alignment.centerRight,
+                    child: InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Container(
+                        width: 25,
+                        height: 25,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Theme.of(context).highlightColor,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Theme.of(context).hintColor,
+                                spreadRadius: 1,
+                                blurRadius: 5,
+                              )
+                            ]),
+                        child: const Icon(Icons.clear,
+                            size: Dimensions.iconSizeSmall),
+                      ),
+                    )),
+                Column(
+                  children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: ColorResources.getImageBg(context),
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(
+                                width: .5,
+                                color: Theme.of(context)
+                                    .primaryColor
+                                    .withOpacity(.20),
+                              ),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: FadeInImage.assetNetwork(
+                                placeholder:
+                                    MyAssets.images.placeholder1x1.path,
+                                image: widget.product.image_url ?? '',
+                                imageErrorBuilder: (c, o, s) {
+                                  return Image.asset(
+                                      MyAssets.images.placeholder1x1.path);
+                                },
+                              ),
                             ),
                           ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(5),
-                            child: FadeInImage.assetNetwork(
-                              placeholder: MyAssets.images.placeholder1x1.path,
-                              image: widget.product.image_url ?? '',
-                              imageErrorBuilder: (c, o, s) {
-                                return Image.asset(
-                                    MyAssets.images.placeholder1x1.path);
-                              },
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(widget.product.name,
-                                    style: titilliumRegular.copyWith(
-                                        fontSize: Dimensions.fontSizeLarge),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis),
-                                const SizedBox(
-                                    height: Dimensions.paddingSizeSmall),
-                                Row(
-                                  children: [
-                                    const Icon(Icons.star,
-                                        color: Colors.orange),
-                                    Text(
-                                      double.parse('5').toStringAsFixed(1),
-                                      style: titilliumSemiBold.copyWith(
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(widget.product.name,
+                                      style: titilliumRegular.copyWith(
                                           fontSize: Dimensions.fontSizeLarge),
                                       maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ],
-                                ),
-                              ]),
+                                      overflow: TextOverflow.ellipsis),
+                                  const SizedBox(
+                                      height: Dimensions.paddingSizeSmall),
+                                  Row(
+                                    children: [
+                                      const Icon(Icons.star,
+                                          color: Colors.orange),
+                                      Text(
+                                        double.parse('5').toStringAsFixed(1),
+                                        style: titilliumSemiBold.copyWith(
+                                            fontSize: Dimensions.fontSizeLarge),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
+                                ]),
+                          ),
+                        ]),
+                    Row(
+                      children: [
+                        const SizedBox(width: Dimensions.paddingSizeDefault),
+                        const SizedBox(width: Dimensions.paddingSizeDefault),
+                        Text(
+                          widget.product.price.formatPrice(),
+                          style: titilliumRegular.copyWith(
+                              color: ColorResources.getPrimary(context),
+                              fontSize: Dimensions.fontSizeExtraLarge),
                         ),
-                      ]),
-                  Row(
-                    children: [
-                      const SizedBox(width: Dimensions.paddingSizeDefault),
-                      const SizedBox(width: Dimensions.paddingSizeDefault),
-                      Text(
-                        widget.product.price.formatPrice(),
-                        style: titilliumRegular.copyWith(
-                            color: ColorResources.getPrimary(context),
-                            fontSize: Dimensions.fontSizeExtraLarge),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+                Row(children: [
+                  const Text('Quantity', style: robotoBold),
+                  const SizedBox(width: 8),
+                  IconButton.filledTonal(
+                    onPressed: () {
+                      setState(() {
+                        if (quantity >= 0) {
+                          quantity -= 1;
+                        }
+                      });
+                    },
+                    icon: const Text('-'),
                   ),
-                ],
-              ),
-              const SizedBox(height: Dimensions.paddingSizeSmall),
-              const SizedBox(height: Dimensions.paddingSizeSmall),
-              Row(children: [
-                const Text('Quantity', style: robotoBold),
-                const SizedBox(width: 8),
-                // QuantityButton(
-                //     isIncrement: false,
-                //     quantity: quantity1,
-                //     stock: 10,
-                //     minimumOrderQuantity: 1,
-                //     digitalProduct: true),
-                IconButton.filledTonal(
-                  onPressed: () {
-                    setState(() {
-                      if (quantity >= 0) {
-                        quantity -= 1;
-                      }
-                    });
-                  },
-                  icon: const Text('-'),
-                ),
-                const SizedBox(width: 8),
-                Text('$quantity', style: titilliumSemiBold),
-                const SizedBox(
-                  width: 8,
-                ),
-                IconButton.filledTonal(
-                  onPressed: () {
-                    setState(() {
-                      quantity += 1;
-                    });
-                  },
-                  icon: const Text('+'),
-                ),
-                // QuantityButton(
-                //     isIncrement: true,
-                //     quantity: quantity1,
-                //     stock: 10,
-                //     minimumOrderQuantity: 1,
-                //     digitalProduct: true),
-              ]),
-              const SizedBox(height: Dimensions.paddingSizeSmall),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                const Text('Total Price', style: robotoBold),
-                const SizedBox(width: Dimensions.paddingSizeSmall),
-                Text(
-                  (widget.product.priceDouble * quantity)
-                      .toString()
-                      .formatPrice(),
-                  style: titilliumBold.copyWith(
-                    color: ColorResources.getPrimary(context),
-                    fontSize: Dimensions.fontSizeLarge,
+                  const SizedBox(width: 8),
+                  Text('$quantity', style: titilliumSemiBold),
+                  const SizedBox(
+                    width: 8,
                   ),
-                ),
-              ]),
-              const SizedBox(height: Dimensions.paddingSizeSmall),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomButton(
+                  IconButton.filledTonal(
+                    onPressed: () {
+                      setState(() {
+                        quantity += 1;
+                      });
+                    },
+                    icon: const Text('+'),
+                  ),
+                ]),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  const Text('Total Price', style: robotoBold),
+                  const SizedBox(width: Dimensions.paddingSizeSmall),
+                  Text(
+                    (widget.product.priceDouble * quantity)
+                        .toString()
+                        .formatPrice(),
+                    style: titilliumBold.copyWith(
+                      color: ColorResources.getPrimary(context),
+                      fontSize: Dimensions.fontSizeLarge,
+                    ),
+                  ),
+                ]),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomButton(
                         buttonText: 'Add to Cart',
                         onTap: () {
                           context.read<CartBloc>().add(
                               CartEvent.addToCart(widget.product, quantity));
-                          Navigator.pop(context);
-                        }),
-                  ),
-                  const SizedBox(width: Dimensions.paddingSizeDefault),
-                  Expanded(
-                    child: CustomButton(
-                      isBuy: true,
-                      buttonText: 'Buy Now',
-                      onTap: () {},
+                        },
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    const SizedBox(width: Dimensions.paddingSizeDefault),
+                    Expanded(
+                      child: CustomButton(
+                        isBuy: true,
+                        buttonText: 'Buy Now',
+                        onTap: () {
+                          context
+                              .read<CartBloc>()
+                              .add(CartEvent.buyNow(widget.product, quantity));
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
-
-  void _navigateToNextScreen(BuildContext context) {}
 }
 
 class QuantityButton extends StatelessWidget {

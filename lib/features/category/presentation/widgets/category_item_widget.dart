@@ -27,42 +27,36 @@ class CategoryItemWiget extends StatelessWidget {
           },
         );
       },
-      child: Column(children: [
-        Container(
-          height: MediaQuery.of(context).size.width / 5,
-          width: MediaQuery.of(context).size.width / 5,
-          decoration: BoxDecoration(
-            border: Border.all(
-                color: Theme.of(context).primaryColor.withOpacity(.2)),
-            borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall),
-            color: Theme.of(context).highlightColor,
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall),
-            child: FadeInImage.assetNetwork(
-              fit: BoxFit.cover,
-              placeholder: MyAssets.images.placeholder1x1.path,
-              image: 'https://picsum.photos/20${category.id}',
-              imageErrorBuilder: (c, o, s) => Image.asset(
-                MyAssets.images.placeholder1x1.path,
+      child: Column(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.width / 5,
+            width: MediaQuery.of(context).size.width / 5,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(Dimensions.paddingSizeSmall),
+              child: FadeInImage.assetNetwork(
                 fit: BoxFit.cover,
+                placeholder: MyAssets.images.placeholder1x1.path,
+                image: 'https://picsum.photos/20${category.id}',
+                imageErrorBuilder: (c, o, s) => Image.asset(
+                  MyAssets.images.placeholder1x1.path,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-        ),
-        const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-        Center(
-          child: Text(
+          Text(
             category.name,
             textAlign: TextAlign.center,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: titilliumRegular.copyWith(
-                fontSize: Dimensions.fontSizeSmall,
-                color: ColorResources.getTextTitle(context)),
+              fontSize: Dimensions.fontSizeSmall,
+              color: ColorResources.getTextTitle(context),
+            ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }

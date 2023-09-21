@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../common/utils/custom_themes.dart';
 import '../../../common/utils/dimensions.dart';
+import '../../../common/utils/show_custom_snakbar.dart';
 import '../../cart/presentation/widgets/bottom_cart_view.dart';
 import 'bloc/product_bloc.dart';
 import 'widgets/product_image_view.dart';
@@ -22,9 +23,13 @@ class ProductDetail extends StatefulWidget {
 class _ProductDetailState extends State<ProductDetail> {
   @override
   Widget build(BuildContext context) {
-    return PopScope(
-      onPopInvoked: (canPop) async {
-        Navigator.of(context).pop();
+    return WillPopScope(
+      onWillPop: () async {
+        if (context.canPop()) {
+          context.pop();
+        }
+        showCustomSnackBar('End of stack', context);
+        return true;
       },
       child: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
@@ -59,14 +64,17 @@ class _ProductDetailState extends State<ProductDetail> {
                   backgroundColor: Theme.of(context).primaryColor,
                 ),
                 body: RefreshIndicator(
-                  onRefresh: () async {},
+                  onRefresh: () async {
+                    context
+                        .read<ProductBloc>()
+                        .add(ProductEvent.getProduct(widget.id));
+                  },
                   child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
                       child: Column(
                         children: [
                           ProductImageView(
-                            image: product.image_url ?? '',
-                          ),
+                              image: 'https://picsum.photos/10${product.id}'),
                           Container(
                             transform:
                                 Matrix4.translationValues(0.0, -25.0, 0.0),
@@ -83,9 +91,7 @@ class _ProductDetailState extends State<ProductDetail> {
                             ),
                             child: Column(
                               children: [
-                                ProductTitleView(
-                                  product: product,
-                                ),
+                                ProductTitleView(product: product),
                                 Container(
                                   height: 250,
                                   margin: const EdgeInsets.only(

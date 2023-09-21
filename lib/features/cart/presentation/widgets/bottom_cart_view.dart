@@ -58,7 +58,7 @@ class _BottomCartViewState extends State<BottomCartView> {
               padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
               child: Stack(children: [
                 GestureDetector(
-                  onTap: () => context.go(AppRouter.cart),
+                  onTap: () => context.push(AppRouter.cart),
                   child: Image.asset(
                     MyAssets.images.cartArrowDown.path,
                     color: ColorResources.getPrimary(context),
@@ -77,8 +77,8 @@ class _BottomCartViewState extends State<BottomCartView> {
                     ),
                     child: BlocBuilder<CartBloc, CartState>(
                       builder: (context, state) {
-                        return state.map(
-                          loading: (value) {
+                        return state.maybeMap(
+                          orElse: () {
                             return const CircularProgressIndicator.adaptive();
                           },
                           loaded: (data) {

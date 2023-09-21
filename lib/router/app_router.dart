@@ -42,12 +42,11 @@ class AppRouter {
   static const more = '/more';
 
   static const products = '/products';
-
   static const cart = '/cart';
   static const checkout = 'checkout';
   static const payment = 'payment';
-  static const paymentSuccess = 'payment/success';
-  static const paymentFailed = 'payment/failed';
+  static const paymentSuccess = 'payment-success';
+  static const paymentFailed = 'payment-failed';
 }
 
 final GoRouter appRouter = GoRouter(
@@ -55,24 +54,31 @@ final GoRouter appRouter = GoRouter(
   initialLocation: AppRouter.splash,
   debugLogDiagnostics: kDebugMode,
   routes: [
+    //* Splash
     GoRoute(
       path: AppRouter.splash,
       builder: (context, state) => const SplashPage(),
     ),
+    //* Shell Auth
     ShellRoute(
       navigatorKey: _authNavigatorKey,
-      builder: (context, state, child) => AuthPage(child: child),
+      builder: (context, state, child) {
+        return AuthPage(child: child);
+      },
       routes: [
+        //* Login
         GoRoute(
           path: AppRouter.login,
           builder: (context, state) => const LoginForm(),
         ),
+        //* Register
         GoRoute(
           path: AppRouter.register,
           builder: (context, state) => const RegisterForm(),
         ),
       ],
     ),
+    //* Root
     GoRoute(
       path: AppRouter.root,
       redirect: (context, state) {
@@ -84,10 +90,12 @@ final GoRouter appRouter = GoRouter(
         return null;
       },
     ),
+    //* Shell Dashboard
     ShellRoute(
       navigatorKey: _dashboardNavigatorKey,
       builder: (context, state, child) => DashboardPage(child: child),
       routes: [
+        //* Home
         GoRoute(
           path: AppRouter.home,
           builder: (context, state) {
@@ -102,16 +110,19 @@ final GoRouter appRouter = GoRouter(
             return const HomePage();
           },
         ),
+        //* Order
         GoRoute(
           path: AppRouter.order,
           builder: (context, state) => const OrderPage(),
         ),
+        //* More
         GoRoute(
           path: AppRouter.more,
           builder: (context, state) => const MorePage(),
         ),
       ],
-    ),
+    ), //ShellRoute
+    //* Products
     GoRoute(
       path: AppRouter.products,
       name: AppRouter.products,
@@ -131,6 +142,7 @@ final GoRouter appRouter = GoRouter(
         );
       },
     ),
+    //* Products/:id
     GoRoute(
       path: '${AppRouter.products}/:id',
       builder: (context, state) {
@@ -142,15 +154,18 @@ final GoRouter appRouter = GoRouter(
         return ProductDetail(id: id);
       },
     ),
+    //* Cart
     GoRoute(
       path: AppRouter.cart,
       builder: (context, state) => const CartPage(),
       routes: [
+        //* Cart/Checkout
         GoRoute(
           name: AppRouter.checkout,
           path: AppRouter.checkout,
           builder: (context, state) => const CheckoutPage(),
           routes: [
+            //* Cart/Checkout/Payment
             GoRoute(
               name: AppRouter.payment,
               path: AppRouter.payment,
@@ -165,11 +180,13 @@ final GoRouter appRouter = GoRouter(
                 return PaymentPage(payment_url: payment_url);
               },
             ),
+            //* Cart/Checkout/Payment-Success
             GoRoute(
               name: AppRouter.paymentSuccess,
               path: AppRouter.paymentSuccess,
               builder: (context, state) => const PaymentSuccessPage(),
             ),
+            //* Cart/Checkout/Payment-Failed
             GoRoute(
               name: AppRouter.paymentFailed,
               path: AppRouter.paymentFailed,
