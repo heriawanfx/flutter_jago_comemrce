@@ -58,7 +58,7 @@ class _BottomCartViewState extends State<BottomCartView> {
               padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
               child: Stack(children: [
                 GestureDetector(
-                  onTap: () => context.push(AppRouter.cart),
+                  onTap: () => context.goNamed(AppRouter.cart),
                   child: Image.asset(
                     MyAssets.images.cartArrowDown.path,
                     color: ColorResources.getPrimary(context),

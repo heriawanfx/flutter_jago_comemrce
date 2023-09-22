@@ -52,9 +52,11 @@ class _RegisterFormState extends State<RegisterForm> {
           },
           loggedIn: (value) {
             //Dismiss Progress Dialog
-            Navigator.of(context).pop();
+            if (Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            }
 
-            context.go(AppRouter.home);
+            context.goNamed(AppRouter.dashboard);
           },
           error: (message) {
             //Dismiss Progress Dialog

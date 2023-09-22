@@ -1,16 +1,24 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
 import '../../../common/utils/custom_themes.dart';
 import '../../../common/utils/dimensions.dart';
+import '../../../common/utils/show_custom_snakbar.dart';
 import '../../../common/widgets/progress_dialog.dart';
 import '../../../router/app_router.dart';
 import '../../auth/presentation/bloc/auth_bloc.dart';
-import 'package:go_router/go_router.dart';
+import '../../category/presentation/bloc/category_bloc.dart';
+import '../../home/presentation/home_page.dart';
+import '../../product/presentation/bloc/product_bloc.dart';
+import 'pages/more_page.dart';
+import 'pages/order_page.dart';
 
 class DashboardPage extends StatelessWidget {
-  DashboardPage({super.key, required this.child});
+  final String tab;
 
-  final Widget child;
+  DashboardPage({super.key, required this.tab});
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +37,19 @@ class DashboardPage extends StatelessWidget {
           },
           loggedOut: () {
             //Dismiss Progress Dialog
-            Navigator.of(context).pop();
+            if (Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            }
 
-            context.go(AppRouter.login);
+            context.goNamed(AppRouter.login);
           },
           error: (message) {
             //Dismiss Progress Dialog
-            Navigator.of(context).pop();
+            if (Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            }
 
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                SnackBar(
-                  content: Text(message),
-                  backgroundColor: Colors.red,
-                ),
-              );
+            showCustomSnackBar(message, context);
           },
         );
       },
@@ -56,55 +61,74 @@ class DashboardPage extends StatelessWidget {
             children: [
               const Text('Jago Commerce'),
               Text(
-                'Path: ${GoRouterState.of(context).fullPath}',
+                'Path: ${GoRouterState.of(context).uri.toString()}',
                 style: titilliumRegular.copyWith(
                     fontSize: Dimensions.fontSizeSmall),
               )
             ],
           ),
         ),
-        body: child,
+        body: _dashboardMenus[_activeIndex(context)].page,
         bottomNavigationBar: NavigationBar(
           selectedIndex: _activeIndex(context),
-          destinations: _tabItemMap.entries.map((e) {
-            var key = e.key;
-            var icons = e.value;
-
-            var labelName = key.replaceFirst('/', '');
-            labelName = labelName.replaceFirst(labelName.substring(0, 1),
-                labelName.substring(0, 1).toUpperCase());
+          destinations: _dashboardMenus.map((e) {
+            final labelName = e.path.toUpperCase();
 
             return NavigationDestination(
               label: labelName,
-              icon: Icon(icons[0]),
-              selectedIcon: Icon(icons[1]),
+              icon: Icon(e.icon),
+              selectedIcon: Icon(e.selectedIcon),
             );
           }).toList(),
           onDestinationSelected: (index) {
-            var key = _tabItemMap.keys.indexed
-                .firstWhere((element) => element.$1 == index)
-                .$2;
-            context.go(key);
+            _selectTab(context, index);
           },
         ),
       ),
     );
   }
 
-  final Map<String, List<IconData>> _tabItemMap = {
-    AppRouter.home: [Icons.home_outlined, Icons.home],
-    AppRouter.order: [Icons.shopping_cart_outlined, Icons.shopping_cart],
-    AppRouter.more: [Icons.more_outlined, Icons.more]
-  };
+  final List<DashboardMenu> _dashboardMenus = [
+    DashboardMenu(
+      path: AppRouter.home,
+      page: const HomePage(),
+      icon: Icons.home_outlined,
+      selectedIcon: Icons.home,
+    ),
+    DashboardMenu(
+      path: AppRouter.order,
+      page: const OrderPage(),
+      icon: Icons.shopping_cart_outlined,
+      selectedIcon: Icons.shopping_cart,
+    ),
+    DashboardMenu(
+      path: AppRouter.more,
+      page: const MorePage(),
+      icon: Icons.more_outlined,
+      selectedIcon: Icons.more,
+    ),
+  ];
 
   int _activeIndex(BuildContext context) {
-    final uriRoute = GoRouterState.of(context).uri.toString();
-
-    for (var (i, key) in _tabItemMap.keys.indexed) {
-      if (uriRoute.startsWith(key)) {
-        return i;
-      }
-    }
-    return 0;
+    return _dashboardMenus.indexWhere((element) => element.path == tab);
   }
+
+  void _selectTab(BuildContext context, int index) {
+    final selectedTab = _dashboardMenus[index].path;
+    context.goNamed(AppRouter.dashboard, queryParameters: {'tab': selectedTab});
+  }
+}
+
+class DashboardMenu {
+  String path;
+  Widget page;
+  IconData icon;
+  IconData selectedIcon;
+
+  DashboardMenu({
+    required this.path,
+    required this.page,
+    required this.icon,
+    required this.selectedIcon,
+  });
 }

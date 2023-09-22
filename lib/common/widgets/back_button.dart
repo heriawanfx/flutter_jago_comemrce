@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BackButton extends StatelessWidget {
   final Color color;
@@ -9,7 +10,9 @@ class BackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        Navigator.of(context).pop();
+        if (context.canPop()) {
+          context.pop();
+        }
       },
       icon: Icon(Icons.arrow_back_ios, color: color, size: 16),
     );

@@ -30,10 +30,10 @@ class _PaymentPageState extends State<PaymentPage> {
           },
           onPageStarted: (String url) {
             if (url.contains('status_code=202&transaction_status=deny')) {
-              context.pushNamed(AppRouter.paymentFailed);
+              context.goNamed(AppRouter.paymentFailed);
             }
             if (url.contains('status_code=200&transaction_status=settlement')) {
-              context.pushNamed(AppRouter.paymentSuccess);
+              context.goNamed(AppRouter.paymentSuccess);
             }
           },
           onPageFinished: (String url) {},

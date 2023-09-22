@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                         (state.whenOrNull(loaded: (data) => data.length) ?? 0),
                     offset: const Offset(-4, -4),
                     child: IconButton(
-                      onPressed: () => context.go(AppRouter.cart),
+                      onPressed: () => context.goNamed(AppRouter.cart),
                       icon: const Icon(Icons.shopping_cart_outlined),
                     ),
                   );
@@ -54,8 +54,9 @@ class HomePage extends StatelessWidget {
                 onTap: () {},
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: Dimensions.homePagePadding,
-                      vertical: Dimensions.paddingSizeSmall),
+                    horizontal: Dimensions.homePagePadding,
+                    vertical: Dimensions.paddingSizeSmall,
+                  ),
                   color: ColorResources.getHomeBg(context),
                   alignment: Alignment.center,
                   child: Container(
@@ -76,22 +77,27 @@ class HomePage extends StatelessWidget {
                             blurRadius: 1)
                       ],
                       borderRadius: BorderRadius.circular(
-                          Dimensions.paddingSizeExtraSmall),
+                        Dimensions.paddingSizeExtraSmall,
+                      ),
                     ),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Search',
-                              style: robotoRegular.copyWith(
-                                  color: Theme.of(context).hintColor)),
+                          Text(
+                            'Search',
+                            style: robotoRegular.copyWith(
+                                color: Theme.of(context).hintColor),
+                          ),
                           Container(
                             width: 40,
                             height: 40,
                             decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColor,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(
-                                        Dimensions.paddingSizeExtraSmall))),
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(
+                                    Dimensions.paddingSizeExtraSmall),
+                              ),
+                            ),
                             child: Icon(Icons.search,
                                 color: Theme.of(context).cardColor,
                                 size: Dimensions.iconSizeSmall),
@@ -113,8 +119,9 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: Dimensions.homePagePadding),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: Dimensions.paddingSizeExtraExtraSmall,
-                        vertical: Dimensions.paddingSizeExtraSmall),
+                      horizontal: Dimensions.paddingSizeExtraExtraSmall,
+                      vertical: Dimensions.paddingSizeExtraSmall,
+                    ),
                     child: TitleRow(
                       title: 'Categories',
                       onTap: () {},
@@ -128,8 +135,9 @@ class HomePage extends StatelessWidget {
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.paddingSizeExtraSmall,
-                        vertical: Dimensions.paddingSizeExtraSmall),
+                      horizontal: Dimensions.paddingSizeExtraSmall,
+                      vertical: Dimensions.paddingSizeExtraSmall,
+                    ),
                     child: Row(children: [
                       Expanded(child: Text('Products', style: titleHeader)),
                     ]),

@@ -25,10 +25,10 @@ class SplashPage extends StatelessWidget {
           },
           loggedIn: (value) {
             if (value != null) {
-              context.go(AppRouter.home);
+              context.goNamed(AppRouter.dashboard);
             } else {
               Future.delayed(const Duration(seconds: 3), () {
-                context.go(AppRouter.login);
+                context.goNamed(AppRouter.login);
               });
             }
           },

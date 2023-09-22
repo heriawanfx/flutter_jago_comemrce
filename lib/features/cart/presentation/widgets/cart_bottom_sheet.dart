@@ -49,11 +49,10 @@ class CartBottomSheetState extends State<CartBottomSheet> {
             },
             loaded: (data) {
               Navigator.pop(context);
-              Navigator.pop(context);
             },
             buyNow: () {
               Navigator.pop(context);
-              //context.pushNamed(AppRouter.checkout);
+              //context.goNamed(AppRouter.checkout);
             });
       },
       child: Column(
@@ -74,7 +73,7 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                 Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
-                      onTap: () => Navigator.pop(context),
+                      onTap: () => context.pop(),
                       child: Container(
                         width: 25,
                         height: 25,
@@ -88,8 +87,10 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                                 blurRadius: 5,
                               )
                             ]),
-                        child: const Icon(Icons.clear,
-                            size: Dimensions.iconSizeSmall),
+                        child: const Icon(
+                          Icons.clear,
+                          size: Dimensions.iconSizeSmall,
+                        ),
                       ),
                     )),
                 Column(
@@ -119,7 +120,8 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                                 image: widget.product.image_url ?? '',
                                 imageErrorBuilder: (c, o, s) {
                                   return Image.asset(
-                                      MyAssets.images.placeholder1x1.path);
+                                    MyAssets.images.placeholder1x1.path,
+                                  );
                                 },
                               ),
                             ),
@@ -131,11 +133,13 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                                 children: [
                                   Text(widget.product.name,
                                       style: titilliumRegular.copyWith(
-                                          fontSize: Dimensions.fontSizeLarge),
+                                        fontSize: Dimensions.fontSizeLarge,
+                                      ),
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis),
                                   const SizedBox(
-                                      height: Dimensions.paddingSizeSmall),
+                                    height: Dimensions.paddingSizeSmall,
+                                  ),
                                   Row(
                                     children: [
                                       const Icon(Icons.star,
@@ -159,8 +163,9 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                         Text(
                           widget.product.price.formatPrice(),
                           style: titilliumRegular.copyWith(
-                              color: ColorResources.getPrimary(context),
-                              fontSize: Dimensions.fontSizeExtraLarge),
+                            color: ColorResources.getPrimary(context),
+                            fontSize: Dimensions.fontSizeExtraLarge,
+                          ),
                         ),
                       ],
                     ),
@@ -196,19 +201,22 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                   ),
                 ]),
                 const SizedBox(height: Dimensions.paddingSizeSmall),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text('Total Price', style: robotoBold),
-                  const SizedBox(width: Dimensions.paddingSizeSmall),
-                  Text(
-                    (widget.product.priceDouble * quantity)
-                        .toString()
-                        .formatPrice(),
-                    style: titilliumBold.copyWith(
-                      color: ColorResources.getPrimary(context),
-                      fontSize: Dimensions.fontSizeLarge,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Total Price', style: robotoBold),
+                    const SizedBox(width: Dimensions.paddingSizeSmall),
+                    Text(
+                      (widget.product.priceDouble * quantity)
+                          .toString()
+                          .formatPrice(),
+                      style: titilliumBold.copyWith(
+                        color: ColorResources.getPrimary(context),
+                        fontSize: Dimensions.fontSizeLarge,
+                      ),
                     ),
-                  ),
-                ]),
+                  ],
+                ),
                 const SizedBox(height: Dimensions.paddingSizeSmall),
                 Row(
                   children: [

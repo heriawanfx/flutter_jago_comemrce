@@ -19,7 +19,7 @@ class CartItemWidget extends StatelessWidget {
     return InkWell(
       onTap: () {
         var id = cartProduct.product.id.toString();
-        context.push('${AppRouter.products}/$id');
+        context.goNamed(AppRouter.product, pathParameters: {'id': id});
       },
       child: Container(
         margin: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),

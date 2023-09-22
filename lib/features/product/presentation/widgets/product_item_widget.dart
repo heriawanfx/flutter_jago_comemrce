@@ -23,7 +23,7 @@ class ProductItemWidget extends StatelessWidget {
     return InkWell(
       onTap: () {
         var id = product.id.toString();
-        context.go('${AppRouter.products}/$id');
+        context.goNamed(AppRouter.product, pathParameters: {'id': id});
       },
       child: Container(
         height: Dimensions.cardHeight,

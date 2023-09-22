@@ -25,10 +25,9 @@ class _ProductDetailState extends State<ProductDetail> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        if (context.canPop()) {
-          context.pop();
+        if (Navigator.of(context).canPop()) {
+          Navigator.of(context).pop();
         }
-        showCustomSnackBar('End of stack', context);
         return true;
       },
       child: BlocBuilder<ProductBloc, ProductState>(

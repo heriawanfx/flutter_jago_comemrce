@@ -98,7 +98,7 @@ class CartPage extends StatelessWidget {
                             )
                           : InkWell(
                               onTap: () {
-                                context.pushNamed(AppRouter.checkout);
+                                context.goNamed(AppRouter.checkout);
                               },
                               child: Container(
                                 width: MediaQuery.of(context).size.width / 3.5,

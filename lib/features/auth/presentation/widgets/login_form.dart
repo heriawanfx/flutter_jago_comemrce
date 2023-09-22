@@ -49,9 +49,11 @@ class _LoginFormState extends State<LoginForm> {
           },
           loggedIn: (value) {
             //Dismiss Progress Dialog
-            Navigator.of(context).pop();
+            if (Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            }
 
-            context.go(AppRouter.home);
+            context.goNamed(AppRouter.dashboard);
           },
           error: (message) {
             //Dismiss Progress Dialog
@@ -118,7 +120,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
               const SizedBox(height: Dimensions.paddingSizeExtraExtraSmall),
               TextButton(
-                onPressed: () => context.go(AppRouter.home),
+                onPressed: () => context.goNamed(AppRouter.dashboard),
                 child: const Text('Continue as Guest'),
               ),
             ],

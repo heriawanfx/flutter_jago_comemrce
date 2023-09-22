@@ -220,7 +220,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             },
             loaded: (model) {
               final queryMap = {'payment_url': model.payment_url};
-              context.pushNamed(AppRouter.payment, queryParameters: queryMap);
+              context.goNamed(AppRouter.payment, queryParameters: queryMap);
             },
           );
         },
