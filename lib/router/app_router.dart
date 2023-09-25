@@ -7,6 +7,7 @@ import '../features/auth/presentation/auth_page.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/widgets/login_form.dart';
 import '../features/auth/presentation/widgets/register_form.dart';
+import '../features/banner/presentation/bloc/banner_bloc.dart';
 import '../features/cart/cart_page.dart';
 import '../features/category/presentation/bloc/category_bloc.dart';
 import '../features/checkout/presentation/checkout_page.dart';
@@ -103,6 +104,10 @@ final GoRouter appRouter = GoRouter(
             break;
           case AppRouter.home:
           default:
+
+            //Fetch Banners
+            context.read<BannerBloc>().add(const BannerEvent.getBanners());
+
             //Fetch Categories
             context
                 .read<CategoryBloc>()
@@ -110,6 +115,7 @@ final GoRouter appRouter = GoRouter(
 
             //Fetch Products
             context.read<ProductBloc>().add(const ProductEvent.getProducts());
+
             break;
         }
 

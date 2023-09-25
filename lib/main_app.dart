@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'common/utils/light_themes.dart';
 import 'di/injector.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/banner/presentation/bloc/banner_bloc.dart';
 import 'features/cart/presentation/bloc/cart_bloc.dart';
 import 'features/category/presentation/bloc/category_bloc.dart';
 import 'features/order/presentation/bloc/order_bloc.dart';
@@ -31,6 +32,9 @@ class MainApp extends StatelessWidget {
         ),
         BlocProvider<CartBloc>(
           create: (context) => CartBloc(),
+        ),
+        BlocProvider<BannerBloc>(
+          create: (context) => BannerBloc(bannerRepository: getInstance()),
         ),
       ],
       child: MaterialApp.router(
