@@ -7,6 +7,8 @@ import '../core/auth/domain/repositories/auth_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../features/banner/data/datasources/banner_remote_datasource.dart';
+import '../features/banner/domain/repositories/banner_repository.dart';
 import '../features/category/data/datasources/category_remote_datasource.dart';
 import '../features/category/domain/repositories/category_repository.dart';
 import '../features/order/data/datasources/order_remote_datasource.dart';
@@ -22,6 +24,7 @@ class Injector {
     _initFeatureCategory();
     _initFeatureProduct();
     _initFeatureOrder();
+    _initFeatureBanner();
   }
 
   Future<void> _initCore() async {
@@ -90,6 +93,18 @@ class Injector {
     getInstance.registerLazySingleton<OrderRepository>(() {
       return OrderRepository(
         orderRemoteDatasource: getInstance(),
+      );
+    });
+  }
+
+  void _initFeatureBanner() {
+    getInstance.registerLazySingleton<BannerRemoteDatasource>(() {
+      return BannerRemoteDatasource(dio: getInstance());
+    });
+
+    getInstance.registerLazySingleton<BannerRepository>(() {
+      return BannerRepository(
+        bannerRemoteDatasource: getInstance(),
       );
     });
   }

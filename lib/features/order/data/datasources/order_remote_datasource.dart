@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 
-import '../../../../core/exceptions/api_exception.dart';
 import '../../../../core/remote/dio_handler.dart';
 import '../../../../core/remote/models/api_response.dart';
 import '../models/order_response_model.dart';

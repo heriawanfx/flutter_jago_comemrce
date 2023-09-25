@@ -8,11 +8,11 @@ import '../../../common/utils/custom_themes.dart';
 import '../../../common/utils/dimensions.dart';
 import '../../../common/widgets/title_row.dart';
 import '../../../router/app_router.dart';
+import '../../banner/presentation/widgets/banner_widget.dart';
 import '../../cart/presentation/bloc/cart_bloc.dart';
 import '../../category/presentation/widgets/category_widget.dart';
 import '../../product/presentation/bloc/product_bloc.dart';
 import '../../product/presentation/widgets/product_item_widget.dart';
-import 'widgets/banner_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -37,7 +37,6 @@ class HomePage extends StatelessWidget {
                   return Badge.count(
                     count:
                         (state.whenOrNull(loaded: (data) => data.length) ?? 0),
-                    offset: const Offset(-4, -4),
                     child: IconButton(
                       onPressed: () => context.goNamed(AppRouter.cart),
                       icon: const Icon(Icons.shopping_cart_outlined),

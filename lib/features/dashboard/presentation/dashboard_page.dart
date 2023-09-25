@@ -9,9 +9,7 @@ import '../../../common/utils/show_custom_snakbar.dart';
 import '../../../common/widgets/progress_dialog.dart';
 import '../../../router/app_router.dart';
 import '../../auth/presentation/bloc/auth_bloc.dart';
-import '../../category/presentation/bloc/category_bloc.dart';
 import '../../home/presentation/home_page.dart';
-import '../../product/presentation/bloc/product_bloc.dart';
 import 'pages/more_page.dart';
 import 'pages/order_page.dart';
 
