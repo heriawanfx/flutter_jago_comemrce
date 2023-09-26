@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../common/utils/custom_themes.dart';
 import '../../../common/utils/dimensions.dart';
-import '../../../common/utils/show_custom_snakbar.dart';
 import '../../cart/presentation/widgets/bottom_cart_view.dart';
 import 'bloc/product_bloc.dart';
 import 'widgets/product_image_view.dart';

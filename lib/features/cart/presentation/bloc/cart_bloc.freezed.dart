@@ -675,7 +675,6 @@ mixin _$CartState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
     required TResult Function() buyNow,
   }) =>
       throw _privateConstructorUsedError;
@@ -683,7 +682,6 @@ mixin _$CartState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
     TResult? Function()? buyNow,
   }) =>
       throw _privateConstructorUsedError;
@@ -691,7 +689,6 @@ mixin _$CartState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
     TResult Function()? buyNow,
     required TResult orElse(),
   }) =>
@@ -700,7 +697,6 @@ mixin _$CartState {
   TResult map<TResult extends Object?>({
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
     required TResult Function(_StateBuyNow value) buyNow,
   }) =>
       throw _privateConstructorUsedError;
@@ -708,7 +704,6 @@ mixin _$CartState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
     TResult? Function(_StateBuyNow value)? buyNow,
   }) =>
       throw _privateConstructorUsedError;
@@ -716,7 +711,6 @@ mixin _$CartState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
     TResult Function(_StateBuyNow value)? buyNow,
     required TResult orElse(),
   }) =>
@@ -780,7 +774,6 @@ class _$_StateLoading implements _StateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
     required TResult Function() buyNow,
   }) {
     return loading();
@@ -791,7 +784,6 @@ class _$_StateLoading implements _StateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
     TResult? Function()? buyNow,
   }) {
     return loading?.call();
@@ -802,7 +794,6 @@ class _$_StateLoading implements _StateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
     TResult Function()? buyNow,
     required TResult orElse(),
   }) {
@@ -817,7 +808,6 @@ class _$_StateLoading implements _StateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
     required TResult Function(_StateBuyNow value) buyNow,
   }) {
     return loading(this);
@@ -828,7 +818,6 @@ class _$_StateLoading implements _StateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
     TResult? Function(_StateBuyNow value)? buyNow,
   }) {
     return loading?.call(this);
@@ -839,7 +828,6 @@ class _$_StateLoading implements _StateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
     TResult Function(_StateBuyNow value)? buyNow,
     required TResult orElse(),
   }) {
@@ -928,7 +916,6 @@ class _$_StateLoaded implements _StateLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
     required TResult Function() buyNow,
   }) {
     return loaded(cartProducts);
@@ -939,7 +926,6 @@ class _$_StateLoaded implements _StateLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
     TResult? Function()? buyNow,
   }) {
     return loaded?.call(cartProducts);
@@ -950,7 +936,6 @@ class _$_StateLoaded implements _StateLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
     TResult Function()? buyNow,
     required TResult orElse(),
   }) {
@@ -965,7 +950,6 @@ class _$_StateLoaded implements _StateLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
     required TResult Function(_StateBuyNow value) buyNow,
   }) {
     return loaded(this);
@@ -976,7 +960,6 @@ class _$_StateLoaded implements _StateLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
     TResult? Function(_StateBuyNow value)? buyNow,
   }) {
     return loaded?.call(this);
@@ -987,7 +970,6 @@ class _$_StateLoaded implements _StateLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
     TResult Function(_StateBuyNow value)? buyNow,
     required TResult orElse(),
   }) {
@@ -1006,120 +988,6 @@ abstract class _StateLoaded implements CartState {
   @JsonKey(ignore: true)
   _$$_StateLoadedCopyWith<_$_StateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_StateCartAddedCopyWith<$Res> {
-  factory _$$_StateCartAddedCopyWith(
-          _$_StateCartAdded value, $Res Function(_$_StateCartAdded) then) =
-      __$$_StateCartAddedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StateCartAddedCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$_StateCartAdded>
-    implements _$$_StateCartAddedCopyWith<$Res> {
-  __$$_StateCartAddedCopyWithImpl(
-      _$_StateCartAdded _value, $Res Function(_$_StateCartAdded) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_StateCartAdded implements _StateCartAdded {
-  const _$_StateCartAdded();
-
-  @override
-  String toString() {
-    return 'CartState.cartAdded()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StateCartAdded);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
-    required TResult Function() buyNow,
-  }) {
-    return cartAdded();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
-    TResult? Function()? buyNow,
-  }) {
-    return cartAdded?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
-    TResult Function()? buyNow,
-    required TResult orElse(),
-  }) {
-    if (cartAdded != null) {
-      return cartAdded();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_StateLoading value) loading,
-    required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
-    required TResult Function(_StateBuyNow value) buyNow,
-  }) {
-    return cartAdded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateLoading value)? loading,
-    TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
-    TResult? Function(_StateBuyNow value)? buyNow,
-  }) {
-    return cartAdded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateLoading value)? loading,
-    TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
-    TResult Function(_StateBuyNow value)? buyNow,
-    required TResult orElse(),
-  }) {
-    if (cartAdded != null) {
-      return cartAdded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _StateCartAdded implements CartState {
-  const factory _StateCartAdded() = _$_StateCartAdded;
 }
 
 /// @nodoc
@@ -1162,7 +1030,6 @@ class _$_StateBuyNow implements _StateBuyNow {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
     required TResult Function() buyNow,
   }) {
     return buyNow();
@@ -1173,7 +1040,6 @@ class _$_StateBuyNow implements _StateBuyNow {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
     TResult? Function()? buyNow,
   }) {
     return buyNow?.call();
@@ -1184,7 +1050,6 @@ class _$_StateBuyNow implements _StateBuyNow {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
     TResult Function()? buyNow,
     required TResult orElse(),
   }) {
@@ -1199,7 +1064,6 @@ class _$_StateBuyNow implements _StateBuyNow {
   TResult map<TResult extends Object?>({
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
     required TResult Function(_StateBuyNow value) buyNow,
   }) {
     return buyNow(this);
@@ -1210,7 +1074,6 @@ class _$_StateBuyNow implements _StateBuyNow {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
     TResult? Function(_StateBuyNow value)? buyNow,
   }) {
     return buyNow?.call(this);
@@ -1221,7 +1084,6 @@ class _$_StateBuyNow implements _StateBuyNow {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
     TResult Function(_StateBuyNow value)? buyNow,
     required TResult orElse(),
   }) {

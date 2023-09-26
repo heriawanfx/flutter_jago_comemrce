@@ -88,7 +88,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: products.length,
                     itemBuilder: (ctx, index) {
-                      final productQuantity = products[index];
+                      final cartProduct = products[index];
                       return Padding(
                         padding:
                             const EdgeInsets.all(Dimensions.paddingSizeDefault),
@@ -113,7 +113,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                   fit: BoxFit.cover,
                                   width: 50,
                                   height: 50,
-                                  image: productQuantity.product.image_url!,
+                                  image:
+                                      'https://picsum.photos/10${cartProduct.product.id}',
                                   imageErrorBuilder: (c, o, s) => Image.asset(
                                       MyAssets.images.placeholder1x1.path,
                                       fit: BoxFit.cover,
@@ -132,7 +133,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            productQuantity.product.name,
+                                            cartProduct.product.name,
                                             style: titilliumRegular.copyWith(
                                                 fontSize:
                                                     Dimensions.fontSizeDefault,
@@ -147,7 +148,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                           width: Dimensions.paddingSizeSmall,
                                         ),
                                         Text(
-                                          '${productQuantity.product.priceDouble * productQuantity.quantity}'
+                                          '${cartProduct.product.priceDouble * cartProduct.quantity}'
                                               .formatPrice(),
                                           style: titilliumSemiBold.copyWith(
                                               fontSize:
@@ -159,7 +160,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                                         height:
                                             Dimensions.marginSizeExtraSmall),
                                     Row(children: [
-                                      Text('Qty -  ${productQuantity.quantity}',
+                                      Text('Qty -  ${cartProduct.quantity}',
                                           style: titilliumRegular.copyWith()),
                                     ]),
                                   ]),

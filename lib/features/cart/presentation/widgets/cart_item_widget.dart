@@ -47,7 +47,7 @@ class CartItemWidget extends StatelessWidget {
                     placeholder: MyAssets.images.placeholder1x1.path,
                     height: 60,
                     width: 60,
-                    image: cartProduct.product.image_url ?? '',
+                    image: 'https://picsum.photos/10${cartProduct.product.id}',
                     imageErrorBuilder: (c, o, s) => Image.asset(
                       MyAssets.images.placeholder1x1.path,
                       fit: BoxFit.cover,

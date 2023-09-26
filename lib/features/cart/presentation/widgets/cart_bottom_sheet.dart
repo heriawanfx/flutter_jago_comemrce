@@ -117,7 +117,8 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                               child: FadeInImage.assetNetwork(
                                 placeholder:
                                     MyAssets.images.placeholder1x1.path,
-                                image: widget.product.image_url ?? '',
+                                image:
+                                    'https://picsum.photos/10${widget.product.id}',
                                 imageErrorBuilder: (c, o, s) {
                                   return Image.asset(
                                     MyAssets.images.placeholder1x1.path,
