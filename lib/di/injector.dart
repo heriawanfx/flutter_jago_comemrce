@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../core/remote/api_interceptor.dart';
+import '../core/remote/auth_interceptor.dart';
 import '../core/remote/dio_handler.dart';
 import '../core/auth/data/datasources/auth_local_datasource.dart';
 import '../core/auth/data/datasources/auth_remote_datasource.dart';
@@ -7,6 +7,7 @@ import '../core/auth/domain/repositories/auth_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../core/remote/pretty_log_interceptor.dart';
 import '../features/banner/data/datasources/banner_remote_datasource.dart';
 import '../features/banner/domain/repositories/banner_repository.dart';
 import '../features/category/data/datasources/category_remote_datasource.dart';
@@ -37,12 +38,19 @@ class Injector {
       return AuthLocalDataSource(preferences: getInstance());
     });
 
-    getInstance.registerLazySingleton<ApiInterceptor>(() {
-      return ApiInterceptor(authLocalDataSource: getInstance());
+    getInstance.registerLazySingleton<AuthInterceptor>(() {
+      return AuthInterceptor(authLocalDataSource: getInstance());
+    });
+
+    getInstance.registerLazySingleton<PrettyLogInterceptor>(() {
+      return PrettyLogInterceptor();
     });
 
     getInstance.registerLazySingleton<DioHandler>(() {
-      return DioHandler(apiInterceptor: getInstance());
+      return DioHandler(
+        authInterceptor: getInstance(),
+        prettyLogInterceptor: getInstance(),
+      );
     });
 
     getInstance.registerLazySingleton<Dio>(() {
