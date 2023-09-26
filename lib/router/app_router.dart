@@ -25,8 +25,6 @@ final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root_navigator');
 final GlobalKey<NavigatorState> _authNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'auth_navigator');
-final GlobalKey<NavigatorState> _dashboardNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'dashboard_navigator');
 
 class AppRouter {
   const AppRouter._();

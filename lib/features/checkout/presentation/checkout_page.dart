@@ -39,7 +39,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             orElse: () {
               return const CircularProgressIndicator();
             },
-            loaded: (products) {
+            loaded: (products, buyNow) {
               items = products
                   .map((e) =>
                       OrderItemModel(id: e.product.id, quantity: e.quantity))

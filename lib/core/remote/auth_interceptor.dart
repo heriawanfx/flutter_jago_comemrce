@@ -1,8 +1,4 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import '../../di/injector.dart';
 import '../auth/data/datasources/auth_local_datasource.dart';
 import '../auth/domain/repositories/auth_repository.dart';
@@ -45,7 +41,7 @@ class AuthInterceptor extends Interceptor {
       Dio dio = getInstance();
       AuthRepository authRepository = getInstance();
 
-      final isRelogin = await authRepository.reLogin();
+      await authRepository.reLogin();
 
       RequestOptions requestOptions = response.requestOptions;
 

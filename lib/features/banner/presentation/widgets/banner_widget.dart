@@ -31,7 +31,7 @@ class BannerWidget extends StatelessWidget {
                     ),
                   ));
             },
-            loaded: (data) {
+            loaded: (data, activeIndex) {
               return Stack(
                 fit: StackFit.expand,
                 children: [
@@ -67,15 +67,14 @@ class BannerWidget extends StatelessWidget {
                     right: 0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ...data.asMap().entries.map((e) {
-                          return const TabPageSelectorIndicator(
-                            backgroundColor: Colors.grey,
-                            borderColor: Colors.grey,
-                            size: 10,
-                          );
-                        }).toList()
-                      ],
+                      children: data.indexed.map((e) {
+                        return TabPageSelectorIndicator(
+                          backgroundColor:
+                              e.$1 == activeIndex ? Colors.blue : Colors.grey,
+                          borderColor: Colors.grey,
+                          size: 10,
+                        );
+                      }).toList(),
                     ),
                   )
                 ],

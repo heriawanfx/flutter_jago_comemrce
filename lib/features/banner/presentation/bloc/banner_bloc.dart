@@ -11,7 +11,7 @@ part 'banner_bloc.freezed.dart';
 class BannerBloc extends Bloc<BannerEvent, BannerState> {
   BannerRepository bannerRepository;
 
-  BannerBloc({required this.bannerRepository}) : super(const _StateInitial()) {
+  BannerBloc({required this.bannerRepository}) : super(const _StateLoaded([])) {
     on<_GetBanners>((event, emit) async {
       emit(const _StateLoading());
       final result = await bannerRepository.getBanners();
@@ -23,7 +23,8 @@ class BannerBloc extends Bloc<BannerEvent, BannerState> {
     });
     on<_SetBannerIndex>(
       (event, emit) {
-        emit(_StateIndexChanged(event.index));
+        final loadedState = state as _StateLoaded;
+        emit(_StateLoaded(loadedState.data, activeIndex: event.index));
       },
     );
   }
