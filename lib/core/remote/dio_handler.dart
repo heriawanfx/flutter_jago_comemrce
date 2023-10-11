@@ -3,13 +3,16 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import '../../common/constants/constant.dart';
 
-import 'api_interceptor.dart';
+import 'auth_interceptor.dart';
+import 'pretty_log_interceptor.dart';
 
 class DioHandler {
-  final ApiInterceptor apiInterceptor;
+  final AuthInterceptor authInterceptor;
+  final PrettyLogInterceptor prettyLogInterceptor;
 
   DioHandler({
-    required this.apiInterceptor,
+    required this.authInterceptor,
+    required this.prettyLogInterceptor,
   });
 
   Dio get dio => _getDio();
@@ -21,7 +24,8 @@ class DioHandler {
       validateStatus: (status) => true,
     );
     final dio = Dio(options);
-    dio.interceptors.add(apiInterceptor);
+    dio.interceptors.add(authInterceptor);
+    dio.interceptors.add(prettyLogInterceptor);
 
     return dio;
   }

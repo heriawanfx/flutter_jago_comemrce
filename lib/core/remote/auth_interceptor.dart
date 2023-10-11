@@ -7,10 +7,10 @@ import '../../di/injector.dart';
 import '../auth/data/datasources/auth_local_datasource.dart';
 import '../auth/domain/repositories/auth_repository.dart';
 
-class ApiInterceptor extends Interceptor {
+class AuthInterceptor extends Interceptor {
   final AuthLocalDataSource authLocalDataSource;
 
-  ApiInterceptor({required this.authLocalDataSource});
+  AuthInterceptor({required this.authLocalDataSource});
 
   Future<Map<String, dynamic>> _getTokenHeaderMap() async {
     Map<String, String> headers = {};
@@ -28,53 +28,17 @@ class ApiInterceptor extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    try {
-      if (!options.uri.path.contains('login') ||
-          !options.uri.path.contains('register')) {
-        options.headers.addAll(await _getTokenHeaderMap());
-      }
-
-      final requestBody =
-          const JsonEncoder.withIndent('  ').convert(options.data);
-      final queryParameters =
-          const JsonEncoder.withIndent('  ').convert(options.queryParameters);
-      if (kDebugMode) {
-        print(
-          'Request URL : ${options.uri}\n'
-          'Header: ${options.headers}\n'
-          'Request Body: $requestBody\n'
-          'Request Query Parameters: $queryParameters\n'
-          'Method: ${options.method}\n',
-        );
-      }
-      return handler.next(options);
-    } catch (e) {
-      final queryParameters =
-          const JsonEncoder.withIndent('  ').convert(options.queryParameters);
-      if (kDebugMode) {
-        print(
-          'Request URL : ${options.uri}\n'
-          'Header: ${options.headers}\n'
-          'Request Body: cannot read request body\n'
-          'Request Query Parameters: $queryParameters\n'
-          'Method: ${options.method}\n',
-        );
-      }
-      return handler.next(options);
+    if (!options.uri.path.contains('login') ||
+        !options.uri.path.contains('register')) {
+      options.headers.addAll(await _getTokenHeaderMap());
     }
+
+    return handler.next(options);
   }
 
   @override
   void onResponse(
       Response<dynamic> response, ResponseInterceptorHandler handler) async {
-    final prettyString = jsonEncode(response.data);
-    if (kDebugMode) {
-      print(
-        'Status Code: ${response.statusCode}\n'
-        'Response : $prettyString\n',
-      );
-    }
-
     //Unaunthenticated Handler
     if ((response.statusCode ?? 0) >= 400 &&
         (response.statusCode ?? 0) <= 403) {
@@ -100,11 +64,5 @@ class ApiInterceptor extends Interceptor {
     }
 
     return handler.next(response);
-  }
-
-  @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    log('Dio Error : $err, ${err.response}');
-    return handler.next(err);
   }
 }
