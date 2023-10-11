@@ -38,9 +38,9 @@ class AppRouter {
   static const order = 'order';
   static const more = 'more';
 
-  static const products = 'products';
-  static const product = 'product';
-  static const cart = 'cart';
+  static const products = '/products';
+  static const product = '/product';
+  static const cart = '/cart';
   static const checkout = 'checkout';
   static const payment = 'payment';
   static const paymentSuccess = 'payment-success';
@@ -119,80 +119,78 @@ final GoRouter appRouter = GoRouter(
 
         return DashboardPage(tab: selectedTab);
       },
+    ),
+    //* Products
+    GoRoute(
+      path: AppRouter.products,
+      name: AppRouter.products,
+      builder: (context, state) {
+        final queryMap = state.uri.queryParameters;
+        final categoryId = queryMap['category_id']!;
+        final categoryName = queryMap['category_name'];
+
+        //Fetch Product By Category
+        context
+            .read<ProductBloc>()
+            .add(ProductEvent.getProducts(category_id: categoryId));
+
+        return ProductListPage(
+          category_id: categoryId,
+          category_name: categoryName,
+        );
+      },
+    ),
+    //* Products/:id
+    GoRoute(
+      name: AppRouter.product,
+      path: '${AppRouter.products}/:id',
+      builder: (context, state) {
+        final id = state.pathParameters['id']!;
+
+        //Fetch Product id
+        context.read<ProductBloc>().add(ProductEvent.getProduct(id));
+
+        return ProductDetail(id: id);
+      },
+    ),
+    //* Cart
+    GoRoute(
+      name: AppRouter.cart,
+      path: AppRouter.cart,
+      builder: (context, state) => const CartPage(),
       routes: [
-        //* Products
+        //* Cart/Checkout
         GoRoute(
-          path: AppRouter.products,
-          name: AppRouter.products,
-          builder: (context, state) {
-            final queryMap = state.uri.queryParameters;
-            final categoryId = queryMap['category_id']!;
-            final categoryName = queryMap['category_name'];
-
-            //Fetch Product By Category
-            context
-                .read<ProductBloc>()
-                .add(ProductEvent.getProducts(category_id: categoryId));
-
-            return ProductListPage(
-              category_id: categoryId,
-              category_name: categoryName,
-            );
-          },
-        ),
-        //* Products/:id
-        GoRoute(
-          name: AppRouter.product,
-          path: '${AppRouter.products}/:id',
-          builder: (context, state) {
-            final id = state.pathParameters['id']!;
-
-            //Fetch Product id
-            context.read<ProductBloc>().add(ProductEvent.getProduct(id));
-
-            return ProductDetail(id: id);
-          },
-        ),
-        //* Cart
-        GoRoute(
-          name: AppRouter.cart,
-          path: AppRouter.cart,
-          builder: (context, state) => const CartPage(),
+          name: AppRouter.checkout,
+          path: AppRouter.checkout,
+          builder: (context, state) => const CheckoutPage(),
           routes: [
-            //* Cart/Checkout
+            //* Cart/Checkout/Payment
             GoRoute(
-              name: AppRouter.checkout,
-              path: AppRouter.checkout,
-              builder: (context, state) => const CheckoutPage(),
-              routes: [
-                //* Cart/Checkout/Payment
-                GoRoute(
-                  name: AppRouter.payment,
-                  path: AppRouter.payment,
-                  builder: (context, state) {
-                    // ignore: non_constant_identifier_names
-                    final payment_url =
-                        state.uri.queryParameters['payment_url'] as String;
+              name: AppRouter.payment,
+              path: AppRouter.payment,
+              builder: (context, state) {
+                // ignore: non_constant_identifier_names
+                final payment_url =
+                    state.uri.queryParameters['payment_url'] as String;
 
-                    if (kIsWeb) {
-                      return PaymentWeb(payment_url: payment_url);
-                    }
-                    return PaymentPage(payment_url: payment_url);
-                  },
-                ),
-                //* Cart/Checkout/Payment-Success
-                GoRoute(
-                  name: AppRouter.paymentSuccess,
-                  path: AppRouter.paymentSuccess,
-                  builder: (context, state) => const PaymentSuccessPage(),
-                ),
-                //* Cart/Checkout/Payment-Failed
-                GoRoute(
-                  name: AppRouter.paymentFailed,
-                  path: AppRouter.paymentFailed,
-                  builder: (context, state) => const PaymentFailedPage(),
-                ),
-              ],
+                if (kIsWeb) {
+                  return PaymentWeb(payment_url: payment_url);
+                }
+                return PaymentPage(payment_url: payment_url);
+              },
+            ),
+            //* Cart/Checkout/Payment-Success
+            GoRoute(
+              name: AppRouter.paymentSuccess,
+              path: AppRouter.paymentSuccess,
+              builder: (context, state) => const PaymentSuccessPage(),
+            ),
+            //* Cart/Checkout/Payment-Failed
+            GoRoute(
+              name: AppRouter.paymentFailed,
+              path: AppRouter.paymentFailed,
+              builder: (context, state) => const PaymentFailedPage(),
             ),
           ],
         ),
