@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CartEvent {
+  ProductModel get product => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(ProductModel product, int quantity) addToCart,
     required TResult Function(ProductModel product, int quantity)
         removeFromCart,
@@ -27,7 +28,6 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(ProductModel product, int quantity)? addToCart,
     TResult? Function(ProductModel product, int quantity)? removeFromCart,
     TResult? Function(ProductModel product, int quantity)? buyNow,
@@ -35,7 +35,6 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(ProductModel product, int quantity)? addToCart,
     TResult Function(ProductModel product, int quantity)? removeFromCart,
     TResult Function(ProductModel product, int quantity)? buyNow,
@@ -44,7 +43,6 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_AddToCart value) addToCart,
     required TResult Function(_RemoveToCart value) removeFromCart,
     required TResult Function(_BuyNow value) buyNow,
@@ -52,7 +50,6 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_AddToCart value)? addToCart,
     TResult? Function(_RemoveToCart value)? removeFromCart,
     TResult? Function(_BuyNow value)? buyNow,
@@ -60,12 +57,15 @@ mixin _$CartEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_AddToCart value)? addToCart,
     TResult Function(_RemoveToCart value)? removeFromCart,
     TResult Function(_BuyNow value)? buyNow,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CartEventCopyWith<CartEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -73,6 +73,8 @@ mixin _$CartEvent {
 abstract class $CartEventCopyWith<$Res> {
   factory $CartEventCopyWith(CartEvent value, $Res Function(CartEvent) then) =
       _$CartEventCopyWithImpl<$Res, CartEvent>;
+  @useResult
+  $Res call({ProductModel product, int quantity});
 }
 
 /// @nodoc
@@ -84,127 +86,32 @@ class _$CartEventCopyWithImpl<$Res, $Val extends CartEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? product = null,
+    Object? quantity = null,
+  }) {
+    return _then(_value.copyWith(
+      product: null == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductModel,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$CartEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Started implements _Started {
-  const _$_Started();
-
-  @override
-  String toString() {
-    return 'CartEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(ProductModel product, int quantity) addToCart,
-    required TResult Function(ProductModel product, int quantity)
-        removeFromCart,
-    required TResult Function(ProductModel product, int quantity) buyNow,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(ProductModel product, int quantity)? addToCart,
-    TResult? Function(ProductModel product, int quantity)? removeFromCart,
-    TResult? Function(ProductModel product, int quantity)? buyNow,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(ProductModel product, int quantity)? addToCart,
-    TResult Function(ProductModel product, int quantity)? removeFromCart,
-    TResult Function(ProductModel product, int quantity)? buyNow,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_AddToCart value) addToCart,
-    required TResult Function(_RemoveToCart value) removeFromCart,
-    required TResult Function(_BuyNow value) buyNow,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_AddToCart value)? addToCart,
-    TResult? Function(_RemoveToCart value)? removeFromCart,
-    TResult? Function(_BuyNow value)? buyNow,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_AddToCart value)? addToCart,
-    TResult Function(_RemoveToCart value)? removeFromCart,
-    TResult Function(_BuyNow value)? buyNow,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements CartEvent {
-  const factory _Started() = _$_Started;
-}
-
-/// @nodoc
-abstract class _$$_AddToCartCopyWith<$Res> {
+abstract class _$$_AddToCartCopyWith<$Res> implements $CartEventCopyWith<$Res> {
   factory _$$_AddToCartCopyWith(
           _$_AddToCart value, $Res Function(_$_AddToCart) then) =
       __$$_AddToCartCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({ProductModel product, int quantity});
 }
@@ -273,7 +180,6 @@ class _$_AddToCart implements _AddToCart {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(ProductModel product, int quantity) addToCart,
     required TResult Function(ProductModel product, int quantity)
         removeFromCart,
@@ -285,7 +191,6 @@ class _$_AddToCart implements _AddToCart {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(ProductModel product, int quantity)? addToCart,
     TResult? Function(ProductModel product, int quantity)? removeFromCart,
     TResult? Function(ProductModel product, int quantity)? buyNow,
@@ -296,7 +201,6 @@ class _$_AddToCart implements _AddToCart {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(ProductModel product, int quantity)? addToCart,
     TResult Function(ProductModel product, int quantity)? removeFromCart,
     TResult Function(ProductModel product, int quantity)? buyNow,
@@ -311,7 +215,6 @@ class _$_AddToCart implements _AddToCart {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_AddToCart value) addToCart,
     required TResult Function(_RemoveToCart value) removeFromCart,
     required TResult Function(_BuyNow value) buyNow,
@@ -322,7 +225,6 @@ class _$_AddToCart implements _AddToCart {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_AddToCart value)? addToCart,
     TResult? Function(_RemoveToCart value)? removeFromCart,
     TResult? Function(_BuyNow value)? buyNow,
@@ -333,7 +235,6 @@ class _$_AddToCart implements _AddToCart {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_AddToCart value)? addToCart,
     TResult Function(_RemoveToCart value)? removeFromCart,
     TResult Function(_BuyNow value)? buyNow,
@@ -350,18 +251,23 @@ abstract class _AddToCart implements CartEvent {
   const factory _AddToCart(final ProductModel product, final int quantity) =
       _$_AddToCart;
 
+  @override
   ProductModel get product;
+  @override
   int get quantity;
+  @override
   @JsonKey(ignore: true)
   _$$_AddToCartCopyWith<_$_AddToCart> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RemoveToCartCopyWith<$Res> {
+abstract class _$$_RemoveToCartCopyWith<$Res>
+    implements $CartEventCopyWith<$Res> {
   factory _$$_RemoveToCartCopyWith(
           _$_RemoveToCart value, $Res Function(_$_RemoveToCart) then) =
       __$$_RemoveToCartCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({ProductModel product, int quantity});
 }
@@ -430,7 +336,6 @@ class _$_RemoveToCart implements _RemoveToCart {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(ProductModel product, int quantity) addToCart,
     required TResult Function(ProductModel product, int quantity)
         removeFromCart,
@@ -442,7 +347,6 @@ class _$_RemoveToCart implements _RemoveToCart {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(ProductModel product, int quantity)? addToCart,
     TResult? Function(ProductModel product, int quantity)? removeFromCart,
     TResult? Function(ProductModel product, int quantity)? buyNow,
@@ -453,7 +357,6 @@ class _$_RemoveToCart implements _RemoveToCart {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(ProductModel product, int quantity)? addToCart,
     TResult Function(ProductModel product, int quantity)? removeFromCart,
     TResult Function(ProductModel product, int quantity)? buyNow,
@@ -468,7 +371,6 @@ class _$_RemoveToCart implements _RemoveToCart {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_AddToCart value) addToCart,
     required TResult Function(_RemoveToCart value) removeFromCart,
     required TResult Function(_BuyNow value) buyNow,
@@ -479,7 +381,6 @@ class _$_RemoveToCart implements _RemoveToCart {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_AddToCart value)? addToCart,
     TResult? Function(_RemoveToCart value)? removeFromCart,
     TResult? Function(_BuyNow value)? buyNow,
@@ -490,7 +391,6 @@ class _$_RemoveToCart implements _RemoveToCart {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_AddToCart value)? addToCart,
     TResult Function(_RemoveToCart value)? removeFromCart,
     TResult Function(_BuyNow value)? buyNow,
@@ -507,17 +407,21 @@ abstract class _RemoveToCart implements CartEvent {
   const factory _RemoveToCart(final ProductModel product, final int quantity) =
       _$_RemoveToCart;
 
+  @override
   ProductModel get product;
+  @override
   int get quantity;
+  @override
   @JsonKey(ignore: true)
   _$$_RemoveToCartCopyWith<_$_RemoveToCart> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_BuyNowCopyWith<$Res> {
+abstract class _$$_BuyNowCopyWith<$Res> implements $CartEventCopyWith<$Res> {
   factory _$$_BuyNowCopyWith(_$_BuyNow value, $Res Function(_$_BuyNow) then) =
       __$$_BuyNowCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({ProductModel product, int quantity});
 }
@@ -585,7 +489,6 @@ class _$_BuyNow implements _BuyNow {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function(ProductModel product, int quantity) addToCart,
     required TResult Function(ProductModel product, int quantity)
         removeFromCart,
@@ -597,7 +500,6 @@ class _$_BuyNow implements _BuyNow {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function(ProductModel product, int quantity)? addToCart,
     TResult? Function(ProductModel product, int quantity)? removeFromCart,
     TResult? Function(ProductModel product, int quantity)? buyNow,
@@ -608,7 +510,6 @@ class _$_BuyNow implements _BuyNow {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function(ProductModel product, int quantity)? addToCart,
     TResult Function(ProductModel product, int quantity)? removeFromCart,
     TResult Function(ProductModel product, int quantity)? buyNow,
@@ -623,7 +524,6 @@ class _$_BuyNow implements _BuyNow {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_AddToCart value) addToCart,
     required TResult Function(_RemoveToCart value) removeFromCart,
     required TResult Function(_BuyNow value) buyNow,
@@ -634,7 +534,6 @@ class _$_BuyNow implements _BuyNow {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_AddToCart value)? addToCart,
     TResult? Function(_RemoveToCart value)? removeFromCart,
     TResult? Function(_BuyNow value)? buyNow,
@@ -645,7 +544,6 @@ class _$_BuyNow implements _BuyNow {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_AddToCart value)? addToCart,
     TResult Function(_RemoveToCart value)? removeFromCart,
     TResult Function(_BuyNow value)? buyNow,
@@ -662,8 +560,11 @@ abstract class _BuyNow implements CartEvent {
   const factory _BuyNow(final ProductModel product, final int quantity) =
       _$_BuyNow;
 
+  @override
   ProductModel get product;
+  @override
   int get quantity;
+  @override
   @JsonKey(ignore: true)
   _$$_BuyNowCopyWith<_$_BuyNow> get copyWith =>
       throw _privateConstructorUsedError;
@@ -674,25 +575,20 @@ mixin _$CartState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
-    required TResult Function() buyNow,
+    required TResult Function(List<CartProduct> cartProducts, bool? buyNow)
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
-    TResult? Function()? buyNow,
+    TResult? Function(List<CartProduct> cartProducts, bool? buyNow)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
-    TResult Function()? buyNow,
+    TResult Function(List<CartProduct> cartProducts, bool? buyNow)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -700,24 +596,18 @@ mixin _$CartState {
   TResult map<TResult extends Object?>({
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
-    required TResult Function(_StateBuyNow value) buyNow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
-    TResult? Function(_StateBuyNow value)? buyNow,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
-    TResult Function(_StateBuyNow value)? buyNow,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -758,8 +648,8 @@ class __$$_StateLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StateLoading implements _StateLoading {
-  const _$_StateLoading();
+class _$_StateLoading extends _StateLoading {
+  const _$_StateLoading() : super._();
 
   @override
   String toString() {
@@ -779,9 +669,8 @@ class _$_StateLoading implements _StateLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
-    required TResult Function() buyNow,
+    required TResult Function(List<CartProduct> cartProducts, bool? buyNow)
+        loaded,
   }) {
     return loading();
   }
@@ -790,9 +679,7 @@ class _$_StateLoading implements _StateLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
-    TResult? Function()? buyNow,
+    TResult? Function(List<CartProduct> cartProducts, bool? buyNow)? loaded,
   }) {
     return loading?.call();
   }
@@ -801,9 +688,7 @@ class _$_StateLoading implements _StateLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
-    TResult Function()? buyNow,
+    TResult Function(List<CartProduct> cartProducts, bool? buyNow)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -817,8 +702,6 @@ class _$_StateLoading implements _StateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
-    required TResult Function(_StateBuyNow value) buyNow,
   }) {
     return loading(this);
   }
@@ -828,8 +711,6 @@ class _$_StateLoading implements _StateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
-    TResult? Function(_StateBuyNow value)? buyNow,
   }) {
     return loading?.call(this);
   }
@@ -839,8 +720,6 @@ class _$_StateLoading implements _StateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
-    TResult Function(_StateBuyNow value)? buyNow,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -850,8 +729,9 @@ class _$_StateLoading implements _StateLoading {
   }
 }
 
-abstract class _StateLoading implements CartState {
+abstract class _StateLoading extends CartState {
   const factory _StateLoading() = _$_StateLoading;
+  const _StateLoading._() : super._();
 }
 
 /// @nodoc
@@ -860,7 +740,7 @@ abstract class _$$_StateLoadedCopyWith<$Res> {
           _$_StateLoaded value, $Res Function(_$_StateLoaded) then) =
       __$$_StateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CartProduct> cartProducts});
+  $Res call({List<CartProduct> cartProducts, bool? buyNow});
 }
 
 /// @nodoc
@@ -875,21 +755,28 @@ class __$$_StateLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? cartProducts = null,
+    Object? buyNow = freezed,
   }) {
     return _then(_$_StateLoaded(
       null == cartProducts
           ? _value._cartProducts
           : cartProducts // ignore: cast_nullable_to_non_nullable
               as List<CartProduct>,
+      buyNow: freezed == buyNow
+          ? _value.buyNow
+          : buyNow // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_StateLoaded implements _StateLoaded {
-  const _$_StateLoaded(final List<CartProduct> cartProducts)
-      : _cartProducts = cartProducts;
+class _$_StateLoaded extends _StateLoaded {
+  const _$_StateLoaded(final List<CartProduct> cartProducts,
+      {this.buyNow = false})
+      : _cartProducts = cartProducts,
+        super._();
 
   final List<CartProduct> _cartProducts;
   @override
@@ -900,8 +787,12 @@ class _$_StateLoaded implements _StateLoaded {
   }
 
   @override
+  @JsonKey()
+  final bool? buyNow;
+
+  @override
   String toString() {
-    return 'CartState.loaded(cartProducts: $cartProducts)';
+    return 'CartState.loaded(cartProducts: $cartProducts, buyNow: $buyNow)';
   }
 
   @override
@@ -910,12 +801,13 @@ class _$_StateLoaded implements _StateLoaded {
         (other.runtimeType == runtimeType &&
             other is _$_StateLoaded &&
             const DeepCollectionEquality()
-                .equals(other._cartProducts, _cartProducts));
+                .equals(other._cartProducts, _cartProducts) &&
+            (identical(other.buyNow, buyNow) || other.buyNow == buyNow));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_cartProducts));
+      runtimeType, const DeepCollectionEquality().hash(_cartProducts), buyNow);
 
   @JsonKey(ignore: true)
   @override
@@ -927,35 +819,30 @@ class _$_StateLoaded implements _StateLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
-    required TResult Function() buyNow,
+    required TResult Function(List<CartProduct> cartProducts, bool? buyNow)
+        loaded,
   }) {
-    return loaded(cartProducts);
+    return loaded(cartProducts, buyNow);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
-    TResult? Function()? buyNow,
+    TResult? Function(List<CartProduct> cartProducts, bool? buyNow)? loaded,
   }) {
-    return loaded?.call(cartProducts);
+    return loaded?.call(cartProducts, buyNow);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
-    TResult Function()? buyNow,
+    TResult Function(List<CartProduct> cartProducts, bool? buyNow)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(cartProducts);
+      return loaded(cartProducts, buyNow);
     }
     return orElse();
   }
@@ -965,8 +852,6 @@ class _$_StateLoaded implements _StateLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
-    required TResult Function(_StateBuyNow value) buyNow,
   }) {
     return loaded(this);
   }
@@ -976,8 +861,6 @@ class _$_StateLoaded implements _StateLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
-    TResult? Function(_StateBuyNow value)? buyNow,
   }) {
     return loaded?.call(this);
   }
@@ -987,8 +870,6 @@ class _$_StateLoaded implements _StateLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
-    TResult Function(_StateBuyNow value)? buyNow,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -998,240 +879,14 @@ class _$_StateLoaded implements _StateLoaded {
   }
 }
 
-abstract class _StateLoaded implements CartState {
-  const factory _StateLoaded(final List<CartProduct> cartProducts) =
-      _$_StateLoaded;
+abstract class _StateLoaded extends CartState {
+  const factory _StateLoaded(final List<CartProduct> cartProducts,
+      {final bool? buyNow}) = _$_StateLoaded;
+  const _StateLoaded._() : super._();
 
   List<CartProduct> get cartProducts;
+  bool? get buyNow;
   @JsonKey(ignore: true)
   _$$_StateLoadedCopyWith<_$_StateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_StateCartAddedCopyWith<$Res> {
-  factory _$$_StateCartAddedCopyWith(
-          _$_StateCartAdded value, $Res Function(_$_StateCartAdded) then) =
-      __$$_StateCartAddedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StateCartAddedCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$_StateCartAdded>
-    implements _$$_StateCartAddedCopyWith<$Res> {
-  __$$_StateCartAddedCopyWithImpl(
-      _$_StateCartAdded _value, $Res Function(_$_StateCartAdded) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_StateCartAdded implements _StateCartAdded {
-  const _$_StateCartAdded();
-
-  @override
-  String toString() {
-    return 'CartState.cartAdded()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StateCartAdded);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
-    required TResult Function() buyNow,
-  }) {
-    return cartAdded();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
-    TResult? Function()? buyNow,
-  }) {
-    return cartAdded?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
-    TResult Function()? buyNow,
-    required TResult orElse(),
-  }) {
-    if (cartAdded != null) {
-      return cartAdded();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_StateLoading value) loading,
-    required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
-    required TResult Function(_StateBuyNow value) buyNow,
-  }) {
-    return cartAdded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateLoading value)? loading,
-    TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
-    TResult? Function(_StateBuyNow value)? buyNow,
-  }) {
-    return cartAdded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateLoading value)? loading,
-    TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
-    TResult Function(_StateBuyNow value)? buyNow,
-    required TResult orElse(),
-  }) {
-    if (cartAdded != null) {
-      return cartAdded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _StateCartAdded implements CartState {
-  const factory _StateCartAdded() = _$_StateCartAdded;
-}
-
-/// @nodoc
-abstract class _$$_StateBuyNowCopyWith<$Res> {
-  factory _$$_StateBuyNowCopyWith(
-          _$_StateBuyNow value, $Res Function(_$_StateBuyNow) then) =
-      __$$_StateBuyNowCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StateBuyNowCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$_StateBuyNow>
-    implements _$$_StateBuyNowCopyWith<$Res> {
-  __$$_StateBuyNowCopyWithImpl(
-      _$_StateBuyNow _value, $Res Function(_$_StateBuyNow) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_StateBuyNow implements _StateBuyNow {
-  const _$_StateBuyNow();
-
-  @override
-  String toString() {
-    return 'CartState.buyNow()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StateBuyNow);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<CartProduct> cartProducts) loaded,
-    required TResult Function() cartAdded,
-    required TResult Function() buyNow,
-  }) {
-    return buyNow();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<CartProduct> cartProducts)? loaded,
-    TResult? Function()? cartAdded,
-    TResult? Function()? buyNow,
-  }) {
-    return buyNow?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<CartProduct> cartProducts)? loaded,
-    TResult Function()? cartAdded,
-    TResult Function()? buyNow,
-    required TResult orElse(),
-  }) {
-    if (buyNow != null) {
-      return buyNow();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_StateLoading value) loading,
-    required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateCartAdded value) cartAdded,
-    required TResult Function(_StateBuyNow value) buyNow,
-  }) {
-    return buyNow(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateLoading value)? loading,
-    TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateCartAdded value)? cartAdded,
-    TResult? Function(_StateBuyNow value)? buyNow,
-  }) {
-    return buyNow?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateLoading value)? loading,
-    TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateCartAdded value)? cartAdded,
-    TResult Function(_StateBuyNow value)? buyNow,
-    required TResult orElse(),
-  }) {
-    if (buyNow != null) {
-      return buyNow(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _StateBuyNow implements CartState {
-  const factory _StateBuyNow() = _$_StateBuyNow;
 }

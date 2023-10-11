@@ -39,21 +39,22 @@ class CartBottomSheetState extends State<CartBottomSheet> {
     return BlocListener<CartBloc, CartState>(
       listener: (context, state) {
         state.maybeWhen(
-            orElse: () {},
-            loading: () {
-              showAdaptiveDialog(
-                barrierDismissible: false,
-                context: context,
-                builder: (context) => const ProgressDialog(),
-              );
-            },
-            loaded: (data) {
-              Navigator.pop(context);
-            },
-            buyNow: () {
-              Navigator.pop(context);
-              //context.goNamed(AppRouter.checkout);
-            });
+          orElse: () {},
+          loading: () {
+            showAdaptiveDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) => const ProgressDialog(),
+            );
+          },
+          loaded: (data, buyNow) {
+            Navigator.pop(context);
+
+            if (buyNow == true) {
+              context.goNamed(AppRouter.checkout);
+            }
+          },
+        );
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -117,7 +118,8 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                               child: FadeInImage.assetNetwork(
                                 placeholder:
                                     MyAssets.images.placeholder1x1.path,
-                                image: widget.product.image_url ?? '',
+                                image:
+                                    'https://picsum.photos/10${widget.product.id}',
                                 imageErrorBuilder: (c, o, s) {
                                   return Image.asset(
                                     MyAssets.images.placeholder1x1.path,

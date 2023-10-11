@@ -18,21 +18,18 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BannerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() getBanners,
     required TResult Function(int index) setBannerIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? getBanners,
     TResult? Function(int index)? setBannerIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? getBanners,
     TResult Function(int index)? setBannerIndex,
     required TResult orElse(),
@@ -40,21 +37,18 @@ mixin _$BannerEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_GetBanners value) getBanners,
     required TResult Function(_SetBannerIndex value) setBannerIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_GetBanners value)? getBanners,
     TResult? Function(_SetBannerIndex value)? setBannerIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_GetBanners value)? getBanners,
     TResult Function(_SetBannerIndex value)? setBannerIndex,
     required TResult orElse(),
@@ -78,113 +72,6 @@ class _$BannerEventCopyWithImpl<$Res, $Val extends BannerEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$BannerEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Started implements _Started {
-  const _$_Started();
-
-  @override
-  String toString() {
-    return 'BannerEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getBanners,
-    required TResult Function(int index) setBannerIndex,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? getBanners,
-    TResult? Function(int index)? setBannerIndex,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getBanners,
-    TResult Function(int index)? setBannerIndex,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_GetBanners value) getBanners,
-    required TResult Function(_SetBannerIndex value) setBannerIndex,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_GetBanners value)? getBanners,
-    TResult? Function(_SetBannerIndex value)? setBannerIndex,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_GetBanners value)? getBanners,
-    TResult Function(_SetBannerIndex value)? setBannerIndex,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements BannerEvent {
-  const factory _Started() = _$_Started;
 }
 
 /// @nodoc
@@ -225,7 +112,6 @@ class _$_GetBanners implements _GetBanners {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() getBanners,
     required TResult Function(int index) setBannerIndex,
   }) {
@@ -235,7 +121,6 @@ class _$_GetBanners implements _GetBanners {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? getBanners,
     TResult? Function(int index)? setBannerIndex,
   }) {
@@ -245,7 +130,6 @@ class _$_GetBanners implements _GetBanners {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? getBanners,
     TResult Function(int index)? setBannerIndex,
     required TResult orElse(),
@@ -259,7 +143,6 @@ class _$_GetBanners implements _GetBanners {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_GetBanners value) getBanners,
     required TResult Function(_SetBannerIndex value) setBannerIndex,
   }) {
@@ -269,7 +152,6 @@ class _$_GetBanners implements _GetBanners {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_GetBanners value)? getBanners,
     TResult? Function(_SetBannerIndex value)? setBannerIndex,
   }) {
@@ -279,7 +161,6 @@ class _$_GetBanners implements _GetBanners {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_GetBanners value)? getBanners,
     TResult Function(_SetBannerIndex value)? setBannerIndex,
     required TResult orElse(),
@@ -359,7 +240,6 @@ class _$_SetBannerIndex implements _SetBannerIndex {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() getBanners,
     required TResult Function(int index) setBannerIndex,
   }) {
@@ -369,7 +249,6 @@ class _$_SetBannerIndex implements _SetBannerIndex {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? getBanners,
     TResult? Function(int index)? setBannerIndex,
   }) {
@@ -379,7 +258,6 @@ class _$_SetBannerIndex implements _SetBannerIndex {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? getBanners,
     TResult Function(int index)? setBannerIndex,
     required TResult orElse(),
@@ -393,7 +271,6 @@ class _$_SetBannerIndex implements _SetBannerIndex {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_GetBanners value) getBanners,
     required TResult Function(_SetBannerIndex value) setBannerIndex,
   }) {
@@ -403,7 +280,6 @@ class _$_SetBannerIndex implements _SetBannerIndex {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_GetBanners value)? getBanners,
     TResult? Function(_SetBannerIndex value)? setBannerIndex,
   }) {
@@ -413,7 +289,6 @@ class _$_SetBannerIndex implements _SetBannerIndex {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_GetBanners value)? getBanners,
     TResult Function(_SetBannerIndex value)? setBannerIndex,
     required TResult orElse(),
@@ -438,57 +313,45 @@ abstract class _SetBannerIndex implements BannerEvent {
 mixin _$BannerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<BannerModel> data) loaded,
+    required TResult Function(List<BannerModel> data, int? activeIndex) loaded,
     required TResult Function(String message) error,
-    required TResult Function(int index) indexChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<BannerModel> data)? loaded,
+    TResult? Function(List<BannerModel> data, int? activeIndex)? loaded,
     TResult? Function(String message)? error,
-    TResult? Function(int index)? indexChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<BannerModel> data)? loaded,
+    TResult Function(List<BannerModel> data, int? activeIndex)? loaded,
     TResult Function(String message)? error,
-    TResult Function(int index)? indexChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StateInitial value) initial,
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
     required TResult Function(_StateError value) error,
-    required TResult Function(_StateIndexChanged value) indexChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateInitial value)? initial,
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
     TResult? Function(_StateError value)? error,
-    TResult? Function(_StateIndexChanged value)? indexChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateInitial value)? initial,
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
     TResult Function(_StateError value)? error,
-    TResult Function(_StateIndexChanged value)? indexChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -513,126 +376,6 @@ class _$BannerStateCopyWithImpl<$Res, $Val extends BannerState>
 }
 
 /// @nodoc
-abstract class _$$_StateInitialCopyWith<$Res> {
-  factory _$$_StateInitialCopyWith(
-          _$_StateInitial value, $Res Function(_$_StateInitial) then) =
-      __$$_StateInitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StateInitialCopyWithImpl<$Res>
-    extends _$BannerStateCopyWithImpl<$Res, _$_StateInitial>
-    implements _$$_StateInitialCopyWith<$Res> {
-  __$$_StateInitialCopyWithImpl(
-      _$_StateInitial _value, $Res Function(_$_StateInitial) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_StateInitial implements _StateInitial {
-  const _$_StateInitial();
-
-  @override
-  String toString() {
-    return 'BannerState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StateInitial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<BannerModel> data) loaded,
-    required TResult Function(String message) error,
-    required TResult Function(int index) indexChanged,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<BannerModel> data)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function(int index)? indexChanged,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<BannerModel> data)? loaded,
-    TResult Function(String message)? error,
-    TResult Function(int index)? indexChanged,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_StateInitial value) initial,
-    required TResult Function(_StateLoading value) loading,
-    required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateError value) error,
-    required TResult Function(_StateIndexChanged value) indexChanged,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateInitial value)? initial,
-    TResult? Function(_StateLoading value)? loading,
-    TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateError value)? error,
-    TResult? Function(_StateIndexChanged value)? indexChanged,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateInitial value)? initial,
-    TResult Function(_StateLoading value)? loading,
-    TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateError value)? error,
-    TResult Function(_StateIndexChanged value)? indexChanged,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _StateInitial implements BannerState {
-  const factory _StateInitial() = _$_StateInitial;
-}
-
-/// @nodoc
 abstract class _$$_StateLoadingCopyWith<$Res> {
   factory _$$_StateLoadingCopyWith(
           _$_StateLoading value, $Res Function(_$_StateLoading) then) =
@@ -650,8 +393,8 @@ class __$$_StateLoadingCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StateLoading implements _StateLoading {
-  const _$_StateLoading();
+class _$_StateLoading extends _StateLoading {
+  const _$_StateLoading() : super._();
 
   @override
   String toString() {
@@ -670,11 +413,9 @@ class _$_StateLoading implements _StateLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<BannerModel> data) loaded,
+    required TResult Function(List<BannerModel> data, int? activeIndex) loaded,
     required TResult Function(String message) error,
-    required TResult Function(int index) indexChanged,
   }) {
     return loading();
   }
@@ -682,11 +423,9 @@ class _$_StateLoading implements _StateLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<BannerModel> data)? loaded,
+    TResult? Function(List<BannerModel> data, int? activeIndex)? loaded,
     TResult? Function(String message)? error,
-    TResult? Function(int index)? indexChanged,
   }) {
     return loading?.call();
   }
@@ -694,11 +433,9 @@ class _$_StateLoading implements _StateLoading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<BannerModel> data)? loaded,
+    TResult Function(List<BannerModel> data, int? activeIndex)? loaded,
     TResult Function(String message)? error,
-    TResult Function(int index)? indexChanged,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -710,11 +447,9 @@ class _$_StateLoading implements _StateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StateInitial value) initial,
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
     required TResult Function(_StateError value) error,
-    required TResult Function(_StateIndexChanged value) indexChanged,
   }) {
     return loading(this);
   }
@@ -722,11 +457,9 @@ class _$_StateLoading implements _StateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateInitial value)? initial,
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
     TResult? Function(_StateError value)? error,
-    TResult? Function(_StateIndexChanged value)? indexChanged,
   }) {
     return loading?.call(this);
   }
@@ -734,11 +467,9 @@ class _$_StateLoading implements _StateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateInitial value)? initial,
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
     TResult Function(_StateError value)? error,
-    TResult Function(_StateIndexChanged value)? indexChanged,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -748,8 +479,9 @@ class _$_StateLoading implements _StateLoading {
   }
 }
 
-abstract class _StateLoading implements BannerState {
+abstract class _StateLoading extends BannerState {
   const factory _StateLoading() = _$_StateLoading;
+  const _StateLoading._() : super._();
 }
 
 /// @nodoc
@@ -758,7 +490,7 @@ abstract class _$$_StateLoadedCopyWith<$Res> {
           _$_StateLoaded value, $Res Function(_$_StateLoaded) then) =
       __$$_StateLoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<BannerModel> data});
+  $Res call({List<BannerModel> data, int? activeIndex});
 }
 
 /// @nodoc
@@ -773,20 +505,27 @@ class __$$_StateLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? activeIndex = freezed,
   }) {
     return _then(_$_StateLoaded(
       null == data
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<BannerModel>,
+      activeIndex: freezed == activeIndex
+          ? _value.activeIndex
+          : activeIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_StateLoaded implements _StateLoaded {
-  const _$_StateLoaded(final List<BannerModel> data) : _data = data;
+class _$_StateLoaded extends _StateLoaded {
+  const _$_StateLoaded(final List<BannerModel> data, {this.activeIndex = 0})
+      : _data = data,
+        super._();
 
   final List<BannerModel> _data;
   @override
@@ -797,8 +536,12 @@ class _$_StateLoaded implements _StateLoaded {
   }
 
   @override
+  @JsonKey()
+  final int? activeIndex;
+
+  @override
   String toString() {
-    return 'BannerState.loaded(data: $data)';
+    return 'BannerState.loaded(data: $data, activeIndex: $activeIndex)';
   }
 
   @override
@@ -806,12 +549,14 @@ class _$_StateLoaded implements _StateLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StateLoaded &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            (identical(other.activeIndex, activeIndex) ||
+                other.activeIndex == activeIndex));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_data), activeIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -822,39 +567,33 @@ class _$_StateLoaded implements _StateLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<BannerModel> data) loaded,
+    required TResult Function(List<BannerModel> data, int? activeIndex) loaded,
     required TResult Function(String message) error,
-    required TResult Function(int index) indexChanged,
   }) {
-    return loaded(data);
+    return loaded(data, activeIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<BannerModel> data)? loaded,
+    TResult? Function(List<BannerModel> data, int? activeIndex)? loaded,
     TResult? Function(String message)? error,
-    TResult? Function(int index)? indexChanged,
   }) {
-    return loaded?.call(data);
+    return loaded?.call(data, activeIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<BannerModel> data)? loaded,
+    TResult Function(List<BannerModel> data, int? activeIndex)? loaded,
     TResult Function(String message)? error,
-    TResult Function(int index)? indexChanged,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(data);
+      return loaded(data, activeIndex);
     }
     return orElse();
   }
@@ -862,11 +601,9 @@ class _$_StateLoaded implements _StateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StateInitial value) initial,
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
     required TResult Function(_StateError value) error,
-    required TResult Function(_StateIndexChanged value) indexChanged,
   }) {
     return loaded(this);
   }
@@ -874,11 +611,9 @@ class _$_StateLoaded implements _StateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateInitial value)? initial,
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
     TResult? Function(_StateError value)? error,
-    TResult? Function(_StateIndexChanged value)? indexChanged,
   }) {
     return loaded?.call(this);
   }
@@ -886,11 +621,9 @@ class _$_StateLoaded implements _StateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateInitial value)? initial,
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
     TResult Function(_StateError value)? error,
-    TResult Function(_StateIndexChanged value)? indexChanged,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -900,10 +633,13 @@ class _$_StateLoaded implements _StateLoaded {
   }
 }
 
-abstract class _StateLoaded implements BannerState {
-  const factory _StateLoaded(final List<BannerModel> data) = _$_StateLoaded;
+abstract class _StateLoaded extends BannerState {
+  const factory _StateLoaded(final List<BannerModel> data,
+      {final int? activeIndex}) = _$_StateLoaded;
+  const _StateLoaded._() : super._();
 
   List<BannerModel> get data;
+  int? get activeIndex;
   @JsonKey(ignore: true)
   _$$_StateLoadedCopyWith<_$_StateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -942,8 +678,8 @@ class __$$_StateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StateError implements _StateError {
-  const _$_StateError(this.message);
+class _$_StateError extends _StateError {
+  const _$_StateError(this.message) : super._();
 
   @override
   final String message;
@@ -973,11 +709,9 @@ class _$_StateError implements _StateError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<BannerModel> data) loaded,
+    required TResult Function(List<BannerModel> data, int? activeIndex) loaded,
     required TResult Function(String message) error,
-    required TResult Function(int index) indexChanged,
   }) {
     return error(message);
   }
@@ -985,11 +719,9 @@ class _$_StateError implements _StateError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<BannerModel> data)? loaded,
+    TResult? Function(List<BannerModel> data, int? activeIndex)? loaded,
     TResult? Function(String message)? error,
-    TResult? Function(int index)? indexChanged,
   }) {
     return error?.call(message);
   }
@@ -997,11 +729,9 @@ class _$_StateError implements _StateError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<BannerModel> data)? loaded,
+    TResult Function(List<BannerModel> data, int? activeIndex)? loaded,
     TResult Function(String message)? error,
-    TResult Function(int index)? indexChanged,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1013,11 +743,9 @@ class _$_StateError implements _StateError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StateInitial value) initial,
     required TResult Function(_StateLoading value) loading,
     required TResult Function(_StateLoaded value) loaded,
     required TResult Function(_StateError value) error,
-    required TResult Function(_StateIndexChanged value) indexChanged,
   }) {
     return error(this);
   }
@@ -1025,11 +753,9 @@ class _$_StateError implements _StateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateInitial value)? initial,
     TResult? Function(_StateLoading value)? loading,
     TResult? Function(_StateLoaded value)? loaded,
     TResult? Function(_StateError value)? error,
-    TResult? Function(_StateIndexChanged value)? indexChanged,
   }) {
     return error?.call(this);
   }
@@ -1037,11 +763,9 @@ class _$_StateError implements _StateError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateInitial value)? initial,
     TResult Function(_StateLoading value)? loading,
     TResult Function(_StateLoaded value)? loaded,
     TResult Function(_StateError value)? error,
-    TResult Function(_StateIndexChanged value)? indexChanged,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1051,163 +775,12 @@ class _$_StateError implements _StateError {
   }
 }
 
-abstract class _StateError implements BannerState {
+abstract class _StateError extends BannerState {
   const factory _StateError(final String message) = _$_StateError;
+  const _StateError._() : super._();
 
   String get message;
   @JsonKey(ignore: true)
   _$$_StateErrorCopyWith<_$_StateError> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_StateIndexChangedCopyWith<$Res> {
-  factory _$$_StateIndexChangedCopyWith(_$_StateIndexChanged value,
-          $Res Function(_$_StateIndexChanged) then) =
-      __$$_StateIndexChangedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int index});
-}
-
-/// @nodoc
-class __$$_StateIndexChangedCopyWithImpl<$Res>
-    extends _$BannerStateCopyWithImpl<$Res, _$_StateIndexChanged>
-    implements _$$_StateIndexChangedCopyWith<$Res> {
-  __$$_StateIndexChangedCopyWithImpl(
-      _$_StateIndexChanged _value, $Res Function(_$_StateIndexChanged) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? index = null,
-  }) {
-    return _then(_$_StateIndexChanged(
-      null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_StateIndexChanged implements _StateIndexChanged {
-  const _$_StateIndexChanged(this.index);
-
-  @override
-  final int index;
-
-  @override
-  String toString() {
-    return 'BannerState.indexChanged(index: $index)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_StateIndexChanged &&
-            (identical(other.index, index) || other.index == index));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, index);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_StateIndexChangedCopyWith<_$_StateIndexChanged> get copyWith =>
-      __$$_StateIndexChangedCopyWithImpl<_$_StateIndexChanged>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<BannerModel> data) loaded,
-    required TResult Function(String message) error,
-    required TResult Function(int index) indexChanged,
-  }) {
-    return indexChanged(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<BannerModel> data)? loaded,
-    TResult? Function(String message)? error,
-    TResult? Function(int index)? indexChanged,
-  }) {
-    return indexChanged?.call(index);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<BannerModel> data)? loaded,
-    TResult Function(String message)? error,
-    TResult Function(int index)? indexChanged,
-    required TResult orElse(),
-  }) {
-    if (indexChanged != null) {
-      return indexChanged(index);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_StateInitial value) initial,
-    required TResult Function(_StateLoading value) loading,
-    required TResult Function(_StateLoaded value) loaded,
-    required TResult Function(_StateError value) error,
-    required TResult Function(_StateIndexChanged value) indexChanged,
-  }) {
-    return indexChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_StateInitial value)? initial,
-    TResult? Function(_StateLoading value)? loading,
-    TResult? Function(_StateLoaded value)? loaded,
-    TResult? Function(_StateError value)? error,
-    TResult? Function(_StateIndexChanged value)? indexChanged,
-  }) {
-    return indexChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StateInitial value)? initial,
-    TResult Function(_StateLoading value)? loading,
-    TResult Function(_StateLoaded value)? loaded,
-    TResult Function(_StateError value)? error,
-    TResult Function(_StateIndexChanged value)? indexChanged,
-    required TResult orElse(),
-  }) {
-    if (indexChanged != null) {
-      return indexChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _StateIndexChanged implements BannerState {
-  const factory _StateIndexChanged(final int index) = _$_StateIndexChanged;
-
-  int get index;
-  @JsonKey(ignore: true)
-  _$$_StateIndexChangedCopyWith<_$_StateIndexChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }

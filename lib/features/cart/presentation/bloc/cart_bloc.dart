@@ -51,9 +51,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       );
 
       //Add new product
-      emit(_StateLoaded([newCartProduct]));
-
-      emit(const _StateBuyNow());
+      emit(_StateLoaded([newCartProduct], buyNow: true));
     });
   }
 }

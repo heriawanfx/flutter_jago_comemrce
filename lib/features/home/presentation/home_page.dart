@@ -35,8 +35,10 @@ class HomePage extends StatelessWidget {
               BlocBuilder<CartBloc, CartState>(
                 builder: (context, state) {
                   return Badge.count(
-                    count:
-                        (state.whenOrNull(loaded: (data) => data.length) ?? 0),
+                    count: (state.whenOrNull(loaded: (data, buyNow) {
+                          return data.length;
+                        }) ??
+                        0),
                     child: IconButton(
                       onPressed: () => context.goNamed(AppRouter.cart),
                       icon: const Icon(Icons.shopping_cart_outlined),

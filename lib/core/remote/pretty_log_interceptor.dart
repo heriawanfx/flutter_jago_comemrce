@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 
 typedef HttpLoggerFilter = bool Function();
@@ -57,7 +58,7 @@ class PrettyLogInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
-    if (_httpLoggerFilter == null || _httpLoggerFilter!()) {
+    if ((_httpLoggerFilter == null || _httpLoggerFilter!()) && !kIsWeb) {
       final requestLog = _prepareRequestLog(response.requestOptions);
       if (requestLog != '') {
         _logger.i(requestLog);
@@ -72,7 +73,7 @@ class PrettyLogInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    if (_httpLoggerFilter == null || _httpLoggerFilter!()) {
+    if ((_httpLoggerFilter == null || _httpLoggerFilter!()) && !kIsWeb) {
       final requestLog = _prepareRequestLog(err.response?.requestOptions);
       if (requestLog != '') {
         _logger.e(requestLog);

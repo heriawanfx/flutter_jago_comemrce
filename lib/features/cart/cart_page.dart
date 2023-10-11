@@ -47,7 +47,7 @@ class CartPage extends StatelessWidget {
                       orElse: () {
                         return const CircularProgressIndicator();
                       },
-                      loaded: (products) {
+                      loaded: (products, buyNow) {
                         double totalPrice = 0;
                         for (var element in products) {
                           totalPrice +=
@@ -74,7 +74,7 @@ class CartPage extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       );
                     },
-                    loaded: (products) {
+                    loaded: (products, buyNow) {
                       return products.isEmpty
                           ? Container(
                               width: MediaQuery.of(context).size.width / 3.5,
@@ -144,7 +144,7 @@ class CartPage extends StatelessWidget {
                           orElse: () {
                             return const Center(child: Text('No Data'));
                           },
-                          loaded: (products) {
+                          loaded: (products, buyNow) {
                             if (products.isEmpty) {
                               return const Center(child: Text('No Data'));
                             }
